@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] PlayerShoot playerShoot;
     [SerializeField] Transform lookAtTransform = null;
-    [SerializeField] Transform refTransform = null;
+    //[SerializeField] Transform refTransform = null;
 
     [Header("Values")]
     [SerializeField] float axisDeadzone = 0.1f;
@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 8f;
 
     //axis
-    Vector2 rawAxis = Vector2.zero;
-    Vector2 timedAxis = Vector2.zero;
+    [SerializeField] Vector2 rawAxis = Vector2.zero;
+    [SerializeField] Vector2 timedAxis = Vector2.zero;
     float timedMagnitude = 0f;
 
     public enum PlayerState { DEFAULT, DEAD };
@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float rbVelocityDead = 0.05f;
     [SerializeField] float forwardToAimAngle = 0f;
-    [SerializeField] float absoluteForwardToAimAngle = 0f;
+    float absoluteForwardToAimAngle = 0f;
+
     Vector3 playerToLookAtTransform = Vector3.zero;
     bool runningBackward = false;
 
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerState == PlayerState.DEFAULT)
         {
-            rb.velocity = (refTransform.right * rawAxis.x + refTransform.forward * rawAxis.y) * speed;
+            rb.velocity = (Vector3.right * timedAxis.x + Vector3.forward * timedAxis.y) * speed;
         }
 
         //DoFeetRotation(); //useless
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        //DoFeetRotation();
+        DoFeetRotation();
     }
 
     void ProcessAxis()
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
     void DoFeetRotation()
     {
-        playerToLookAtTransform = lookAtTransform.position - transform.position;
+        playerToLookAtTransform = playerShoot.TargetPos - transform.position;
 
         forwardToAimAngle = Vector3.SignedAngle(transform.forward, playerToLookAtTransform, Vector3.up);
         forwardToAimAngle -= curAngleOffset;

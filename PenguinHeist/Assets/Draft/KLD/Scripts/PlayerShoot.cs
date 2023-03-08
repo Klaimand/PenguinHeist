@@ -27,13 +27,12 @@ public class PlayerShoot : MonoBehaviour
         if (rawAimAxis.magnitude > 0.1f)
         {
             isAiming = true;
-            targetPos = rawAimAxis.NormalizeIfGreater() * 5f;
+            targetPos = transform.position + rawAimAxis.NormalizeIfGreater().Flatten() * 5f;
         }
         else
         {
             isAiming = false;
             targetPos = transform.position;
         }
-
     }
 }
