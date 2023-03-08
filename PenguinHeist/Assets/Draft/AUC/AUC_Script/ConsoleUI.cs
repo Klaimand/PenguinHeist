@@ -20,20 +20,7 @@ public class ConsoleUI : MonoBehaviour
     {
         Application.logMessageReceived -= Log;
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log(lineCount);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.LogError(lineCount);
-        }
-    }
-
+    
     public void Log(string logString, string stackTrace, LogType type)
     {
         switch (type)

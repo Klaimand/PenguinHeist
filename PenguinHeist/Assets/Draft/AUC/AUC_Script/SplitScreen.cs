@@ -21,22 +21,21 @@ public class SplitScreen : MonoBehaviour {
 	[Space][Header("Cameras + Settings")]
 	[SerializeField] private GameObject camera1;
 	[SerializeField] private GameObject camera2;
-	[SerializeField] private int twoCamsLerpSpeed = 15;
-	[SerializeField] private int oneCamsLerpSpeed = 15;
 	public float yOffset = 8;
 	public float zOffset = 0.1f;
 	public float cameraAngle = 85;
-	public Vector3 player1OffSetCam;
-	public Vector3 player2OffSetCam;
-	[SerializeField] private float offSetByStickMultiplier;
+	
+	[SerializeField] private int twoCamsLerpSpeed = 15;
+	[SerializeField] private int oneCamsLerpSpeed = 15;
+	[SerializeField] private float offSetByStickMultiplier = 1.05f;
+	[HideInInspector] public Vector3 player1OffSetCam;
+	[HideInInspector] public Vector3 player2OffSetCam;
 	
 	//The two quads used to draw the second screen, both of which are initalized in the start function.
 	private GameObject splitter;
 	private GameObject split;
 	private bool isSplit;
 	
-	
-
 	void Start ()
 	{
 		splitter = transform.GetChild(0).gameObject;

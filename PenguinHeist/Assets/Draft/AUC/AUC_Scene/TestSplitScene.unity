@@ -492,14 +492,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Console : New Text
-
-    Console : New Text
-
-    Console : New Text
-
-    Console
-    : New Text'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -998,14 +991,14 @@ MonoBehaviour:
   splitterWidth: 0.05
   camera1: {fileID: 239004215572360724}
   camera2: {fileID: 1835247316}
-  twoCamsLerpSpeed: 17
-  oneCamsLerpSpeed: 15
   yOffset: 16
   zOffset: -3.5
   cameraAngle: 80
+  twoCamsLerpSpeed: 17
+  oneCamsLerpSpeed: 15
+  offSetByStickMultiplier: 1.05
   player1OffSetCam: {x: 0, y: 0, z: 0}
   player2OffSetCam: {x: 0, y: 0, z: 0}
-  offSetByStickMultiplier: 0
 --- !u!4 &239004215572360751
 Transform:
   m_ObjectHideFlags: 0
