@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] Transform canon;
+
+    [SerializeField] float shootTriggerDeadzone = 0.1f;
+
     bool isAiming = false;
     public bool IsAiming => isAiming;
 
@@ -11,11 +16,19 @@ public class PlayerShoot : MonoBehaviour
     public Vector3 TargetPos => targetPos;
 
     Vector2 rawAimAxis = Vector2.zero;
+    float rightTriggerAxis = 0f;
+    bool isPressingShootInput = false;
 
     [SerializeField] WeaponSO curWeapon;
 
     int curMagazineBullets = 0;
     int curTotalBullets = 0;
+
+    bool isReloading = false;
+
+    //timers
+    float timeSinceLastClick = 0f;
+    float timeSinceLastBullet = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +40,7 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessAxes();
+        ProcessInputs();
 
         if (rawAimAxis.magnitude > 0.1f)
         {
@@ -40,14 +53,20 @@ public class PlayerShoot : MonoBehaviour
             targetPos = transform.position;
         }
 
+        CheckShoot();
 
+        IncreaseTimers();
 
     }
 
-    void ProcessAxes()
+    void ProcessInputs()
     {
         rawAimAxis.x = Input.GetAxisRaw("Controller Right Horizontal");
         rawAimAxis.y = Input.GetAxisRaw("Controller Right Vertical");
+
+        rightTriggerAxis = Input.GetAxisRaw("Right Trigger");
+
+        isPressingShootInput = rightTriggerAxis > shootTriggerDeadzone || Input.GetKey(KeyCode.Space);
     }
 
     public void InitWeapon(WeaponSO _weapon)
@@ -55,6 +74,62 @@ public class PlayerShoot : MonoBehaviour
         curWeapon = _weapon;
         curMagazineBullets = curWeapon.bulletsPerMagazine;
         curTotalBullets = curWeapon.totalBulletsOnPickup;
+    }
+
+    void CheckShoot()
+    {
+        if (isReloading) return;
+
+        if (!isPressingShootInput) return;
+
+        if (timeSinceLastClick < curWeapon.fireRate) return;
+
+        timeSinceLastClick = 0f;
+        StartCoroutine(DoBurstShoot());
+    }
+
+    IEnumerator DoBurstShoot()
+    {
+        for (int i = 0; i < curWeapon.shotsPerClick; i++)
+        {
+            if (curMagazineBullets > 0)
+            {
+                Shoot();
+                timeSinceLastBullet = 0f;
+            }
+            else if (curTotalBullets > 0)
+            {
+                //reload
+            }
+            else
+            {
+                //plus de balles
+            }
+
+            yield return new WaitForSeconds(curWeapon.timeBetweenShots);
+        }
+    }
+
+    void Shoot()
+    {
+        curMagazineBullets--;
+
+        Vector3 dir = canon.forward;
+        dir.y = 0f;
+
+        float rdmAngle = Random.Range(-curWeapon.spread / 2f, curWeapon.spread / 2f);
+
+        dir = Quaternion.Euler(0f, rdmAngle, 0f) * dir;
+
+        Instantiate(curWeapon.bulletPrefab, canon.position, Quaternion.LookRotation(dir));
+
+        Debug.DrawRay(canon.position, dir, Color.green, 0.3f);
+    }
+
+    void IncreaseTimers()
+    {
+        timeSinceLastClick += Time.deltaTime;
+        timeSinceLastBullet += Time.deltaTime;
     }
 
 }

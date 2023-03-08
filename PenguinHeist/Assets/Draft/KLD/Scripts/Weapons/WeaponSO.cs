@@ -13,8 +13,9 @@ public class WeaponSO : ScriptableObject
     public float reloadTime = 2.5f;
 
     public float fireRate = 0.5f;
-    [Range(0, 10)]
+    [Range(1, 10)]
     public int shotsPerClick = 1;
+    [Tooltip("Time between shots when there is more than 1 shot per click")]
     public float timeBetweenShots = 0.1f;
 
     public GameObject bulletPrefab = null;
@@ -23,9 +24,11 @@ public class WeaponSO : ScriptableObject
     {
         bulletsPerMagazine.ClampAtZero();
         totalBulletsOnPickup.ClampAtZero();
+        if (totalBulletsOnPickup < bulletsPerMagazine) totalBulletsOnPickup = bulletsPerMagazine;
         reloadTime.ClampAtZero();
         fireRate.ClampAtZero();
-        timeBetweenShots.ClampAtZero();
+
+        timeBetweenShots = Mathf.Clamp(timeBetweenShots, 0f, fireRate / shotsPerClick);
     }
 
 }

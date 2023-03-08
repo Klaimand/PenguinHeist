@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1383383100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383383101}
+  m_Layer: 6
+  m_Name: Canon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1383383101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383383100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.496, y: 0.506, z: 0.457}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4986876294537289592}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4986876293544087283
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +42,7 @@ GameObject:
   - component: {fileID: 4986876293544087284}
   - component: {fileID: 4986876293544087286}
   - component: {fileID: 4986876293544087285}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +125,7 @@ GameObject:
   - component: {fileID: 4986876293756977194}
   - component: {fileID: 4986876293756977196}
   - component: {fileID: 4986876293756977195}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +208,7 @@ GameObject:
   - component: {fileID: 4986876293940991131}
   - component: {fileID: 4986876293940991134}
   - component: {fileID: 4986876293940991133}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +291,7 @@ GameObject:
   - component: {fileID: 4986876294074440285}
   - component: {fileID: 4986876294074440287}
   - component: {fileID: 4986876294074440286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,14 +305,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4986876294074440284}
-  m_LocalRotation: {x: -0, y: -0, z: 0.055367537, w: 0.9984661}
-  m_LocalPosition: {x: 0.47, y: 0.5, z: 0}
+  m_LocalRotation: {x: -0.70602113, y: 0.0391507, z: 0.039150815, w: 0.70602316}
+  m_LocalPosition: {x: 0.47, y: 0.5, z: 0.192}
   m_LocalScale: {x: 0.18205024, y: 0.57423955, z: 0.27451932}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4986876294222007747}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.348}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 6.348}
 --- !u!33 &4986876294074440287
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -343,7 +374,7 @@ GameObject:
   - component: {fileID: 4986876294114005844}
   - component: {fileID: 4986876294114005843}
   - component: {fileID: 4986876294114005842}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986876294222007747}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +494,7 @@ GameObject:
   - component: {fileID: 4986876294224559374}
   - component: {fileID: 4986876294224559360}
   - component: {fileID: 4986876294224559375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +579,7 @@ GameObject:
   - component: {fileID: 4986876294537289595}
   - component: {fileID: 4986876294537289596}
   - component: {fileID: 4986876294537289597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -568,6 +599,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4986876294222007747}
+  - {fileID: 1383383101}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -612,6 +644,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1195499866bde5468b28a611d52cea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canon: {fileID: 1383383101}
+  shootTriggerDeadzone: 0.1
+  curWeapon: {fileID: 11400000, guid: 52a7cf4a361731c4f98c18ad5bddaeb1, type: 2}
 --- !u!114 &4986876294537289597
 MonoBehaviour:
   m_ObjectHideFlags: 0
