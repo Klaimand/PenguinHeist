@@ -20,7 +20,8 @@ public class PlayerShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitWeapon(curWeapon);
+        if (curWeapon != null)
+            InitWeapon(curWeapon);
     }
 
     // Update is called once per frame

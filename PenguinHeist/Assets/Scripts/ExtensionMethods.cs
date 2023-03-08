@@ -12,8 +12,7 @@ public static class ExtensionMethods
 
     public static Vector3 Flatten(this Vector2 v)
     {
-        v = new Vector3(v.x, 0f, v.y);
-        return v;
+        return new Vector3(v.x, 0f, v.y);
     }
 
     public static Vector2 ZeroIfBelow(ref this Vector2 v, float minMagnitude)
