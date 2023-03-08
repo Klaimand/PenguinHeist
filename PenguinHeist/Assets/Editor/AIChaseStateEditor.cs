@@ -9,6 +9,7 @@ public class AIChaseStateEditor : Editor
     private void OnEnable()
     {
         aiChaseState = (AIChaseState)target;
+        aiChaseState.stateManager = aiChaseState.transform.GetComponent<AIStateManager>();
     }
 
     private void OnSceneGUI()
@@ -19,6 +20,6 @@ public class AIChaseStateEditor : Editor
     void DrawChaseDistance()
     {
         Handles.color = Color.black;
-        Handles.DrawWireArc(aiChaseState.transform.position, Vector3.up, Vector3.forward, 360, aiChaseState.weaponData.range);
+        Handles.DrawWireArc(aiChaseState.transform.position, Vector3.up, Vector3.forward, 360, aiChaseState.stateManager.weaponData.range);
     }
 }

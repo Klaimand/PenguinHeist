@@ -6,9 +6,12 @@ using UnityEngine.AI;
 public class AIAttackState : AIState
 {
     [SerializeField] WeaponData weaponData;
-    [SerializeField] AIChaseState chaseState;
-    [HideInInspector] public Transform player;
     private float currentAttackCd;
+    
+    private void Start()
+    {
+        stateManager = GetComponent<AIStateManager>(); ;
+    }
     
     public override void MoveTo(Vector3 destination)
     {
@@ -18,17 +21,17 @@ public class AIAttackState : AIState
     private void Update()
     {
         currentAttackCd -= Time.deltaTime;
-        transform.LookAt(player);
+        //transform.LookAt(player);
     }
 
     public override AIState RunCurrentState(NavMeshAgent agent)
     {
         if (agent != default)
         {
-            this.agent = agent;
+            stateManager.agent = agent;
         }
         
-        if (Vector3.Distance(player.position, transform.position) <= weaponData.range)
+        if (Vector3.Distance(stateManager.player.position, transform.position) <= weaponData.range)
         {
             Attack();
         }
@@ -36,8 +39,7 @@ public class AIAttackState : AIState
         {
             agent.isStopped = false;
             agent.avoidancePriority = 1;
-            chaseState.player = player;
-            return chaseState;
+            return previousState;
         }
         return null;
     }

@@ -1,34 +1,36 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
-public class AIChaseState : AIState
+public class AIChaseAndAttackState : AIState
 {
-    public  WeaponData weaponData;
-    [SerializeField] AIAttackState attackState;
-    [SerializeField] LayerMask obstacleMask;
+    [SerializeField] WeaponData weaponData;
     public Transform player;
+
     
+    private void Start()
+    {
+        stateManager = GetComponent<AIStateManager>(); ;
+    }
+
     public override void MoveTo(Vector3 destination)
     {
-        agent.SetDestination(destination);
+        stateManager.agent.SetDestination(destination);
     }
 
     public override AIState RunCurrentState(NavMeshAgent agent)
     {
         if (agent != default)
         {
-            this.agent = agent;
+            stateManager.agent = agent;
         }
         if (agent.remainingDistance <= weaponData.range)
         {
-            if (!Physics.Raycast(transform.position, player.position - transform.position, out RaycastHit hit, weaponData.range, obstacleMask))
+            if (!Physics.Raycast(transform.position, player.position - transform.position, out RaycastHit hit, weaponData.range))
             {
-                attackState.player = player;
                 agent.Stop();
                 agent.destination = player.position;
                 agent.avoidancePriority = 2;
-                return attackState;
+                return nextState;
             }
         }
         MoveTo(player.position);

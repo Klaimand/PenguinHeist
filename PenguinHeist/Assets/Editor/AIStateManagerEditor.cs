@@ -1,19 +1,76 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 [CustomEditor(typeof(AIStateManager))]
 public class AIStateManagerEditor : Editor
 {
     private AIStateManager aiStateManager;
     private List<Transform> players;
+    
+    [SerializeField] private VisualTreeAsset visualTree;
 
-    public override void OnInspectorGUI()
+    private VisualElement root;
+    
+    FloatField moveBackRange;
+
+    /*public override VisualElement CreateInspectorGUI()
+    {
+        root = new VisualElement();
+        root.Add(visualTree.Instantiate());
+
+        Bind();
+
+        return root;
+    }*/
+    
+    private void Bind()
+    {
+        moveBackRange = root.Q<FloatField>("moveBackRange");
+        moveBackRange.RegisterCallback<ChangeEvent<float>>(evt =>
+        {
+            aiStateManager.moveBackRange = evt.newValue;
+        });
+        root.Q<PropertyField>("currentState").RegisterCallback<ChangeEvent<AIState>>(evt =>
+        {
+            aiStateManager.currentState = evt.newValue;
+        });
+        root.Q<PropertyField>("agent").RegisterCallback<ChangeEvent<NavMeshAgent>>(evt =>
+        {
+            aiStateManager.agent = evt.newValue;
+        });
+        root.Q<EnumField>("aiType").RegisterCallback<ChangeEvent<Enum>>(evt =>
+        {
+            aiStateManager.aiType = (AIType) evt.newValue;
+            if (AIType.Police == (AIType) evt.newValue)
+            {
+                moveBackRange.visible = false;
+            }
+            else
+            {
+                moveBackRange.visible = true;
+            }
+        });
+        root.Q<ObjectField>("weaponData").RegisterCallback<ChangeEvent<WeaponData>>(evt =>
+        {
+            aiStateManager.weaponData = evt.newValue;
+        });
+        root.Q<FloatField>("attackRange").RegisterCallback<ChangeEvent<float>>(evt =>
+        {
+            aiStateManager.attackRange = evt.newValue;
+        });
+    }
+    
+    /*public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
         CreateAwareness();
         CreateStates();
-    }
+    }*/
 
     private void OnSceneGUI()
     {
