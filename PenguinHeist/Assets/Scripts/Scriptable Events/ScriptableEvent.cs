@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ScriptableEvent", menuName = "Scriptables/ScriptableEvent", order = 0)]
+[CreateAssetMenu(fileName = "ScriptableEvent", menuName = "ScriptableObjects/ScriptableEvents/ScriptableEvent", order = 0)]
 public class ScriptableEvent : ScriptableObject
 {
     public string EventName => name;
