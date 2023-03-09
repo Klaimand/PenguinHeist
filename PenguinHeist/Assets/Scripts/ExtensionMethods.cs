@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ExtensionMethods
 {
-    public static Vector2 NormalizeIfGreater(this Vector2 v)
+    public static Vector2 NormalizeIfGreater(ref this Vector2 v)
     {
         v = v.sqrMagnitude > 1f ? v.normalized : v;
         return v;
