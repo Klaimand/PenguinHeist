@@ -34,6 +34,8 @@ public class PlayerShoot : MonoBehaviour
     float timeSinceLastClick = 0f;
     float timeSinceLastBullet = 0f;
 
+    Coroutine reloadCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,12 @@ public class PlayerShoot : MonoBehaviour
 
     public void InitWeapon(WeaponSO _weapon, int _curBulletsInMag, int _curTotalBullets)
     {
+        if (isReloading && reloadCoroutine != null)
+        {
+            StopCoroutine(reloadCoroutine);
+            isReloading = false;
+        }
+
         curWeapon = _weapon;
         curMagazineBullets = _curBulletsInMag;
         curTotalBullets = _curTotalBullets;
@@ -113,7 +121,7 @@ public class PlayerShoot : MonoBehaviour
                 if (isReloading) yield break;
 
                 isReloading = true;
-                StartCoroutine(Reload());
+                reloadCoroutine = StartCoroutine(Reload());
             }
             else
             {
@@ -128,7 +136,7 @@ public class PlayerShoot : MonoBehaviour
             if (isReloading) yield break;
 
             isReloading = true;
-            StartCoroutine(Reload());
+            reloadCoroutine = StartCoroutine(Reload());
         }
     }
 
