@@ -8,6 +8,12 @@ public class BulletsUI : MonoBehaviour
     [SerializeField] PlayerShoot playerShoot;
     [SerializeField] TMP_Text text;
 
+    IEnumerator Start()
+    {
+        yield return null;
+        UpdateUI();
+    }
+
     public void UpdateUI()
     {
         if (playerShoot == null) Debug.LogError("PlayerShoot is null");

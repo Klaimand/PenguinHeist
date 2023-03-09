@@ -20,6 +20,7 @@ public class PlayerShoot : MonoBehaviour
     bool isPressingShootInput = false;
 
     [SerializeField] WeaponSO curWeapon;
+    public WeaponSO CurWeapon => curWeapon;
 
     int curMagazineBullets = 0;
     int curTotalBullets = 0;
@@ -72,11 +73,18 @@ public class PlayerShoot : MonoBehaviour
         isPressingShootInput = rightTriggerAxis > shootTriggerDeadzone || Input.GetKey(KeyCode.Space);
     }
 
-    public void InitWeapon(WeaponSO _weapon)
+    void InitWeapon(WeaponSO _weapon)
     {
         curWeapon = _weapon;
         curMagazineBullets = curWeapon.bulletsPerMagazine;
         curTotalBullets = curWeapon.totalBulletsOnPickup;
+    }
+
+    public void InitWeapon(WeaponSO _weapon, int _curBulletsInMag, int _curTotalBullets)
+    {
+        curWeapon = _weapon;
+        curMagazineBullets = _curBulletsInMag;
+        curTotalBullets = _curTotalBullets;
     }
 
     void CheckShoot()
@@ -106,7 +114,6 @@ public class PlayerShoot : MonoBehaviour
 
                 isReloading = true;
                 StartCoroutine(Reload());
-
             }
             else
             {
@@ -114,6 +121,14 @@ public class PlayerShoot : MonoBehaviour
             }
 
             yield return new WaitForSeconds(curWeapon.timeBetweenShots);
+        }
+
+        if (curTotalBullets > 0 && curMagazineBullets == 0)
+        {
+            if (isReloading) yield break;
+
+            isReloading = true;
+            StartCoroutine(Reload());
         }
     }
 
@@ -141,6 +156,8 @@ public class PlayerShoot : MonoBehaviour
         curMagazineBullets = Mathf.Min(curWeapon.bulletsPerMagazine, curTotalBullets);
         curTotalBullets -= curMagazineBullets;
         isReloading = false;
+
+        GameManager.instance.EventsManager.TriggerEvent("OnPlayerReloadEnd");
     }
 
     void IncreaseTimers()

@@ -18,6 +18,8 @@ public class WeaponSO : ScriptableObject
     [Tooltip("Time between shots when there is more than 1 shot per click")]
     public float timeBetweenShots = 0.1f;
 
+    public GameObject weaponPrefab = null;
+
     public GameObject bulletPrefab = null;
 
     void OnValidate()

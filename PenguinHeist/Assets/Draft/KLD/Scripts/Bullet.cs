@@ -29,7 +29,9 @@ public class Bullet : MonoBehaviour
 
         other.gameObject.GetComponent<IDamageable>()?.TakeDamage(damage);
 
-        Instantiate(impactFX, transform.position, Quaternion.LookRotation(other.GetContact(0).normal));
+        Vector3 hitNormal = Vector3.Lerp(other.GetContact(0).normal, -transform.forward, 0.5f);
+
+        Instantiate(impactFX, transform.position, Quaternion.LookRotation(hitNormal));
 
         Destroy(gameObject, 1f);
     }
