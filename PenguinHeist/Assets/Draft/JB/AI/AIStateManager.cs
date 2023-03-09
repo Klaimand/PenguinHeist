@@ -4,9 +4,15 @@ using UnityEngine.AI;
 public class AIStateManager : MonoBehaviour
 {
     [Header("State")]
-    [SerializeField]  AIState currentState;
+    [SerializeField] public AIState currentState;
     [Header("NavMesh")]
     public NavMeshAgent agent;
+    [Header("Data")]
+    public WeaponData weaponData;
+    public float attackRange;
+    public float moveBackRange;
+    [SerializeField] Transform player;
+    [SerializeField] LayerMask obstacleMask;
     
     void Update()
     {
@@ -15,7 +21,7 @@ public class AIStateManager : MonoBehaviour
 
     private void RunStateMachine()
     {
-        AIState nextState = currentState?.RunCurrentState(agent);
+        AIState nextState = currentState?.RunCurrentState(agent, player, weaponData, attackRange, moveBackRange, obstacleMask);
 
         if (nextState != default)
         {

@@ -29,6 +29,11 @@ public class AwarenessEditor : Editor
         Handles.DrawLine (awareness.transform.position, awareness.transform.position + viewAngleA * awareness.viewRadius);
         Handles.DrawLine (awareness.transform.position, awareness.transform.position + viewAngleB * awareness.viewRadius);
 
+        if (awareness.visibleTargets == default)
+        {
+            return;
+        }
+        
         Handles.color = Color.red;
         if (awareness.visibleTargets.Count > 0)
         {

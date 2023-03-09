@@ -6,13 +6,13 @@ using UnityEngine;
 public class Awareness : MonoBehaviour
 {
 
-    public float viewRadius;
+    public float viewRadius = 10;
     [Range(0,360)]
-    public float viewAngle;
+    public float viewAngle = 90;
 
     public LayerMask targetMask;
     public LayerMask obstacleMask;
-    public List<Transform> visibleTargets;
+    [HideInInspector] public List<Transform> visibleTargets;
 
     void Start() {
         Init();
