@@ -24,6 +24,9 @@ public class PlayerShoot : MonoBehaviour
     int curMagazineBullets = 0;
     int curTotalBullets = 0;
 
+    public int CurMagazineBullets => curMagazineBullets;
+    public int CurTotalBullets => curTotalBullets;
+
     bool isReloading = false;
 
     //timers
@@ -99,7 +102,11 @@ public class PlayerShoot : MonoBehaviour
             }
             else if (curTotalBullets > 0)
             {
-                //reload
+                if (isReloading) yield break;
+
+                isReloading = true;
+                StartCoroutine(Reload());
+
             }
             else
             {
@@ -123,7 +130,17 @@ public class PlayerShoot : MonoBehaviour
 
         Instantiate(curWeapon.bulletPrefab, canon.position, Quaternion.LookRotation(dir));
 
-        Debug.DrawRay(canon.position, dir, Color.green, 0.3f);
+        GameManager.instance.EventsManager.TriggerEvent("OnPlayerShoot");
+
+        //Debug.DrawRay(canon.position, dir, Color.green, 0.3f);
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(curWeapon.reloadTime);
+        curMagazineBullets = Mathf.Min(curWeapon.bulletsPerMagazine, curTotalBullets);
+        curTotalBullets -= curMagazineBullets;
+        isReloading = false;
     }
 
     void IncreaseTimers()

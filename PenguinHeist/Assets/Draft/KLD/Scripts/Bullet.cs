@@ -10,22 +10,28 @@ public class Bullet : MonoBehaviour
     [SerializeField] float speed = 15f;
     [SerializeField] int damage = 10;
 
-    private void Start()
-    {
+    [SerializeField] GameObject impactFX = null;
 
-    }
+    bool collided = false;
 
     void FixedUpdate()
     {
-        rb.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
+        if (collided) return;
+
+        rb.MovePosition(transform.position + (transform.forward * speed * Time.fixedDeltaTime));
     }
 
     void OnCollisionEnter(Collision other)
     {
+        if (collided) return;
+
+        collided = true;
+
         other.gameObject.GetComponent<IDamageable>()?.TakeDamage(damage);
-        print(other.gameObject.name);
-        print(transform.position.y);
-        Destroy(gameObject);
+
+        Instantiate(impactFX, transform.position, Quaternion.LookRotation(other.GetContact(0).normal));
+
+        Destroy(gameObject, 1f);
     }
 
 }
