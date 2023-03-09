@@ -5,7 +5,6 @@ public abstract class AIState : MonoBehaviour
 {
     [SerializeField] public AIState nextState;
     [SerializeField] public AIState previousState;
-    public AIStateManager stateManager;
-    public abstract void MoveTo(Vector3 destination);
-    public abstract AIState RunCurrentState(NavMeshAgent agent);
+    public abstract void MoveTo(NavMeshAgent agent, Vector3 destination);
+    public abstract AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange, float moveBackRange, LayerMask obstacleMask);
 }

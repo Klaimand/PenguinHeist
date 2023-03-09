@@ -1,39 +1,41 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIChaseAndAttackState : AIState
+public class AIChaseAndAttackState : AIAttackState
 {
-    [SerializeField] WeaponData weaponData;
-    public Transform player;
 
+    private void Update()
+    {
+        currentAttackCd -= Time.deltaTime;
+    }
     
-    private void Start()
+    public override void MoveTo(NavMeshAgent agent, Vector3 destination)
     {
-        stateManager = GetComponent<AIStateManager>(); ;
+        agent.SetDestination(destination);
     }
 
-    public override void MoveTo(Vector3 destination)
+    public override AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange, float moveBackRange, LayerMask obstacleMask)
     {
-        stateManager.agent.SetDestination(destination);
-    }
-
-    public override AIState RunCurrentState(NavMeshAgent agent)
-    {
-        if (agent != default)
+        MoveTo(agent, player.position);
+        if (!Physics.Raycast(transform.position, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position), obstacleMask))
         {
-            stateManager.agent = agent;
+            Attack(weaponData);
         }
-        if (agent.remainingDistance <= weaponData.range)
+        
+        if (agent.remainingDistance > weaponData.range)
         {
-            if (!Physics.Raycast(transform.position, player.position - transform.position, out RaycastHit hit, weaponData.range))
+            return previousState;
+        }
+
+        if (agent.remainingDistance < attackRange)
+        {
+            if (!Physics.Raycast(transform.position, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position), obstacleMask))
             {
                 agent.Stop();
-                agent.destination = player.position;
                 agent.avoidancePriority = 2;
                 return nextState;
             }
         }
-        MoveTo(player.position);
         return null;
     }
 }

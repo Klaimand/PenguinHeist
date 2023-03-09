@@ -5,44 +5,34 @@ using UnityEngine.AI;
 public class AIMoveState : AIState
 {
     public Vector3[] wayPoints;
-    [SerializeField] Awareness awareness;
+    public Awareness awareness;
     private int currentWayPoint;
 
-    private void Start()
+    public override void MoveTo(NavMeshAgent agent, Vector3 destination)
     {
-        stateManager = GetComponent<AIStateManager>(); ;
+        agent.SetDestination(destination);
     }
 
-    public override void MoveTo(Vector3 destination)
+    public override AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange, float moveBackRange, LayerMask obstacleMask)
     {
-        stateManager.agent.SetDestination(destination);
-    }
-
-    public override AIState RunCurrentState(NavMeshAgent agent)
-    {
-        if (agent != default)
-        {
-            stateManager.agent = agent;
-        }
-
         if (awareness.visibleTargets.Count > 0)
         {
             return nextState;
         }
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            NextWayPoint();
+            NextWayPoint(agent);
         }
         return null;
     }
 
-    public void NextWayPoint()
+    public void NextWayPoint(NavMeshAgent agent)
     {
         currentWayPoint++;
         if (currentWayPoint>=wayPoints.Length)
         {
             currentWayPoint = 0;
         }
-        MoveTo(wayPoints[currentWayPoint]);
+        MoveTo(agent, wayPoints[currentWayPoint]);
     }
 }

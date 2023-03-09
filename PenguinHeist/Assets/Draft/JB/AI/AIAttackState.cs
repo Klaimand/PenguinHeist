@@ -5,37 +5,34 @@ using UnityEngine.AI;
 
 public class AIAttackState : AIState
 {
-    [SerializeField] WeaponData weaponData;
-    private float currentAttackCd;
-    
-    private void Start()
+    protected float currentAttackCd;
+    protected RaycastHit hit;
+
+    public override void MoveTo(NavMeshAgent agent, Vector3 destination)
     {
-        stateManager = GetComponent<AIStateManager>(); ;
-    }
-    
-    public override void MoveTo(Vector3 destination)
-    {
-        
+        agent.SetDestination(destination);
     }
 
     private void Update()
     {
         currentAttackCd -= Time.deltaTime;
-        //transform.LookAt(player);
     }
 
-    public override AIState RunCurrentState(NavMeshAgent agent)
+    public override AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange, float moveBackRange, LayerMask obstacleMask)
     {
-        if (agent != default)
+        if (!Physics.Raycast(transform.position, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position), obstacleMask))
         {
-            stateManager.agent = agent;
-        }
-        
-        if (Vector3.Distance(stateManager.player.position, transform.position) <= weaponData.range)
-        {
-            Attack();
+            transform.parent.LookAt(player);
+            Attack(weaponData);
         }
         else
+        {
+            agent.isStopped = false;
+            agent.avoidancePriority = 1;
+            return previousState;
+        }
+
+        if (Vector3.Distance(transform.position, player.position) > attackRange)
         {
             agent.isStopped = false;
             agent.avoidancePriority = 1;
@@ -44,16 +41,16 @@ public class AIAttackState : AIState
         return null;
     }
 
-    private void Attack()
+    protected void Attack(WeaponData weaponData)
     {
         if (currentAttackCd <= 0)
         {
             currentAttackCd = weaponData.fireRate;
-            StartCoroutine(Shoot());
+            StartCoroutine(Shoot(weaponData));
         }
     }
     
-    IEnumerator Shoot()
+    IEnumerator Shoot(WeaponData weaponData)
     {
         GameObject go = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), transform.position, Quaternion.identity);
         go.AddComponent<Rigidbody>();

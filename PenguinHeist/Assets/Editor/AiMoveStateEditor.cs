@@ -17,6 +17,10 @@ public class AiMoveStateEditor : Editor
 
     private void OnSceneGUI()
     {
+        if (aiMoveState.wayPoints == default)
+        {
+            return;
+        }
         for (int i = 0; i < aiMoveState.wayPoints.Length; i++)
         {
             Vector3 pos = Handles.PositionHandle(aiMoveState.wayPoints[i], Quaternion.identity);
@@ -24,7 +28,7 @@ public class AiMoveStateEditor : Editor
             Handles.Label(aiMoveState.wayPoints[i], "WayPoint " + i);
         }
 
-        /*if (Application.isPlaying)
+        if (Application.isPlaying)
         {
             NavMeshPath path;
             GameObject go;
@@ -48,6 +52,6 @@ public class AiMoveStateEditor : Editor
             agent.CalculatePath(aiMoveState.wayPoints[0], path);
             Handles.DrawPolyLine(path.corners);
             Destroy(go);
-        }*/
+        }
     }
 }

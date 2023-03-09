@@ -1,23 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum AIType
-{
-    Police,
-    Mafia
-}
-
 public class AIStateManager : MonoBehaviour
 {
     [Header("State")]
     [SerializeField] public AIState currentState;
     [Header("NavMesh")]
     public NavMeshAgent agent;
-    public AIType aiType;
+    [Header("Data")]
     public WeaponData weaponData;
     public float attackRange;
     public float moveBackRange;
-    public Transform player;
+    [SerializeField] Transform player;
+    [SerializeField] LayerMask obstacleMask;
     
     void Update()
     {
@@ -26,7 +21,7 @@ public class AIStateManager : MonoBehaviour
 
     private void RunStateMachine()
     {
-        AIState nextState = currentState?.RunCurrentState(agent);
+        AIState nextState = currentState?.RunCurrentState(agent, player, weaponData, attackRange, moveBackRange, obstacleMask);
 
         if (nextState != default)
         {

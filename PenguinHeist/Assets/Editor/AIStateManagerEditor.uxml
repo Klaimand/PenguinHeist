@@ -1,8 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <uie:PropertyField name="currentState" label="Current State" binding-path="currentState" />
-    <uie:PropertyField name="agent" label="Agent" binding-path="agent" />
-    <uie:EnumField label="AI Type" value="Center" name="aiType" binding-path="aiType" />
-    <uie:ObjectField label="Weapon Data Field" name="weaponData" binding-path="weaponData" allow-scene-objects="true" />
-    <uie:FloatField label="Attack Range" value="42,2" name="attackRange" />
-    <uie:FloatField label="Move Back Range" value="42,2" name="moveBackRange" style="visibility: hidden;" />
-</ui:UXML>

@@ -770,7 +770,9 @@ GameObject:
   - component: {fileID: 564805187}
   - component: {fileID: 564805186}
   - component: {fileID: 564805185}
-  - component: {fileID: 564805184}
+  - component: {fileID: 564805189}
+  - component: {fileID: 564805191}
+  - component: {fileID: 564805190}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -793,22 +795,6 @@ Transform:
   m_Father: {fileID: 1562590261}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &564805184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564805182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e8a42fc4f545fd4abab555b65147aa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextState: {fileID: 0}
-  previousState: {fileID: 564805185}
-  stateManager: {fileID: 0}
-  weaponData: {fileID: 11400000, guid: e3501990642070e4bb745d2852a0de8e, type: 2}
 --- !u!114 &564805185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,13 +807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5db799d527e2b644879da47df2b0feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextState: {fileID: 564805184}
+  nextState: {fileID: 564805189}
   previousState: {fileID: 564805186}
-  stateManager: {fileID: 564805188}
-  attackState: {fileID: 564805184}
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &564805186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,7 +823,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 564805185}
   previousState: {fileID: 0}
-  stateManager: {fileID: 0}
   wayPoints:
   - {x: -0.0000554219, y: 0.5, z: -3.175245}
   - {x: 0.000000013166845, y: 0.5, z: 30.340233}
@@ -884,11 +864,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 564805186}
   agent: {fileID: 1562590256}
-  aiType: 1
   weaponData: {fileID: 11400000, guid: e3501990642070e4bb745d2852a0de8e, type: 2}
-  attackRange: 4450
-  moveBackRange: 0
+  attackRange: 5
+  moveBackRange: 2.5
   player: {fileID: 1176548678}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 16
+--- !u!114 &564805189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564805182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d318d8de057804f8801fdc0506f0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 564805191}
+  previousState: {fileID: 564805185}
+--- !u!114 &564805190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564805182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c4e6c6a0b730346aa183fff7399f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 0}
+  previousState: {fileID: 564805191}
+  omega: 0.5
+--- !u!114 &564805191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564805182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24b8013c0fa3bf4e8a1121a98480a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 564805190}
+  previousState: {fileID: 564805189}
 --- !u!1 &564933310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,6 +1708,163 @@ Transform:
   m_Father: {fileID: 1523007318}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1071893199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1071893200}
+  - component: {fileID: 1071893207}
+  - component: {fileID: 1071893213}
+  - component: {fileID: 1071893212}
+  - component: {fileID: 1071893211}
+  - component: {fileID: 1071893210}
+  - component: {fileID: 1071893209}
+  - component: {fileID: 1071893208}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1071893200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071893199}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1979340964}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1071893207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071893199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9ea1bbd1341704389bf04cb40b49ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 1071893213}
+  agent: {fileID: 1979340960}
+  weaponData: {fileID: 11400000, guid: e3501990642070e4bb745d2852a0de8e, type: 2}
+  attackRange: 4.11
+  moveBackRange: 1.8
+  player: {fileID: 1176548678}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 16
+--- !u!114 &1071893208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071893199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c4e6c6a0b730346aa183fff7399f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 1071893213}
+  previousState: {fileID: 1071893209}
+  omega: 0
+--- !u!114 &1071893209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071893199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d318d8de057804f8801fdc0506f0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 1071893208}
+  previousState: {fileID: 1071893211}
+--- !u!114 &1071893210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071893199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24b8013c0fa3bf4e8a1121a98480a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 1071893208}
+  previousState: {fileID: 1071893209}
+--- !u!114 &1071893211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071893199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5db799d527e2b644879da47df2b0feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 1071893209}
+  previousState: {fileID: 1071893213}
+--- !u!114 &1071893212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071893199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d76338d114a4634f90503a67c8a596f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 10
+  viewAngle: 90
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 2
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  visibleTargets: []
+--- !u!114 &1071893213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071893199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b70758860e872547a38832a5ae75932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 1071893211}
+  previousState: {fileID: 0}
+  wayPoints:
+  - {x: -0.0000554219, y: 0.5, z: -3.175245}
+  - {x: 0.000000013166845, y: 0.5, z: 30.340233}
+  - {x: -20.735302, y: 0.5, z: 14.50085}
+  - {x: -6.436529, y: 0.5, z: -18.579655}
+  awareness: {fileID: 1071893212}
 --- !u!1 &1081271715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,7 +2267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176548674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 1, z: 6.74}
+  m_LocalPosition: {x: 8.6, y: 1, z: 6.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3257,13 +3439,14 @@ GameObject:
   - component: {fileID: 1938087664}
   - component: {fileID: 1938087663}
   - component: {fileID: 1938087662}
+  - component: {fileID: 1938087667}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1938087661
 Transform:
   m_ObjectHideFlags: 0
@@ -3277,7 +3460,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1979340964}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1938087662
 MonoBehaviour:
@@ -3292,9 +3475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
-  previousState: {fileID: 1938087663}
-  stateManager: {fileID: 0}
-  weaponData: {fileID: 11400000, guid: e3501990642070e4bb745d2852a0de8e, type: 2}
+  previousState: {fileID: 1938087667}
 --- !u!114 &1938087663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3307,13 +3488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5db799d527e2b644879da47df2b0feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextState: {fileID: 1938087662}
+  nextState: {fileID: 1938087667}
   previousState: {fileID: 1938087664}
-  stateManager: {fileID: 1938087666}
-  attackState: {fileID: 1938087662}
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 16
 --- !u!114 &1938087664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3328,7 +3504,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 1938087663}
   previousState: {fileID: 0}
-  stateManager: {fileID: 0}
   wayPoints: []
   awareness: {fileID: 1938087665}
 --- !u!114 &1938087665
@@ -3366,11 +3541,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 1938087663}
   agent: {fileID: 1979340960}
-  aiType: 0
   weaponData: {fileID: 11400000, guid: e3501990642070e4bb745d2852a0de8e, type: 2}
-  attackRange: 0
-  moveBackRange: 0
+  attackRange: 5
+  moveBackRange: 2.5
   player: {fileID: 1176548678}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 16
+--- !u!114 &1938087667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938087660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d318d8de057804f8801fdc0506f0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 1938087662}
+  previousState: {fileID: 1938087663}
 --- !u!1 &1970999813
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,6 +3777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1071893200}
   - {fileID: 1938087661}
   m_Father: {fileID: 0}
   m_RootOrder: 5
