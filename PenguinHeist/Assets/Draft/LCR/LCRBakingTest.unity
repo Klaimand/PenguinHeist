@@ -10679,6 +10679,12 @@ MonoBehaviour:
   splitDistance: 5
   splitterColor: {r: 0, g: 0, b: 0, a: 1}
   splitterWidth: 0.1
+  splitterWidthOnDistance:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   camera1: {fileID: 0}
   camera2: {fileID: 0}
   yOffset: 15
@@ -10689,6 +10695,7 @@ MonoBehaviour:
   offSetByStickMultiplier: 1.05
   player1OffSetCam: {x: 0, y: 0, z: 0}
   player2OffSetCam: {x: 0, y: 0, z: 0}
+  distance: 0
 --- !u!81 &7901185527432761720
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10715,7 +10722,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.256824, g: 0.348, b: 0.3056683, a: 1}
+  m_BackGroundColor: {r: 0.05242079, g: 0.1918956, b: 0.3584906, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
