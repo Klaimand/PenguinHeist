@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class AIAttackState : AIState
 {
-    protected float currentAttackCd;
     protected RaycastHit hit;
 
     public override void MoveTo(NavMeshAgent agent, Vector3 destination)
@@ -13,49 +13,72 @@ public class AIAttackState : AIState
         agent.SetDestination(destination);
     }
 
-    private void Update()
+    public override AIState RunCurrentState(AIStateManager stateManager)
     {
-        currentAttackCd -= Time.deltaTime;
-    }
-
-    public override AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange, float moveBackRange, LayerMask obstacleMask)
-    {
-        if (!Physics.Raycast(transform.position, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position), obstacleMask))
+        if (!Physics.Raycast(transform.position, stateManager.player.position - transform.position, out hit, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
         {
-            transform.parent.LookAt(player);
-            Attack(weaponData);
+            transform.LookAt(stateManager.player);
+            CheckAttack(stateManager.weaponData, stateManager.entity);
         }
         else
         {
-            agent.isStopped = false;
-            agent.avoidancePriority = 1;
+            stateManager.agent.isStopped = false;
+            stateManager.agent.avoidancePriority = 1;
             return previousState;
         }
 
-        if (Vector3.Distance(transform.position, player.position) > attackRange)
+        if (Vector3.Distance(transform.position, stateManager.player.position) > stateManager.attackRange)
         {
-            agent.isStopped = false;
-            agent.avoidancePriority = 1;
+            stateManager.agent.isStopped = false;
+            stateManager.agent.avoidancePriority = 1;
             return previousState;
         }
+        IncreaseTimers(stateManager.entity);
         return null;
     }
 
-    protected void Attack(WeaponData weaponData)
+    IEnumerator Attack(WeaponSO weaponData, AIEntity entity)
     {
-        if (currentAttackCd <= 0)
+        for (int i = 0; i < weaponData.shotsPerClick; i++)
         {
-            currentAttackCd = weaponData.fireRate;
-            StartCoroutine(Shoot(weaponData));
+            entity.curMagazineBullets--;
+            Vector3 dir = transform.forward;
+            dir.y = 0f;
+
+            float rdmAngle = Random.Range(-weaponData.spread / 2f, weaponData.spread / 2f);
+
+            dir = Quaternion.Euler(0f, rdmAngle, 0f) * dir;
+
+            Instantiate(weaponData.bulletPrefab, transform.position, Quaternion.LookRotation(dir));
+
+            yield return new WaitForSeconds(weaponData.timeBetweenShots);
         }
     }
-    
-    IEnumerator Shoot(WeaponData weaponData)
+
+    protected void CheckAttack(WeaponSO weapon, AIEntity entity)
     {
-        GameObject go = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), transform.position, Quaternion.identity);
-        go.AddComponent<Rigidbody>();
-        go.GetComponent<Rigidbody>().AddForce(50*transform.forward, ForceMode.Impulse);
-        yield return new WaitForSeconds(weaponData.fireRate);
-        Destroy(go);
+        if (entity.currentAttackCd < weapon.fireRate) return;
+        if (entity.curMagazineBullets < 0)
+        {
+            if (entity.isReloading) return;
+
+            entity.isReloading = true;
+            StartCoroutine(Reload(weapon, entity));
+        }
+
+        entity.currentAttackCd = 0f;
+        StartCoroutine(Attack(weapon,entity));
+    }
+    
+    void IncreaseTimers(AIEntity entity)
+    {
+        entity.currentAttackCd += Time.deltaTime;
+    }
+    
+    IEnumerator Reload(WeaponSO weapon, AIEntity entity)
+    {
+        yield return new WaitForSeconds(weapon.reloadTime);
+        entity.curMagazineBullets = weapon.bulletsPerMagazine;
+        entity.isReloading = false;
     }
 }
