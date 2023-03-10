@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] EventsManager eventsManager;
+    public EventsManager EventsManager => eventsManager;
+
     #region Singleton instance
 
     private void Awake()
@@ -20,6 +23,5 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] EventsManager eventsManager;
 
 }
