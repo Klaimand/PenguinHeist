@@ -35,9 +35,9 @@ public class PlayerShoot : MonoBehaviour
 
     Coroutine reloadCoroutine;
 
-    [SerializeField] private string lookInputHorizontalAxis;
-    [SerializeField] private string lookInputVerticalAxis;
-    [SerializeField] private string rTriggerInput;
+    private string lookInputHorizontalAxis;
+    private string lookInputVerticalAxis;
+    private string rTriggerInput;
     
     // Start is called before the first frame update
     void Start()
