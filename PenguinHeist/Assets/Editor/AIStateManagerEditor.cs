@@ -22,7 +22,7 @@ public class AIStateManagerEditor : Editor
 
     private void OnSceneGUI()
     {
-        if (aiStateManager.agent == default || aiStateManager.weaponData == default)
+        if (aiStateManager.agent == default)
         {
             return;
         }

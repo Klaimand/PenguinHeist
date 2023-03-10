@@ -3,14 +3,16 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(AIStateManager))]
-public class AIEntity : MonoBehaviour
+public class AIEntity : MonoBehaviour, IDamageable
 {
     [SerializeField] private WeaponSO weaponData;
     [SerializeField] AIStateManager aiStateManager;
     [HideInInspector] public int curMagazineBullets;
     [HideInInspector] public bool isReloading;
     [HideInInspector] public float currentAttackCd;
+    [Tooltip("Launch force for the weapon when it drops")]
     [SerializeField] Vector2 minMaxLaunchTorque = new Vector2(100f, 200f);
+    [SerializeField] private float health = 30;
 
     private void Start()
     {
@@ -21,7 +23,7 @@ public class AIEntity : MonoBehaviour
     void Die()
     {
         DropWeapon();
-        Destroy(transform.parent.gameObject);
+        Destroy(transform.gameObject);
     }
 
     void DropWeapon()
@@ -35,6 +37,14 @@ public class AIEntity : MonoBehaviour
         rb.velocity = transform.forward;
         rb.AddTorque(Random.onUnitSphere * Random.Range(minMaxLaunchTorque.x, minMaxLaunchTorque.y));
     }
-    
-    
+
+
+    public void TakeDamage(int _damage)
+    {
+        health -= _damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
 }
