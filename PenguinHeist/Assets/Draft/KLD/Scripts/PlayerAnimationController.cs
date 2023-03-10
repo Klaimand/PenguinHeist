@@ -24,6 +24,15 @@ public class PlayerAnimationController : MonoBehaviour
 
     LocomotionState curState = LocomotionState.IDLE;
 
+    void OnEnable()
+    {
+        playerShoot.OnPlayerShoot += Shoot;
+    }
+
+    void OnDisable()
+    {
+        playerShoot.OnPlayerShoot -= Shoot;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -46,5 +55,12 @@ public class PlayerAnimationController : MonoBehaviour
         animator.SetInteger("playerState", (int)curState);
 
         animator.SetFloat("aimAngle", controller.AimAngleClamped);
+
+        animator.SetFloat("walkingSpeed", controller.RunningBackward ? -1f : 1f);
+    }
+
+    void Shoot()
+    {
+        animator.SetTrigger("shoot");
     }
 }

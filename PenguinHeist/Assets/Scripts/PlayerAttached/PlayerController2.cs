@@ -35,6 +35,7 @@ public class PlayerController2 : MonoBehaviour
     public float Speed => rb.velocity.magnitude;
 
     bool runningBackward = false;
+    public bool RunningBackward => runningBackward;
 
     float aimAngleClamped = 0f;
     public float AimAngleClamped => aimAngleClamped;
@@ -81,6 +82,8 @@ public class PlayerController2 : MonoBehaviour
 
         aimAngleClamped = 0.5f;
 
+        runningBackward = false;
+
         if (rb.velocity.magnitude > rbVelocityDead)
         {
             if (playerShoot.IsAiming)
@@ -91,6 +94,8 @@ public class PlayerController2 : MonoBehaviour
             {
                 wantedRotation = Quaternion.LookRotation(rb.velocity.normalized);
             }
+
+            runningBackward = Vector3.Angle(transform.forward, rb.velocity) > 90f;
         }
         else if (playerShoot.IsAiming)
         {

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -37,6 +39,8 @@ public class PlayerShoot : MonoBehaviour
     Coroutine reloadCoroutine;
 
     [SerializeField] Transform debugTargetTransform;
+
+    public Action OnPlayerShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -161,6 +165,7 @@ public class PlayerShoot : MonoBehaviour
         if (curWeapon.muzzleFlash != null)
             Instantiate(curWeapon.muzzleFlash, canon.position, Quaternion.LookRotation(dir));
 
+        OnPlayerShoot?.Invoke();
         GameManager.instance.EventsManager.TriggerEvent("OnPlayerShoot");
 
         //Debug.DrawRay(canon.position, dir, Color.green, 0.3f);
