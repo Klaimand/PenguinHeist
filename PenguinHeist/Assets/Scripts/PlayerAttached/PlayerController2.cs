@@ -29,6 +29,8 @@ public class PlayerController2 : MonoBehaviour
 
     float refRotVelo = 0f;
 
+    public float Speed => rb.velocity.magnitude;
+
     // Start is called before the first frame update
     void Start()
     {
