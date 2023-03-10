@@ -3,7 +3,8 @@ using UnityEngine.AI;
 
 public class AIMoveBackState : AIAttackState
 {
-    [SerializeField] private float omega;
+    [Tooltip("The higher the value, the more the AI move back angle is affected by the distance between the player and the AI")]
+    [SerializeField] private float omega = 0.5f;
     
     public override void MoveTo(NavMeshAgent agent, Vector3 destination)
     {
@@ -11,22 +12,21 @@ public class AIMoveBackState : AIAttackState
         agent.SetDestination(destination);
     }
 
-    public override AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange,
-        float moveBackRange, LayerMask obstacleMask)
+    public override AIState RunCurrentState(AIStateManager stateManager)
     {
-        MoveBack(player, moveBackRange, obstacleMask, agent);
+        MoveBack(stateManager.player, stateManager.moveBackRange, stateManager.obstacleMask, stateManager.agent);
         
-        if (Vector3.Distance(player.position, transform.position) > moveBackRange || 
-            Physics.Raycast(transform.position, player.position - transform.position, Vector3.Distance(transform.position, player.position), obstacleMask))
+        if (Vector3.Distance(stateManager.player.position, transform.position) > stateManager.moveBackRange || 
+            Physics.Raycast(transform.position, stateManager.player.position - transform.position, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
         {
-            agent.Stop();
+            stateManager.agent.Stop();
             return previousState;
         }
 
-        if (!Physics.Raycast(transform.position, player.position - transform.position, Vector3.Distance(transform.position, player.position), obstacleMask))
+        if (!Physics.Raycast(transform.position, stateManager.player.position - transform.position, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
         {
-            transform.parent.LookAt(player);
-            Attack(weaponData);
+            transform.LookAt(stateManager.player);
+            CheckAttack(stateManager.weaponData, stateManager.entity);
         }
 
         return null;

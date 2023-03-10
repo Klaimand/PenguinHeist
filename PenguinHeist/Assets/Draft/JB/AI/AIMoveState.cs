@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class AIMoveState : AIState
 {
+    [Tooltip("Waypoints of the AI route")]
     public Vector3[] wayPoints;
     public Awareness awareness;
     private int currentWayPoint;
@@ -13,15 +14,15 @@ public class AIMoveState : AIState
         agent.SetDestination(destination);
     }
 
-    public override AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange, float moveBackRange, LayerMask obstacleMask)
+    public override AIState RunCurrentState(AIStateManager stateManager)
     {
         if (awareness.visibleTargets.Count > 0)
         {
             return nextState;
         }
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (stateManager.agent.remainingDistance <= stateManager.agent.stoppingDistance)
         {
-            NextWayPoint(agent);
+            NextWayPoint(stateManager.agent);
         }
         return null;
     }

@@ -3,36 +3,31 @@ using UnityEngine.AI;
 
 public class AIChaseAndAttackState : AIAttackState
 {
-
-    private void Update()
-    {
-        currentAttackCd -= Time.deltaTime;
-    }
     
     public override void MoveTo(NavMeshAgent agent, Vector3 destination)
     {
         agent.SetDestination(destination);
     }
 
-    public override AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange, float moveBackRange, LayerMask obstacleMask)
+    public override AIState RunCurrentState(AIStateManager stateManager)
     {
-        MoveTo(agent, player.position);
-        if (!Physics.Raycast(transform.position, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position), obstacleMask))
+        MoveTo(stateManager.agent, stateManager.player.position);
+        if (!Physics.Raycast(transform.position, stateManager.player.position - transform.position, out hit, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
         {
-            Attack(weaponData);
+            CheckAttack(stateManager.weaponData, stateManager.entity);
         }
         
-        if (agent.remainingDistance > weaponData.range)
+        if (stateManager.agent.remainingDistance > stateManager.chaseAndAttackRange)
         {
             return previousState;
         }
 
-        if (agent.remainingDistance < attackRange)
+        if (stateManager.agent.remainingDistance < stateManager.attackRange)
         {
-            if (!Physics.Raycast(transform.position, player.position - transform.position, out hit, Vector3.Distance(transform.position, player.position), obstacleMask))
+            if (!Physics.Raycast(transform.position, stateManager.player.position - transform.position, out hit, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
             {
-                agent.Stop();
-                agent.avoidancePriority = 2;
+                stateManager.agent.Stop();
+                stateManager.agent.avoidancePriority = 2;
                 return nextState;
             }
         }
