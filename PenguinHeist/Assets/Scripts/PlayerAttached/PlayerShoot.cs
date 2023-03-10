@@ -153,6 +153,9 @@ public class PlayerShoot : MonoBehaviour
 
         Instantiate(curWeapon.bulletPrefab, canon.position, Quaternion.LookRotation(dir));
 
+        if (curWeapon.muzzleFlash != null)
+            Instantiate(curWeapon.muzzleFlash, canon.position, Quaternion.LookRotation(dir));
+
         GameManager.instance.EventsManager.TriggerEvent("OnPlayerShoot");
 
         //Debug.DrawRay(canon.position, dir, Color.green, 0.3f);
