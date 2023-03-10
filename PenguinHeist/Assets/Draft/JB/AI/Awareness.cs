@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class Awareness : MonoBehaviour
 {
-
+    [Tooltip("View radius of the AI")]
     public float viewRadius = 10;
+    [Tooltip("View angle of the AI")]
     [Range(0,360)]
     public float viewAngle = 90;
 
+    [Tooltip("Target mask of the AI")]
     public LayerMask targetMask;
+    [Tooltip("Obstacle mask of the AI")]
     public LayerMask obstacleMask;
     [HideInInspector] public List<Transform> visibleTargets;
 

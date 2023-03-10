@@ -17,7 +17,7 @@ public class AIAttackState : AIState
     {
         if (!Physics.Raycast(transform.position, stateManager.player.position - transform.position, out hit, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
         {
-            transform.parent.LookAt(stateManager.player);
+            transform.LookAt(stateManager.player);
             CheckAttack(stateManager.weaponData, stateManager.entity);
         }
         else

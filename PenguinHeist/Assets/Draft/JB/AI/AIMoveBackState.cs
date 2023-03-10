@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class AIMoveBackState : AIAttackState
 {
+    [Tooltip("The higher the value, the more the AI move back angle is affected by the distance between the player and the AI")]
     [SerializeField] private float omega = 0.5f;
     
     public override void MoveTo(NavMeshAgent agent, Vector3 destination)
@@ -24,7 +25,7 @@ public class AIMoveBackState : AIAttackState
 
         if (!Physics.Raycast(transform.position, stateManager.player.position - transform.position, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
         {
-            transform.parent.LookAt(stateManager.player);
+            transform.LookAt(stateManager.player);
             CheckAttack(stateManager.weaponData, stateManager.entity);
         }
 

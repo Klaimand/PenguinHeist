@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class AIMoveState : AIState
 {
+    [Tooltip("Waypoints of the AI route")]
     public Vector3[] wayPoints;
     public Awareness awareness;
     private int currentWayPoint;
