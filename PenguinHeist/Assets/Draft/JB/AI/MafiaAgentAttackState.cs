@@ -3,13 +3,12 @@ using UnityEngine.AI;
 
 public class MafiaAgentAttackState : AIAttackState
 {
-    public override AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange,
-        float moveBackRange, LayerMask obstacleMask)
+    public override AIState RunCurrentState(AIStateManager stateManager)
     {
-        if (Vector3.Distance(player.position , transform.position) < moveBackRange)
+        if (Vector3.Distance(stateManager.player.position , transform.position) < stateManager.moveBackRange)
         {
             return nextState;
         }
-        return base.RunCurrentState(agent, player, weaponData, attackRange, moveBackRange, obstacleMask);
+        return base.RunCurrentState(stateManager);
     }
 }
