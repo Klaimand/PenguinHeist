@@ -9,10 +9,10 @@ public class AIChaseState : AIState
         agent.SetDestination(destination);
     }
 
-    public override AIState RunCurrentState(NavMeshAgent agent, Transform player, WeaponData weaponData, float attackRange, float moveBackRange, LayerMask obstacleMask)
+    public override AIState RunCurrentState(AIStateManager stateManager)
     {
-        MoveTo(agent, player.position);
-        if (agent.remainingDistance <= weaponData.range)
+        MoveTo(stateManager.agent, stateManager.player.position);
+        if (stateManager.agent.remainingDistance <= stateManager.chaseAndAttackRange)
         {
             return nextState;
         }

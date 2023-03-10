@@ -6,6 +6,7 @@ public class WaveManager : MonoBehaviour
     public Vector3[] spawnPoints;
     [SerializeField] GameObject[] enemies;
     [SerializeField] float spawnDelay;
+    [SerializeField] int enemyCountToSpawn;
 
     [ContextMenu("Start Waves")]
     public void StartWaves()
@@ -17,7 +18,10 @@ public class WaveManager : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(enemies[Random.Range(0, enemies.Length)], spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+            for (int i = 0; i < enemyCountToSpawn; i++)
+            {
+                Instantiate(enemies[Random.Range(0, enemies.Length)], spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+            }
             yield return new WaitForSeconds(spawnDelay);
         }
     }
