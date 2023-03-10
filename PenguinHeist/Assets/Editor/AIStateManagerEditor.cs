@@ -77,7 +77,7 @@ public class AIStateManagerEditor : Editor
     void DrawChaseDistance()
     {
         Handles.color = Color.yellow;
-        Handles.DrawWireArc(aiStateManager.transform.position, Vector3.up, Vector3.forward, 360, aiStateManager.weaponData.range);
+        Handles.DrawWireArc(aiStateManager.transform.position, Vector3.up, Vector3.forward, 360, aiStateManager.chaseAndAttackRange);
     }
     
 
@@ -97,7 +97,7 @@ public class AIStateManagerEditor : Editor
     void CreateStates()
     {
         GUILayout.Label("Create States", style: EditorStyles.boldLabel);
-        if (GUILayout.Button("Create Police"))
+        if (GUILayout.Button("Police"))
         {
             AIState[] aiStates = aiStateManager.gameObject.GetComponents<AIState>();
 
@@ -120,7 +120,7 @@ public class AIStateManagerEditor : Editor
             
             aiStateManager.currentState = chaseState;
         }
-        if (GUILayout.Button("Create Mafia"))
+        if (GUILayout.Button("Mafia"))
         {
             AIState[] aiStates = aiStateManager.gameObject.GetComponents<AIState>();
 
@@ -138,7 +138,7 @@ public class AIStateManagerEditor : Editor
             
             FillStateVariables(moveState, awareness, chaseState, null);
             FillStateVariables(chaseState, awareness, chaseAndAttackState, moveState);
-            FillStateVariables(chaseAndAttackState, awareness, moveBackState, chaseState);
+            FillStateVariables(chaseAndAttackState, awareness, aiAttackState, chaseState);
             FillStateVariables(aiAttackState, awareness, moveBackState, chaseAndAttackState);
             FillStateVariables(moveBackState, awareness, moveState, chaseAndAttackState);
             

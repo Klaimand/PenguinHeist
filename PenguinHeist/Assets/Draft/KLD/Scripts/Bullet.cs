@@ -33,7 +33,8 @@ public class Bullet : MonoBehaviour
 
         Instantiate(impactFX, transform.position, Quaternion.LookRotation(hitNormal));
 
-        Destroy(gameObject, 1f);
+        //Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
 }

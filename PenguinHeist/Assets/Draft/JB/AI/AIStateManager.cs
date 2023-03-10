@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,12 +9,14 @@ public class AIStateManager : MonoBehaviour
     [Header("NavMesh")]
     public NavMeshAgent agent;
     [Header("Data")]
-    public WeaponData weaponData;
+    [HideInInspector] public WeaponSO weaponData;
+    public float chaseAndAttackRange;
     public float attackRange;
     public float moveBackRange;
-    [SerializeField] Transform player;
-    [SerializeField] LayerMask obstacleMask;
-    
+    public Transform player;
+    public LayerMask obstacleMask;
+    public AIEntity entity;
+
     void Update()
     {
         RunStateMachine();
@@ -21,7 +24,7 @@ public class AIStateManager : MonoBehaviour
 
     private void RunStateMachine()
     {
-        AIState nextState = currentState?.RunCurrentState(agent, player, weaponData, attackRange, moveBackRange, obstacleMask);
+        AIState nextState = currentState?.RunCurrentState(this);
 
         if (nextState != default)
         {
