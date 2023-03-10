@@ -45,9 +45,6 @@ public class PlayerAnimationController : MonoBehaviour
 
         animator.SetInteger("playerState", (int)curState);
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            animator.SetTrigger("shoot");
-        }
+        animator.SetFloat("aimAngle", controller.AimAngleClamped);
     }
 }

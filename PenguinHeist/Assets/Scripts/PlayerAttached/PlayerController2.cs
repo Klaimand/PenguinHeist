@@ -27,9 +27,17 @@ public class PlayerController2 : MonoBehaviour
 
     [SerializeField] float rbVelocityDead = 0.2f;
 
+    [SerializeField]
+    float ang = 37.5f;
+
     float refRotVelo = 0f;
 
     public float Speed => rb.velocity.magnitude;
+
+    bool runningBackward = false;
+
+    float aimAngleClamped = 0f;
+    public float AimAngleClamped => aimAngleClamped;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +45,6 @@ public class PlayerController2 : MonoBehaviour
 
     }
 
-    int a = 0;
     // Update is called once per frame
     void Update()
     {
@@ -46,6 +53,13 @@ public class PlayerController2 : MonoBehaviour
         rb.velocity = smoothedAxis.Flatten() * speed;
 
         DoRotation();
+
+        Debug.DrawRay(transform.position + Vector3.up * 0.1f,
+        (Quaternion.Euler(0f, ang, 0f) * transform.forward) * 5f);
+
+
+        Debug.DrawRay(transform.position + Vector3.up * 0.1f,
+        (Quaternion.Euler(0f, -ang, 0f) * transform.forward) * 5f);
     }
 
     void ProcessAxes()
@@ -65,13 +79,42 @@ public class PlayerController2 : MonoBehaviour
 
         Vector3 playerToTargetPos = playerShoot.TargetPos - transform.position;
 
-        if (playerShoot.IsAiming)
+        aimAngleClamped = 0.5f;
+
+        if (rb.velocity.magnitude > rbVelocityDead)
         {
-            wantedRotation = Quaternion.LookRotation(playerToTargetPos);
+            if (playerShoot.IsAiming)
+            {
+                wantedRotation = Quaternion.LookRotation(playerToTargetPos);
+            }
+            else
+            {
+                wantedRotation = Quaternion.LookRotation(rb.velocity.normalized);
+            }
         }
-        else if (rb.velocity.magnitude > rbVelocityDead)
+        else if (playerShoot.IsAiming)
         {
-            wantedRotation = Quaternion.LookRotation(rb.velocity.normalized);
+            Vector3 playerToLookAtTransform = playerShoot.TargetPos - transform.position;
+
+            float forwardToAimAngle = Vector3.SignedAngle(transform.forward, playerToLookAtTransform, Vector3.up);
+            //forwardToAimAngle -= curAngleOffset;
+            float absoluteForwardToAimAngle = Mathf.Abs(forwardToAimAngle);
+
+            aimAngleClamped = Mathf.InverseLerp(-37.5f, 37.5f, forwardToAimAngle);
+
+            runningBackward = false;
+
+            if (absoluteForwardToAimAngle > 37.5f)
+            {
+                Vector3 eulerRotationToDo;
+                eulerRotationToDo.x = 0f;
+                eulerRotationToDo.y = ((absoluteForwardToAimAngle - 37.5f) * Mathf.Sign(forwardToAimAngle));
+                eulerRotationToDo.z = 0f;
+
+                //transform.Rotate(eulerRotationToDo);
+
+                wantedRotation = Quaternion.Euler(transform.rotation.eulerAngles + eulerRotationToDo);
+            }
         }
 
         Quaternion rot = Quaternion.Euler(0f,

@@ -36,6 +36,8 @@ public class PlayerShoot : MonoBehaviour
 
     Coroutine reloadCoroutine;
 
+    [SerializeField] Transform debugTargetTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,9 @@ public class PlayerShoot : MonoBehaviour
             isAiming = false;
             targetPos = transform.position;
         }
+
+        //isAiming = true;
+        //targetPos = debugTargetTransform.position;
 
         CheckShoot();
 
