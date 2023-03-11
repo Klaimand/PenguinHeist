@@ -1,11 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] Transform canon;
+    [Header("References")] [SerializeField]
+    Transform canon;
 
     [SerializeField] float shootTriggerDeadzone = 0.1f;
 
@@ -36,11 +37,41 @@ public class PlayerShoot : MonoBehaviour
 
     Coroutine reloadCoroutine;
 
+    private string lookInputHorizontalAxis;
+    private string lookInputVerticalAxis;
+    private string rTriggerInput;
+
+    public TextMeshProUGUI testText;
+    public float baseSize;
+
+    [ContextMenu("TextTest")]
+    public void TextTest()
+    {
+        testText.transform.DOScale(transform.localScale.x - 0.15f, 0.15f ).OnComplete(() =>
+                testText.transform.DOScale(baseSize, 0.75f));
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
-        if (curWeapon != null)
-            InitWeapon(curWeapon);
+        baseSize = transform.localScale.x;
+        if (curWeapon != null) InitWeapon(curWeapon);
+
+        var playerController = GetComponent<PlayerController2>();
+        
+        if (playerController.playerIndex == 0)
+        {
+            lookInputHorizontalAxis = $"Controller Right Horizontal";
+            lookInputVerticalAxis = $"Controller Right Vertical";
+            rTriggerInput = $"Right Trigger";
+        }
+
+        if (playerController.playerIndex == 1)
+        {
+            lookInputHorizontalAxis = $"Controller Right HorizontalP2";
+            lookInputVerticalAxis = $"Controller Right VerticalP2";
+            rTriggerInput = $"Right TriggerP2";
+        }
     }
 
     // Update is called once per frame
@@ -62,15 +93,13 @@ public class PlayerShoot : MonoBehaviour
         CheckShoot();
 
         IncreaseTimers();
-
     }
 
     void ProcessInputs()
     {
-        rawAimAxis.x = Input.GetAxisRaw("Controller Right Horizontal");
-        rawAimAxis.y = Input.GetAxisRaw("Controller Right Vertical");
-
-        rightTriggerAxis = Input.GetAxisRaw("Right Trigger");
+        rawAimAxis.x = Input.GetAxisRaw(lookInputHorizontalAxis);
+        rawAimAxis.y = Input.GetAxisRaw(lookInputVerticalAxis);
+        rightTriggerAxis = Input.GetAxisRaw(rTriggerInput);
 
         isPressingShootInput = rightTriggerAxis > shootTriggerDeadzone || Input.GetKey(KeyCode.Space);
     }
@@ -114,6 +143,7 @@ public class PlayerShoot : MonoBehaviour
             if (curMagazineBullets > 0)
             {
                 Shoot();
+                TextTest();
                 timeSinceLastBullet = 0f;
             }
             else if (curTotalBullets > 0)
@@ -176,5 +206,4 @@ public class PlayerShoot : MonoBehaviour
         timeSinceLastClick += Time.deltaTime;
         timeSinceLastBullet += Time.deltaTime;
     }
-
 }

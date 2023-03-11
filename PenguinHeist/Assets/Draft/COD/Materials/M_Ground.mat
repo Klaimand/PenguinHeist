@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlbedoTexture:
-        m_Texture: {fileID: 2800000, guid: 8677ed3ef70acce4c96afdafb3a8476a, type: 3}
+        m_Texture: {fileID: 2800000, guid: cb59c27b9cda86e49b3dd9a0104947ba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture1:
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_1:
-        m_Texture: {fileID: 2800000, guid: 8677ed3ef70acce4c96afdafb3a8476a, type: 3}
+        m_Texture: {fileID: 2800000, guid: f09b36c640de6cc458fc6839af9c1ccb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_10:
@@ -179,6 +179,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _SmoothStep: 1
+    - _SmoothStepBegin: 0.9
+    - _SmoothStepEnd: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
