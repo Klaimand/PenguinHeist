@@ -1928,9 +1928,21 @@ PrefabInstance:
       propertyPath: testText
       value: 
       objectReference: {fileID: 1762618618}
+    - target: {fileID: 4986876294537289596, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: EndShootTextEase
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986876294537289596, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: startShootTextEase
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4986876294537289597, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
       propertyPath: playerIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259892883880411387, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
@@ -2350,6 +2362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4986876294537289575, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4986876294537289592, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2398,6 +2414,18 @@ PrefabInstance:
       propertyPath: testText
       value: 
       objectReference: {fileID: 1456201144}
+    - target: {fileID: 4986876294537289596, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: EndShootTextEase
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986876294537289596, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: startShootTextEase
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259892883880411387, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
 --- !u!4 &4986876293514473481 stripped
