@@ -1,4 +1,6 @@
 using System.Collections;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
@@ -35,16 +37,28 @@ public class PlayerShoot : MonoBehaviour
 
     Coroutine reloadCoroutine;
 
-    [SerializeField] private string lookInputHorizontalAxis;
-    [SerializeField] private string lookInputVerticalAxis;
-    [SerializeField] private string rTriggerInput;
+    private string lookInputHorizontalAxis;
+    private string lookInputVerticalAxis;
+    private string rTriggerInput;
+
+    public TextMeshProUGUI testText;
+    public float baseSize;
+
+    [ContextMenu("TextTest")]
+    public void TextTest()
+    {
+        testText.transform.DOScale(transform.localScale.x - 0.15f, 0.15f ).OnComplete(() =>
+                testText.transform.DOScale(baseSize, 0.75f));
+    }
     
     // Start is called before the first frame update
     void Start()
     {
+        baseSize = transform.localScale.x;
         if (curWeapon != null) InitWeapon(curWeapon);
 
         var playerController = GetComponent<PlayerController2>();
+        
         if (playerController.playerIndex == 0)
         {
             lookInputHorizontalAxis = $"Controller Right Horizontal";
@@ -129,6 +143,7 @@ public class PlayerShoot : MonoBehaviour
             if (curMagazineBullets > 0)
             {
                 Shoot();
+                TextTest();
                 timeSinceLastBullet = 0f;
             }
             else if (curTotalBullets > 0)
