@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,9 +15,18 @@ public class PlayerWeaponPickup : MonoBehaviour
     List<Weapon> weapons = new List<Weapon>();
 
     bool canPickup = false;
+    public string pickUpInput;
 
     void Start()
     {
+        var myIndex = transform.parent.GetComponent<PlayerController2>().playerIndex;
+        pickUpInput = myIndex switch
+        {
+            0 => $"Pickup",
+            1 => $"PickupP2",
+            _ => pickUpInput
+        };
+
         UpdatePickupState();
     }
 
