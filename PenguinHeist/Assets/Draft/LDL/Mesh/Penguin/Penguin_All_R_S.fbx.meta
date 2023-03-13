@@ -3,7 +3,17 @@ guid: 1f976751f52287e45b33745cfa22a487
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_PenguinAccessories
+    second: {fileID: 2100000, guid: 92900b80891b910408ccae67295aafd3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_PenguinBody
+    second: {fileID: 2100000, guid: 423d39747f27d6c4d904ae79bab96175, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

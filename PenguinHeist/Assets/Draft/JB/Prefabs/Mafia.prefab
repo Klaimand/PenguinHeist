@@ -142,9 +142,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9ea1bbd1341704389bf04cb40b49ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   currentState: {fileID: 0}
   aIStateType: 0
   agent: {fileID: 133693702804264838}
+=======
+  currentState: {fileID: 8137348318017020566}
+  aIStateType: 2
+  agent: {fileID: 8137348318017020512}
+>>>>>>> safeMain
   weaponData: {fileID: 0}
   chaseAndAttackRange: 8.41
   attackRange: 6.94
@@ -179,7 +185,31 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 133693702804264895}
+=======
+  m_GameObject: {fileID: 8137348318017020513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b70758860e872547a38832a5ae75932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 8137348318017020564}
+  previousState: {fileID: 0}
+  aIStateType: 2
+  wayPoints:
+  - {x: 29.73904, y: 0.5, z: 0}
+  - {x: 9.798473, y: 0.5, z: 14.856857}
+  - {x: -24.700146, y: 0.5, z: 14.856857}
+  awareness: {fileID: 8137348318017020567}
+--- !u!114 &8137348318017020567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137348318017020513}
+>>>>>>> safeMain
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d76338d114a4634f90503a67c8a596f, type: 3}
@@ -204,15 +234,70 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 133693702804264895}
+=======
+  m_GameObject: {fileID: 8137348318017020513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5db799d527e2b644879da47df2b0feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 8137348318017020522}
+  previousState: {fileID: 8137348318017020566}
+  aIStateType: 2
+--- !u!114 &8137348318017020565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137348318017020513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24b8013c0fa3bf4e8a1121a98480a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 8137348318017020523}
+  previousState: {fileID: 8137348318017020522}
+  aIStateType: 5
+--- !u!114 &8137348318017020522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137348318017020513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d318d8de057804f8801fdc0506f0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 8137348318017020565}
+  previousState: {fileID: 8137348318017020564}
+  aIStateType: 2
+--- !u!114 &8137348318017020523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137348318017020513}
+>>>>>>> safeMain
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2c4e6c6a0b730346aa183fff7399f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   nextState: {fileID: 133693702804264840}
   previousState: {fileID: 133693702804264844}
   aIStateType: 0
+=======
+  nextState: {fileID: 8137348318017020566}
+  previousState: {fileID: 8137348318017020522}
+  aIStateType: 2
+>>>>>>> safeMain
   omega: 0.5
 --- !u!114 &133693702804264844
 MonoBehaviour:
