@@ -14,7 +14,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -52,8 +52,12 @@ Material:
         m_Texture: {fileID: 2800000, guid: 4cda22141ac0fce449321707e8e121a2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _AlbedoTexture_12:
+        m_Texture: {fileID: 2800000, guid: e1fbbabc4ed69f34e8d77782511c2908, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_2:
-        m_Texture: {fileID: 2800000, guid: d0dd061750d890a42a4cd849037bdab3, type: 3}
+        m_Texture: {fileID: 2800000, guid: f244db9b7f081f2489fd0772b092d3fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_3:
@@ -61,11 +65,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_4:
-        m_Texture: {fileID: 2800000, guid: 7c414ccf2ef78f94f8975ac12a2f4276, type: 3}
+        m_Texture: {fileID: 2800000, guid: d0dd061750d890a42a4cd849037bdab3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_5:
-        m_Texture: {fileID: 2800000, guid: e1fbbabc4ed69f34e8d77782511c2908, type: 3}
+        m_Texture: {fileID: 2800000, guid: 328408a1a4084d94389b52ee132f9cd1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_6:
@@ -116,6 +120,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: fde3ae97a2fd1414a9e621ed12012ee3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Ground_Normal:
+        m_Texture: {fileID: 18700000, guid: f3bd925bd90365a4a9f7c64cb43317e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 6344bf96fbda94141a525046d088fb23, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -161,6 +169,7 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
+    - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -188,7 +197,9 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _WorkflowMode: 1
+    - _ZTest: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
