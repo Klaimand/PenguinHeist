@@ -3,7 +3,12 @@ guid: 2b60936211a74af4caed8d5045a82357
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Shark.001
+    second: {fileID: 2100000, guid: 2dc6f2a912a733144a95ad211ada682a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
