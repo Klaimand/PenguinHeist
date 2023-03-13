@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material
-  m_Shader: {fileID: -6465566751694194690, guid: b4ae9cab948db2b468a7a5f69e6f2b9d, type: 3}
+  m_Name: Shader Graphs_SH_CharacterTakeDamage
+  m_Shader: {fileID: -6465566751694194690, guid: f1b002fd5b378a54f82844dbcdebd706, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -20,32 +20,20 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
+    - _MGO:
+        m_Texture: {fileID: 2800000, guid: 15cecea3668202547b69e29a48a730e2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTexNormal:
-        m_Texture: {fileID: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 90399837a1421484d804f968870a4981, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a0832528c2d717846b746165f0eca727, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MaskTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Metallic:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_f9e10038a12e4a3ea78c60bc02e58588_Texture_1:
-        m_Texture: {fileID: 2800000, guid: f6a500c50d4efba41b5627b87fe28483, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Smoothness:
-        m_Texture: {fileID: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 5d592b9200fd14b42aba6e47e995e118, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -62,21 +50,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _MetallicBlood: 0
-    - _NormalBumpScale: 40
-    - _NormalStength: 0.1
-    - _OutlineBumpScale: 250
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SmoothnessBlood: 1
-    - _alphaMainTex: 1.13
+    - _TakeDamage: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.19188643, b: 1, a: 1}
-    - _ColorSplash: {r: 1, g: 0, b: 0, a: 1}
-    - _MainTexColor: {r: 0, g: 0, b: 0, a: 0}
-    - _MainTexTilling: {r: 1, g: 1, b: 0, a: 0}
+    - _Custom_Color: {r: 0, g: 1, b: 0.24538681, a: 1}
+    - _DamageColor: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &4727318311210837664
+--- !u!114 &5258928055431399523
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
