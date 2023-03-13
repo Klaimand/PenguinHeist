@@ -4,5 +4,9 @@ using UnityEngine;
 
 public interface IInteractible
 {
-    public void Interact();
+    public void Interact(PlayerInteraction _playerInteraction);
+
+    public float GetInteractionDuration();
+
+    public bool IsInteractable();
 }
