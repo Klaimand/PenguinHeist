@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 8137348318017020566}
+  aIStateType: 2
   agent: {fileID: 8137348318017020512}
   weaponData: {fileID: 0}
   chaseAndAttackRange: 8.41
@@ -269,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 8137348318017020564}
   previousState: {fileID: 0}
+  aIStateType: 2
   wayPoints:
   - {x: 29.73904, y: 0.5, z: 0}
   - {x: 9.798473, y: 0.5, z: 14.856857}
@@ -313,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 8137348318017020522}
   previousState: {fileID: 8137348318017020566}
+  aIStateType: 2
 --- !u!114 &8137348318017020565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 8137348318017020523}
   previousState: {fileID: 8137348318017020522}
+  aIStateType: 5
 --- !u!114 &8137348318017020522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 8137348318017020565}
   previousState: {fileID: 8137348318017020564}
+  aIStateType: 2
 --- !u!114 &8137348318017020523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,4 +360,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 8137348318017020566}
   previousState: {fileID: 8137348318017020522}
+  aIStateType: 2
   omega: 0.5
