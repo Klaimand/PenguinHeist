@@ -44,28 +44,31 @@ public class PlayerShoot : MonoBehaviour
     public TextMeshProUGUI testText;
     public float baseSize;
 
+    public Ease startShootTextEase;
+    public Ease EndShootTextEase;
+    
     [ContextMenu("TextTest")]
     public void TextTest()
     {
-        testText.transform.DOScale(transform.localScale.x - 0.15f, 0.15f ).OnComplete(() =>
-                testText.transform.DOScale(baseSize, 0.75f));
+        testText.transform.DOScale(transform.localScale.x - 0.35f, 0.075f).SetEase(startShootTextEase).OnComplete(() =>
+        {
+            testText.transform.DOScale(baseSize, 0.75f).SetEase(EndShootTextEase);
+        });
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        baseSize = transform.localScale.x;
         if (curWeapon != null) InitWeapon(curWeapon);
 
+        baseSize = transform.localScale.x;
         var playerController = GetComponent<PlayerController2>();
-        
         if (playerController.playerIndex == 0)
         {
             lookInputHorizontalAxis = $"Controller Right Horizontal";
             lookInputVerticalAxis = $"Controller Right Vertical";
             rTriggerInput = $"Right Trigger";
         }
-
         if (playerController.playerIndex == 1)
         {
             lookInputHorizontalAxis = $"Controller Right HorizontalP2";
