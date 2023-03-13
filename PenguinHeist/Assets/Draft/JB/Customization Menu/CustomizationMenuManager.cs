@@ -1,5 +1,13 @@
-using System;
 using UnityEngine;
+
+public enum CustomizationType
+{
+    Hat,
+    Glasses,
+    Mustache,
+    Neck,
+    Flower
+}
 
 public class CustomizationMenuManager : MonoBehaviour
 {
