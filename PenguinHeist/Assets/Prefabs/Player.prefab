@@ -551,7 +551,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5157454525848409355}
   - component: {fileID: 6358018994598869527}
-  - component: {fileID: 218397797435388747}
   m_Layer: 0
   m_Name: RezRange
   m_TagString: Untagged
@@ -588,22 +587,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &218397797435388747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3008886679713113549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 674aa7aba6af85f4e845c474d1e17e92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myController: {fileID: 4986876294537289597}
-  otherPlayer: {fileID: 0}
-  canRez: 0
-  reanimationCanvas: {fileID: 8006161868536731387}
 --- !u!1 &4154023588302231638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1346,7 @@ MonoBehaviour:
   baseSize: 0
   startShootTextEase: 2
   EndShootTextEase: 30
+  debugTargetTransform: {fileID: 0}
 --- !u!114 &4986876294537289597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1388,6 +1372,7 @@ MonoBehaviour:
   rbVelocityDead: 0.2
   hMove: 
   vMove: 
+  ang: 37.5
 --- !u!114 &7755359143251137845
 MonoBehaviour:
   m_ObjectHideFlags: 0
