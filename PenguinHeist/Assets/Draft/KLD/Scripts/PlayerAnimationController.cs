@@ -56,7 +56,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         animator.SetFloat("aimAngle", controller.AimAngleClamped);
 
-        animator.SetFloat("walkingSpeed", controller.RunningBackward ? -1f : 1f);
+        //animator.SetFloat("walkingSpeed", controller.RunningBackward ? -1f : 1f);
     }
 
     void Shoot()
