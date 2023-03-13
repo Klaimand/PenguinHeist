@@ -53,11 +53,11 @@ public class SplitScreen : MonoBehaviour {
 		AssignMaterialAndShader();
 	}
 	
-	void FixedUpdate () 
+	void FixedUpdate() 
 	{
 		//Gets the z axis distance between the two players and just the standard distance.
 		float zDistance = player1.position.z - player2.transform.position.z;
-		distance = Vector3.Distance (player1.position, player2.transform.position);
+		distance = Vector3.Distance (player1.position, player2.position);
 
 		//Sets the angle of the player up, depending on who's leading on the x axis.
 		float angle;
@@ -69,7 +69,7 @@ public class SplitScreen : MonoBehaviour {
 
 		//Gets the exact midpoint between the two players.
 		Vector3 midPoint = new Vector3 ((player1.position.x + player2.position.x) / 2, (player1.position.y + player2.position.y) / 2, (player1.position.z + player2.position.z) / 2); 
-
+		
 		//Waits for the two cameras to split and then calcuates a midpoint relevant to the difference in position between the two cameras.
 		if (distance > splitDistance)
 		{
@@ -85,6 +85,9 @@ public class SplitScreen : MonoBehaviour {
 			//offset2.y = Mathf.Clamp(offset.y,-splitDistance/2,splitDistance/2);
 			offset2.z = Mathf.Clamp(offset.z,-splitDistance/2,splitDistance/2);
 			Vector3 midPoint2 = player2.position - offset;
+
+			player1OffSetCam = player1.forward.normalized * offSetByStickMultiplier;
+			player2OffSetCam = player2.forward.normalized * offSetByStickMultiplier;
 			
 			if (!splitter.activeSelf) // Si splitter est désactivé
 			{
@@ -108,7 +111,8 @@ public class SplitScreen : MonoBehaviour {
 
 		camera1.transform.position = isSplit ? 
 			Vector3.Lerp(camera1.transform.position,midPoint + new Vector3(0,yOffset,zOffset) + new Vector3(player1OffSetCam.x, 0, player1OffSetCam.z),Time.deltaTime * twoCamsLerpSpeed) : 
-			Vector3.Lerp(camera1.transform.position,midPoint + new Vector3(0,yOffset,zOffset) * offSetByStickMultiplier,Time.deltaTime * oneCamsLerpSpeed);
+			Vector3.Lerp(camera1.transform.position,midPoint + new Vector3(0,yOffset,zOffset),Time.deltaTime * oneCamsLerpSpeed);
+		
 		SetSplitterLineWidth();
 	}
 	
@@ -128,7 +132,7 @@ public class SplitScreen : MonoBehaviour {
 	private void SetSplitterLineWidth()
 	{
 		splitterWidth = splitterWidthOnDistance.Evaluate(distance) / 10;
-		splitter.transform.localScale = new Vector3(2.5F, 0.05f / 10, 1);
+		splitter.transform.localScale = new Vector3(2.5f, splitterWidth, 1);
 	}
 
 	/*private void CreateSpliterLine()
