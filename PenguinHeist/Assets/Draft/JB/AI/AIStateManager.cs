@@ -1,12 +1,26 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
+public enum  AIStateType
+{
+    TPose,
+    Idle,
+    Walk,
+    Death,
+    Interact,
+    Shoot,
+    GunHold,
+    Reload,
+    HoldShield,
+    Hit
+}
 
 public class AIStateManager : MonoBehaviour
 {
     [Header("State")]
     [Tooltip("Current state of the AI and first state to run")]
     [SerializeField] public AIState currentState;
+    [SerializeField] public AIStateType aIStateType;
     [Header("NavMesh")]
     public NavMeshAgent agent;
     [HideInInspector] public WeaponSO weaponData;
@@ -40,5 +54,6 @@ public class AIStateManager : MonoBehaviour
     private void SwitchToTheNextState(AIState nextState)
     {
         currentState = nextState;
+        aIStateType = currentState.aIStateType;
     }
 }

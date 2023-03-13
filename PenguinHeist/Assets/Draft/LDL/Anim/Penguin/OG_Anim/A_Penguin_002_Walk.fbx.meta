@@ -138,7 +138,202 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Penguin_All_R_S(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hat_001
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.44075808, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Mustache_001
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.44075808, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Accessory_001
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.44075808, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Hat_002
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.4284755, z: 0.0072791353}
+      rotation: {x: 0.00000008146035, y: 0, z: -0, w: 1}
+      scale: {x: 35.190907, y: 35.190907, z: 35.190907}
+    - name: Mustache_002
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.45808375, z: 0}
+      rotation: {x: 0.00000008146035, y: 0, z: -0, w: 1}
+      scale: {x: 35.190907, y: 35.190907, z: 35.190907}
+    - name: Mustache_003
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.45808375, z: 0}
+      rotation: {x: 0.00000008146035, y: 0, z: -0, w: 1}
+      scale: {x: 35.190907, y: 35.190907, z: 35.190907}
+    - name: Accessory_002
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.4284755, z: 0}
+      rotation: {x: 0.00000008146035, y: 0, z: -0, w: 1}
+      scale: {x: 35.190907, y: 35.190907, z: 35.190907}
+    - name: Neck03
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.4284755, z: 0}
+      rotation: {x: 0.00000008146035, y: 0, z: -0, w: 1}
+      scale: {x: 35.190907, y: 35.190907, z: 35.190907}
+    - name: Sunglasses01
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.4655397, z: 0}
+      rotation: {x: -0.042717665, y: 0, z: -0, w: 0.9990872}
+      scale: {x: 35.190907, y: 35.190907, z: 35.190907}
+    - name: Sunglasses02
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.4284755, z: 0}
+      rotation: {x: 0.00000008146035, y: 0, z: -0, w: 1}
+      scale: {x: 35.190907, y: 35.190907, z: 35.190907}
+    - name: Armature
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: B_Root
+      parentName: Armature
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.0000031748968, y: -0.00084418105, z: 0.99999964, w: -0.000000046391595}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Spine01
+      parentName: B_Root
+      position: {x: -0.0000000047828435, y: -0.000014556497, z: 0.00075321813}
+      rotation: {x: -0.0000022777976, y: 0.70650965, z: 0.7077034, w: 0.0000022121906}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Spine02
+      parentName: B_Spine01
+      position: {x: -5.876291e-23, y: 0.0038924497, z: 9.532991e-13}
+      rotation: {x: 0.9832549, y: -0, z: 0.00000018245852, w: 0.18223561}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Hat
+      parentName: B_Spine02
+      position: {x: -4.5862267e-24, y: 0.004123637, z: 0}
+      rotation: {x: 2.519934e-35, y: 0, z: 1.5879283e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Eye.L
+      parentName: B_Spine02
+      position: {x: -0.0011478077, y: 0.0010250908, z: 0.0004941949}
+      rotation: {x: 0.31616592, y: 0.21609783, z: 0.5212634, w: 0.76264364}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: B_BeakTop
+      parentName: B_Spine02
+      position: {x: -3.0295751e-24, y: 0.0011471623, z: 0.0036642484}
+      rotation: {x: -0.00000007057376, y: 0.49826792, z: 0.8670231, w: -0.00000004651924}
+      scale: {x: 1, y: 1.0000002, z: 1.0000001}
+    - name: B_BeakBot
+      parentName: B_Spine02
+      position: {x: -0.000056697463, y: 0.00002417654, z: 0.0037025134}
+      rotation: {x: 0.651661, y: -0.00000027691388, z: -0.00000023790568, w: 0.75851035}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: B_Accessory
+      parentName: B_Spine02
+      position: {x: -1.9994415e-24, y: -0.0008225575, z: 0.004263095}
+      rotation: {x: 0.00000005338508, y: 0.7071068, z: 0.7071067, w: 0.000000053385072}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Moustache.L
+      parentName: B_Spine02
+      position: {x: -0.000502743, y: 0.0019343859, z: 0.004057205}
+      rotation: {x: 0.00000003544088, y: -0.000000015685638, z: 0.91444117, w: 0.40471885}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Eye.R
+      parentName: B_Spine02
+      position: {x: 0.0011478077, y: 0.0010250908, z: 0.0004941949}
+      rotation: {x: 0.31616592, y: -0.21609783, z: -0.5212634, w: 0.76264364}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: B_Moustache.R
+      parentName: B_Spine02
+      position: {x: 0.000502743, y: 0.0019343859, z: 0.004057205}
+      rotation: {x: -0.00000003544088, y: -0.000000015685638, z: 0.91444117, w: -0.40471885}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Uarm.L
+      parentName: B_Spine02
+      position: {x: -0.0040173265, y: 0.00007652044, z: -0.00023912654}
+      rotation: {x: 0.000000099542234, y: -0.00000009954221, z: 0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Larm.L
+      parentName: B_Uarm.L
+      position: {x: -7.12104e-11, y: 0.0012625884, z: -7.04984e-12}
+      rotation: {x: 9.63673e-14, y: 4.6944708e-34, z: -2.273737e-13, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Uarm.R
+      parentName: B_Spine02
+      position: {x: 0.0040173265, y: 0.00007652044, z: -0.00023912656}
+      rotation: {x: 0.000000099542234, y: 0.00000009954221, z: -0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Larm.R
+      parentName: B_Uarm.R
+      position: {x: 7.12152e-11, y: 0.0012625884, z: -7.051875e-12}
+      rotation: {x: -9.63673e-14, y: -4.6944708e-34, z: -2.273737e-13, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Glasses
+      parentName: B_Spine02
+      position: {x: -3.582727e-24, y: 0.0022048443, z: 0.000074779986}
+      rotation: {x: 0.00000005338508, y: 0.7071068, z: 0.7071067, w: 0.000000053385072}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Foot01.L
+      parentName: B_Root
+      position: {x: 0.0017403077, y: -0.0011031916, z: 0.00032627655}
+      rotation: {x: -0.41235295, y: -0.54633254, z: -0.4360533, w: 0.58424604}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: B_Foot02.L
+      parentName: B_Foot01.L
+      position: {x: 3.7470024e-18, y: 0.0011409491, z: -2.974968e-11}
+      rotation: {x: -0.13978079, y: -0.15574788, z: 0.02062708, w: 0.9776392}
+      scale: {x: 1, y: 1, z: 1}
+    - name: B_Foot03.L
+      parentName: B_Foot02.L
+      position: {x: 4.496627e-11, y: 0.0011932936, z: 3.5506674e-11}
+      rotation: {x: 0.005669513, y: -0.07876866, z: -0.0156538, w: 0.99675393}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: B_Foot01.R
+      parentName: B_Root
+      position: {x: -0.0017403117, y: -0.0011031918, z: 0.00032625446}
+      rotation: {x: -0.4123556, y: 0.5463289, z: 0.43605062, w: 0.58424956}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: B_Foot02.R
+      parentName: B_Foot01.R
+      position: {x: -1.8626451e-11, y: 0.0011409491, z: 7.916242e-11}
+      rotation: {x: -0.13978082, y: 0.15574825, z: -0.020627407, w: 0.9776392}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: B_Foot03.R
+      parentName: B_Foot02.R
+      position: {x: -1.4849028e-11, y: 0.0011932936, z: -3.4924596e-12}
+      rotation: {x: 0.005669503, y: 0.07876868, z: 0.015653793, w: 0.99675393}
+      scale: {x: 1, y: 0.9999998, z: 1}
+    - name: P_BeakBot
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.44075808, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: P_BeakTop
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.44075808, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: P_Body
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.44075808, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: P_Eyes
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.44075808, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: P_Feet
+      parentName: Penguin_All_R_S(Clone)
+      position: {x: -0, y: 0.44075808, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -147,15 +342,15 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: B_Root
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1f976751f52287e45b33745cfa22a487, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
