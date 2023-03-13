@@ -9,6 +9,8 @@ public class PlayerController2 : MonoBehaviour
     [Header("References")]
     [SerializeField] Rigidbody rb;
     [SerializeField] PlayerShoot playerShoot;
+    [SerializeField] PlayerInteraction playerInteraction;
+    [SerializeField] PlayerBag playerBag;
 
     [Header("Values")]
     [SerializeField] float axisDeadzone = 0.1f;
@@ -85,6 +87,8 @@ public class PlayerController2 : MonoBehaviour
         rawAxis.ZeroIfBelow(axisDeadzone);
         rawAxis.NormalizeIfGreater();
 
+        if (playerInteraction.IsInteracting) rawAxis = Vector2.zero;
+
         smoothedAxis = Vector2.SmoothDamp(smoothedAxis, rawAxis, ref refAxisVelocity, axisSmoothTime, axisMaxSpeed);
     }
 
@@ -123,11 +127,13 @@ public class PlayerController2 : MonoBehaviour
 
             runningBackward = false;
 
-            if (absoluteForwardToAimAngle > 37.5f)
+            float floatingAngle = playerBag.IsCarrying ? 0f : 37.5f;
+
+            if (absoluteForwardToAimAngle > floatingAngle)
             {
                 Vector3 eulerRotationToDo;
                 eulerRotationToDo.x = 0f;
-                eulerRotationToDo.y = ((absoluteForwardToAimAngle - 37.5f) * Mathf.Sign(forwardToAimAngle));
+                eulerRotationToDo.y = ((absoluteForwardToAimAngle - floatingAngle) * Mathf.Sign(forwardToAimAngle));
                 eulerRotationToDo.z = 0f;
 
                 //transform.Rotate(eulerRotationToDo);

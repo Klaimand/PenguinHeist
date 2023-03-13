@@ -20,6 +20,8 @@ public class WeaponSO : ScriptableObject
 
     public GameObject weaponPrefab = null;
 
+    public GameObject weaponModel = null;
+
     public GameObject bulletPrefab = null;
 
     public GameObject muzzleFlash = null;

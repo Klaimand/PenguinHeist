@@ -7,8 +7,12 @@ using Random = UnityEngine.Random;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [Header("References")] [SerializeField]
+    [Header("References")]
+    [SerializeField]
     Transform canon;
+    [SerializeField] PlayerInteraction playerInteraction;
+    [SerializeField] PlayerMelee melee;
+    [SerializeField] PlayerBag playerBag;
 
     [SerializeField] float shootTriggerDeadzone = 0.1f;
 
@@ -49,16 +53,18 @@ public class PlayerShoot : MonoBehaviour
 
     public Ease startShootTextEase;
     public Ease EndShootTextEase;
-    
+
     [ContextMenu("TextTest")]
     public void TextTest()
     {
+        if (testText == null) return;
+
         testText.transform.DOScale(transform.localScale.x - 0.35f, 0.075f).SetEase(startShootTextEase).OnComplete(() =>
         {
             testText.transform.DOScale(baseSize, 0.75f).SetEase(EndShootTextEase);
         });
     }
-    
+
 
     [SerializeField] Transform debugTargetTransform;
 
@@ -141,6 +147,12 @@ public class PlayerShoot : MonoBehaviour
 
     void CheckShoot()
     {
+        if (playerBag.IsCarrying) return;
+
+        if (melee.IsAttacking) return;
+
+        if (playerInteraction.IsInteracting) return;
+
         if (isReloading) return;
 
         if (!isPressingShootInput) return;
