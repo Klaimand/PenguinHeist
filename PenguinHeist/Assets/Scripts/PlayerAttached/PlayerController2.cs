@@ -1,10 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController2 : MonoBehaviour
 {
+    public int playerIndex;
+    
     [Header("References")]
     [SerializeField] Rigidbody rb;
     [SerializeField] PlayerShoot playerShoot;
@@ -27,6 +29,14 @@ public class PlayerController2 : MonoBehaviour
 
     [SerializeField] float rbVelocityDead = 0.2f;
 
+
+    public string hMove;
+    public string vMove;
+
+    float refRotVelo = 0f;
+
+    private void Start()
+
     [SerializeField]
     float ang = 37.5f;
 
@@ -42,8 +52,19 @@ public class PlayerController2 : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
 
+    {
+        if (playerIndex == 0)
+        {
+            hMove = "Horizontal";
+            vMove = "Vertical";
+        }
+
+        if (playerIndex == 1)
+        {
+            hMove = "HorizontalP2";
+            vMove = "VerticalP2";
+        }
     }
 
     // Update is called once per frame
@@ -65,13 +86,13 @@ public class PlayerController2 : MonoBehaviour
 
     void ProcessAxes()
     {
-        rawAxis.x = Input.GetAxisRaw("Horizontal");
-        rawAxis.y = Input.GetAxisRaw("Vertical");
+        rawAxis.x = Input.GetAxisRaw(hMove);
+        rawAxis.y = Input.GetAxisRaw(vMove);
 
         rawAxis.ZeroIfBelow(axisDeadzone);
         rawAxis.NormalizeIfGreater();
 
-        smoothedAxis = Vector2.SmoothDamp(smoothedAxis, rawAxis, ref refAxisVelocity, axisSmoothTime, axisMaxSpeed);
+        smoothedAxis = Vector2.SmoothDamp(smoothedAxis, rawAxis, ref refAxisVelocity, axisSmoothTime, axisMaxSpeed); 
     }
 
     void DoRotation()

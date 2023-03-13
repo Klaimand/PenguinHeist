@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    [Tooltip("Spawn points of the police enemies")]
     public Vector3[] spawnPoints;
+    [Tooltip("Enemies to spawn")]
     [SerializeField] GameObject[] enemies;
+    [Tooltip("Delay between each wave")]
     [SerializeField] float spawnDelay;
+    [Tooltip("Number of enemies to spawn")]
     [SerializeField] int enemyCountToSpawn;
 
     [ContextMenu("Start Waves")]

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -9,10 +8,16 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] float speed = 15f;
     [SerializeField] int damage = 10;
+    private float timeBeforeSelfDestroy = 10f;
 
     [SerializeField] GameObject impactFX = null;
 
     bool collided = false;
+
+    private void Start()
+    {
+        Destroy(gameObject, timeBeforeSelfDestroy);
+    }
 
     void FixedUpdate()
     {

@@ -5,15 +5,20 @@ using UnityEngine.AI;
 public class AIStateManager : MonoBehaviour
 {
     [Header("State")]
+    [Tooltip("Current state of the AI and first state to run")]
     [SerializeField] public AIState currentState;
     [Header("NavMesh")]
     public NavMeshAgent agent;
-    [Header("Data")]
     [HideInInspector] public WeaponSO weaponData;
+    [Header("Data")]
+    [Tooltip("Distance to chase and attack the player")]
     public float chaseAndAttackRange;
+    [Tooltip("Distance to attack the player")]
     public float attackRange;
+    [Tooltip("Distance to move back when the player is too close( Only for mafia agent)")]
     public float moveBackRange;
     public Transform player;
+    [Tooltip("Obstacles of the AI vision")]
     public LayerMask obstacleMask;
     public AIEntity entity;
 
