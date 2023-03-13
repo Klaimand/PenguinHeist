@@ -128,7 +128,7 @@ public class SplitScreen : MonoBehaviour {
 	private void SetSplitterLineWidth()
 	{
 		splitterWidth = splitterWidthOnDistance.Evaluate(distance) / 10;
-		splitter.transform.localScale = new Vector3(2.5F, splitterWidth, 1);
+		splitter.transform.localScale = new Vector3(2.5F, 0.05f / 10, 1);
 	}
 
 	/*private void CreateSpliterLine()

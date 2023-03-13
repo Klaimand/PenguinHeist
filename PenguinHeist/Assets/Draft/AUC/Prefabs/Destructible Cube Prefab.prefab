@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3308771678670037584}
   - component: {fileID: 3308771678670037587}
   - component: {fileID: 3308771678670037586}
-  - component: {fileID: 3308771678670037585}
+  - component: {fileID: 7752091198657541373}
   m_Layer: 0
   m_Name: Destructible Cube Prefab
   m_TagString: Untagged
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 67b99c91f8775a340866f9a813882127, type: 2}
+  - {fileID: 2100000, guid: 01933be8bce71f74cad3d072b2f8e0f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3308771678670037585
+--- !u!114 &7752091198657541373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,12 +108,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3308771678670037588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5472567a4e6e3194cbcf2a2dd7043ca0, type: 3}
+  m_Script: {fileID: 11500000, guid: dac15cf7e2460504b87186cc599eedde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifeSlider: {fileID: 3308771679986192192}
-  sliderImage: {fileID: 3308771678820498529}
-  maxHealth: 40
+  sliderImage: {fileID: 3308771679346704588}
+  maxHealth: 50
   currentHealth: 0
   timingCanvasVisible: 4.5
   sliderOpenSize: 0.35
