@@ -1,12 +1,11 @@
 using System;
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController2 : MonoBehaviour
 {
     public int playerIndex;
-    
+
     [Header("References")]
     [SerializeField] Rigidbody rb;
     [SerializeField] PlayerShoot playerShoot;
@@ -29,18 +28,13 @@ public class PlayerController2 : MonoBehaviour
 
     [SerializeField] float rbVelocityDead = 0.2f;
 
-
     public string hMove;
     public string vMove;
 
     float refRotVelo = 0f;
 
-    private void Start()
-
     [SerializeField]
     float ang = 37.5f;
-
-    float refRotVelo = 0f;
 
     public float Speed => rb.velocity.magnitude;
 
@@ -52,7 +46,6 @@ public class PlayerController2 : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-
     {
         if (playerIndex == 0)
         {
@@ -92,7 +85,7 @@ public class PlayerController2 : MonoBehaviour
         rawAxis.ZeroIfBelow(axisDeadzone);
         rawAxis.NormalizeIfGreater();
 
-        smoothedAxis = Vector2.SmoothDamp(smoothedAxis, rawAxis, ref refAxisVelocity, axisSmoothTime, axisMaxSpeed); 
+        smoothedAxis = Vector2.SmoothDamp(smoothedAxis, rawAxis, ref refAxisVelocity, axisSmoothTime, axisMaxSpeed);
     }
 
     void DoRotation()

@@ -2503,6 +2503,27 @@ Transform:
   m_Father: {fileID: 2047167549}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &1797683182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3008886679713113549, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+  m_PrefabInstance: {fileID: 4986876293514473480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1797683186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797683182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fbc2406af31614fbde474a0c113115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myController: {fileID: 0}
+  otherPlayer: {fileID: 0}
+  canRez: 0
+  reanimationCanvas: {fileID: 0}
 --- !u!1 &2047167548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,7 +2634,16 @@ PrefabInstance:
       propertyPath: debugTargetTransform
       value: 
       objectReference: {fileID: 163814118}
-    m_RemovedComponents: []
+    - target: {fileID: 5157454525848409355, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259892883880411387, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 218397797435388747, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
 --- !u!1001 &6161586542121752275
 PrefabInstance:
