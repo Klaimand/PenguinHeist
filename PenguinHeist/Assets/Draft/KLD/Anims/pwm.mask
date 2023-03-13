@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pwm
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Accessory_001
+    m_Weight: 1
+  - m_Path: Accessory_002
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/B_Root
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Foot01.L
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Foot01.L/B_Foot02.L
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Foot01.L/B_Foot02.L/B_Foot03.L
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Foot01.R
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Foot01.R/B_Foot02.R
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Foot01.R/B_Foot02.R/B_Foot03.R
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Accessory
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_BeakBot
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_BeakTop
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Eye.L
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Eye.R
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Glasses
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Hat
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Moustache.L
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Moustache.R
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Uarm.L
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Uarm.L/B_Larm.L
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Uarm.R
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Spine01/B_Spine02/B_Uarm.R/B_Larm.R
+    m_Weight: 1
+  - m_Path: Hat_001
+    m_Weight: 1
+  - m_Path: Hat_002
+    m_Weight: 1
+  - m_Path: Mustache_001
+    m_Weight: 1
+  - m_Path: Mustache_002
+    m_Weight: 1
+  - m_Path: Mustache_003
+    m_Weight: 1
+  - m_Path: Neck03
+    m_Weight: 1
+  - m_Path: P_BeakBot
+    m_Weight: 1
+  - m_Path: P_BeakTop
+    m_Weight: 1
+  - m_Path: P_Body
+    m_Weight: 1
+  - m_Path: P_Eyes
+    m_Weight: 1
+  - m_Path: P_Feet
+    m_Weight: 1
+  - m_Path: Sunglasses01
+    m_Weight: 1
+  - m_Path: Sunglasses02
+    m_Weight: 1
