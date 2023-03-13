@@ -6,9 +6,6 @@ public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] LayerMask interactionLayers;
 
-    [SerializeField] Vector3 localCastOrigin = Vector3.zero;
-    [SerializeField] float castRadius = 1f;
-
     // Start is called before the first frame update
     void Start()
     {
