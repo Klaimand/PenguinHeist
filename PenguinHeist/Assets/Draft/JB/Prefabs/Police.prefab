@@ -32,7 +32,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3328721621561081940}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.4, y: 0, z: -3.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 3328721621561081936}
+  aIStateType: 0
   agent: {fileID: 3328721621561081933}
   weaponData: {fileID: 0}
   chaseAndAttackRange: 8.41
@@ -182,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 3328721621561081942}
   previousState: {fileID: 0}
+  aIStateType: 2
 --- !u!114 &3328721621561081937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
   previousState: {fileID: 3328721621561081942}
+  aIStateType: 5
 --- !u!114 &3328721621561081942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,3 +213,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 3328721621561081937}
   previousState: {fileID: 3328721621561081936}
+  aIStateType: 2
