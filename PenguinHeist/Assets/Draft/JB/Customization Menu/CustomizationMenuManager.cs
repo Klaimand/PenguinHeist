@@ -22,8 +22,15 @@ public class CustomizationMenuManager : MonoBehaviour
     [SerializeField] Color[] colors;
     int player1ColorIndex = 0;
     int player2ColorIndex = 0;
-    [Header("Debug")] [SerializeField] private TextMeshProUGUI player1Text;
+    [Header("Debug")] 
+    [SerializeField] private TextMeshProUGUI player1Text;
     [SerializeField] private TextMeshProUGUI player2Text;
+    [SerializeField] private TextMeshProUGUI player1ConfirmText;
+    [SerializeField] private TextMeshProUGUI player2ConfirmText;
+    
+
+    private bool player1Confirm;
+    private bool player2Confirm;
 
     private void Awake()
     {
@@ -45,6 +52,7 @@ public class CustomizationMenuManager : MonoBehaviour
     private void Update()
     {
         ChangeColor();
+        Confirm();
     }
 
     void Init()
@@ -89,7 +97,7 @@ public class CustomizationMenuManager : MonoBehaviour
         //playerCustomization.SetCustomization(customizationType, gameObject);
     }
 
-    public void ChangeColor()
+    void ChangeColor()
     {
         if (Input.GetButtonDown("Change Color"))
         {
@@ -115,5 +123,33 @@ public class CustomizationMenuManager : MonoBehaviour
         //Debug
         player1Text.color = player1CustomizationData.color;
         player2Text.color = player2CustomizationData.color;
+    }
+
+    void Confirm()
+    {
+        if (Input.GetButtonDown("Confirm"))
+        {
+            player1Confirm = !player1Confirm;
+            if (player1Confirm)
+            {
+                player1ConfirmText.text = "Confirmed";
+            }
+            else
+            {
+                player1ConfirmText.text = "Confirm ?";
+            }
+        }
+        else if (Input.GetButtonDown("ConfirmP2"))
+        {
+            player2Confirm = !player2Confirm;
+            if (player2Confirm)
+            {
+                player2ConfirmText.text = "Confirmed";
+            }
+            else
+            {
+                player2ConfirmText.text = "Confirm ?";
+            }
+        }
     }
 }

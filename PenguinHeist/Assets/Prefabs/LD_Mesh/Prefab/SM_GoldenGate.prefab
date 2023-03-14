@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9018510570211724326}
   - component: {fileID: 5370529368388682627}
   - component: {fileID: 7882147382489298761}
+  - component: {fileID: 3743421146844822087}
   m_Layer: 0
   m_Name: SM_GoldenGate
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3743421146844822087
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530942736329807516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2663946, y: 0.43859395, z: 1.952234}
+  m_Center: {x: 0.020931005, y: -0.003627643, z: 0.976117}

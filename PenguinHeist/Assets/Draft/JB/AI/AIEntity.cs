@@ -8,7 +8,8 @@ public class AIEntity : MonoBehaviour, IDamageable
     [SerializeField] private WeaponSO weaponData;
     [SerializeField] public AIStateManager aiStateManager;
     [HideInInspector] public int curMagazineBullets;
-    [HideInInspector] public bool isReloading;
+    [HideInInspector] public bool isReloading; // In AIAttackState
+    [HideInInspector] public bool isHoldingShield; // In Shield
     [HideInInspector] public float currentAttackCd;
     [Tooltip("Launch force for the weapon when it drops")]
     [SerializeField] Vector2 minMaxLaunchTorque = new Vector2(100f, 200f);
@@ -22,6 +23,14 @@ public class AIEntity : MonoBehaviour, IDamageable
     [ContextMenu("Die")]
     void Die()
     {
+        if (aiStateManager.aiType == AIType.Police)
+        {
+            LevelManager.instance.RemovePoliceEnemy(aiStateManager);
+        }
+        else
+        {
+            LevelManager.instance.RemoveMafiaEnemy(aiStateManager);
+        }
         aiStateManager.aIStateType = AIStateType.Death;
         DropWeapon();
         Destroy(transform.gameObject);
@@ -42,11 +51,11 @@ public class AIEntity : MonoBehaviour, IDamageable
 
     public void TakeDamage(int _damage)
     {
+        //Hit
         health -= _damage;
         if (health <= 0)
         {
             Die();
         }
-        aiStateManager.aIStateType = AIStateType.Hit;
     }
 }
