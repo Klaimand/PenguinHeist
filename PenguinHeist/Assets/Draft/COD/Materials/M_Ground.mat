@@ -69,7 +69,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_5:
-        m_Texture: {fileID: 2800000, guid: 328408a1a4084d94389b52ee132f9cd1, type: 3}
+        m_Texture: {fileID: 2800000, guid: c1a5d0fada37bbe4da92b490b50328af, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_6:
@@ -77,7 +77,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_7:
-        m_Texture: {fileID: 2800000, guid: 7c414ccf2ef78f94f8975ac12a2f4276, type: 3}
+        m_Texture: {fileID: 2800000, guid: 86bb865e0ccb3cd49a530f1760ec2d97, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_8:
@@ -121,7 +121,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ground_Normal:
-        m_Texture: {fileID: 18700000, guid: 740eecb973747304699d6791ceaeaf97, type: 3}
+        m_Texture: {fileID: 18700000, guid: 9660ba85a01cc784c831d6d75f2acb99, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -186,6 +186,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Height: 0.5
     - _Marble_Gloss: 0
     - _Metallic: 0.167
     - _OcclusionStrength: 1
@@ -208,7 +209,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_Variation: {r: 0.12726949, g: 0.1478284, b: 0.41509432, a: 1}
+    - _Color_Variation: {r: 0, g: 0.013265874, b: 0.34117648, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

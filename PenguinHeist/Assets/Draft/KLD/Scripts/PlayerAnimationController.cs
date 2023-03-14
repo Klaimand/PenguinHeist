@@ -67,7 +67,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         animator.SetInteger("playerState", (int)curState);
 
-        animator.SetFloat("aimAngle", controller.AimAngleClamped);
+        //animator.SetFloat("aimAngle", controller.AimAngleClamped);
 
         animator.SetBool("isCarrying", playerBag.IsCarrying);
 
