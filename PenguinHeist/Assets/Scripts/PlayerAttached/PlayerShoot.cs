@@ -7,9 +7,15 @@ using Random = UnityEngine.Random;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [Header("References")] [SerializeField]
+    [Header("References")]
+    [SerializeField]
     Transform canon;
+    [SerializeField] PlayerInteraction playerInteraction;
+    [SerializeField] PlayerMelee melee;
+    [SerializeField] PlayerBag playerBag;
+    [SerializeField] PlayerHealth playerHealth;
 
+    [SerializeField] float aimDeadzone = 0.1f;
     [SerializeField] float shootTriggerDeadzone = 0.1f;
 
     bool isAiming = false;
@@ -32,6 +38,7 @@ public class PlayerShoot : MonoBehaviour
     public int CurTotalBullets => curTotalBullets;
 
     bool isReloading = false;
+    public bool IsReloading => isReloading;
 
     //timers
     float timeSinceLastClick = 0f;
@@ -49,20 +56,20 @@ public class PlayerShoot : MonoBehaviour
 
     public Ease startShootTextEase;
     public Ease EndShootTextEase;
-    
+
     [ContextMenu("TextTest")]
     public void TextTest()
     {
+        if (testText == null) return;
+
         testText.transform.DOScale(transform.localScale.x - 0.35f, 0.075f).SetEase(startShootTextEase).OnComplete(() =>
         {
             testText.transform.DOScale(baseSize, 0.75f).SetEase(EndShootTextEase);
         });
     }
-    
-
-    [SerializeField] Transform debugTargetTransform;
 
     public Action OnPlayerShoot;
+    public Action OnPlayerChangeWeapon;
 
 
     // Start is called before the first frame update
@@ -102,9 +109,6 @@ public class PlayerShoot : MonoBehaviour
             targetPos = transform.position;
         }
 
-        //isAiming = true;
-        //targetPos = debugTargetTransform.position;
-
         CheckShoot();
 
         IncreaseTimers();
@@ -114,6 +118,9 @@ public class PlayerShoot : MonoBehaviour
     {
         rawAimAxis.x = Input.GetAxisRaw(lookInputHorizontalAxis);
         rawAimAxis.y = Input.GetAxisRaw(lookInputVerticalAxis);
+
+        rawAimAxis.ZeroIfBelow(aimDeadzone);
+
         rightTriggerAxis = Input.GetAxisRaw(rTriggerInput);
 
         isPressingShootInput = rightTriggerAxis > shootTriggerDeadzone || Input.GetKey(KeyCode.Space);
@@ -124,6 +131,8 @@ public class PlayerShoot : MonoBehaviour
         curWeapon = _weapon;
         curMagazineBullets = curWeapon.bulletsPerMagazine;
         curTotalBullets = curWeapon.totalBulletsOnPickup;
+
+        OnPlayerChangeWeapon?.Invoke();
     }
 
     public void InitWeapon(WeaponSO _weapon, int _curBulletsInMag, int _curTotalBullets)
@@ -137,15 +146,25 @@ public class PlayerShoot : MonoBehaviour
         curWeapon = _weapon;
         curMagazineBullets = _curBulletsInMag;
         curTotalBullets = _curTotalBullets;
+
+        OnPlayerChangeWeapon?.Invoke();
     }
 
     void CheckShoot()
     {
+        if (playerBag.IsCarrying) return;
+
+        if (melee.IsAttacking) return;
+
+        if (playerInteraction.IsInteracting) return;
+
         if (isReloading) return;
 
         if (!isPressingShootInput) return;
 
         if (timeSinceLastClick < curWeapon.fireRate) return;
+
+        if (playerHealth.IsNotAlive) return;
 
         timeSinceLastClick = 0f;
         StartCoroutine(DoBurstShoot());

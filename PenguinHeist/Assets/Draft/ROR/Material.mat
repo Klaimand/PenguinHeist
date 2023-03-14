@@ -62,17 +62,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _MetallicBlood: 0
-    - _NormalBumpScale: 40
-    - _NormalStength: 0.1
+    - _MetallicBlood: 0.3
+    - _NormalBumpScale: 2
+    - _NormalStength: 1
     - _OutlineBumpScale: 250
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SmoothnessBlood: 1
-    - _alphaMainTex: 1.13
+    - _SmoothnessBlood: 0.75
+    - _alphaMainTex: 0
     m_Colors:
     - _Color: {r: 0, g: 0.19188643, b: 1, a: 1}
-    - _ColorSplash: {r: 1, g: 0, b: 0, a: 1}
+    - _ColorSplash: {r: 0.4039216, g: 0.003921569, b: 0.003921569, a: 1}
     - _MainTexColor: {r: 0, g: 0, b: 0, a: 0}
     - _MainTexTilling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
