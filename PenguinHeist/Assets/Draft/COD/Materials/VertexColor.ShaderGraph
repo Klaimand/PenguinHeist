@@ -44,6 +44,9 @@
         },
         {
             "m_Id": "da99e3ca638d4007a6d35d3fec350cd9"
+        },
+        {
+            "m_Id": "00e5e84ab13b43bc8a163ca807bbc933"
         }
     ],
     "m_Keywords": [],
@@ -2789,6 +2792,33 @@
             "m_Id": "755f3014ee94401d88077a97a64aa3da"
         }
     ]
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "00e5e84ab13b43bc8a163ca807bbc933",
+    "m_Guid": {
+        "m_GuidSerialized": "0771e7cb-64fb-44ea-99a0-27736f2e3cc0"
+    },
+    "m_Name": "Height",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Height",
+    "m_DefaultReferenceName": "_Height",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.10000000149011612,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {
@@ -8315,6 +8345,9 @@
         },
         {
             "m_Id": "2ba895487eed44a18cd792fcb821dccf"
+        },
+        {
+            "m_Id": "00e5e84ab13b43bc8a163ca807bbc933"
         }
     ]
 }
@@ -8885,8 +8918,8 @@
     "m_Theme": 0,
     "m_Position": {
         "serializedVersion": "2",
-        "x": -3243.0,
-        "y": -1334.0,
+        "x": -2857.0,
+        "y": -1051.0,
         "width": 200.0,
         "height": 160.0
     },
