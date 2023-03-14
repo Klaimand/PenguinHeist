@@ -52,6 +52,12 @@ public class AiMoveStateEditor : Editor
             agent.CalculatePath(aiMoveState.wayPoints[0], path);
             Handles.DrawPolyLine(path.corners);
             Destroy(go);
+            
+            //Save chanes
+            if (GUI.changed)
+            {
+                EditorUtility.SetDirty(aiMoveState);
+            }
         }
     }
 }
