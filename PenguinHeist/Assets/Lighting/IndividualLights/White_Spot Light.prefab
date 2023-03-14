@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6341522793276737097
 Transform:
@@ -44,14 +44,14 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.93487394, b: 0.8537736, a: 1}
+  m_Color: {r: 1, g: 0.97654533, b: 0, a: 1}
   m_Intensity: 10
   m_Range: 76.93
   m_SpotAngle: 86.02965
   m_InnerSpotAngle: 77.83173
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1

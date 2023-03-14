@@ -64,6 +64,6 @@ public class PlayerCustomization : MonoBehaviour
 
     public void ChangeColor(Color color)
     {
-        material.color = color;
+        material.SetColor("_CustomColor", color);
     }
 }

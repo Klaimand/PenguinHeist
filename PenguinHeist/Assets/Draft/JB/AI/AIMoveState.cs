@@ -18,6 +18,7 @@ public class AIMoveState : AIState
     {
         if (awareness.visibleTargets.Count > 0)
         {
+            stateManager.player = awareness.visibleTargets[0];
             return nextState;
         }
         if (stateManager.agent.remainingDistance <= stateManager.agent.stoppingDistance)
