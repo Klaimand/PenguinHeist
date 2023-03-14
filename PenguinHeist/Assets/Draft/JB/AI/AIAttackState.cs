@@ -77,6 +77,7 @@ public class AIAttackState : AIState
     
     IEnumerator Reload(WeaponSO weapon, AIEntity entity)
     {
+        entity.aiStateManager.aIStateType = AIStateType.Reload;
         yield return new WaitForSeconds(weapon.reloadTime);
         entity.curMagazineBullets = weapon.bulletsPerMagazine;
         entity.isReloading = false;
