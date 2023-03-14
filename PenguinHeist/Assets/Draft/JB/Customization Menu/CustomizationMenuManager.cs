@@ -59,18 +59,16 @@ public class CustomizationMenuManager : MonoBehaviour
     {
         if (player1CustomizationData.color != default)
         {
-            //player1Customization.ChangeColor(player1CustomizationData.color);
             player1ColorIndex = Array.IndexOf(colors, player1CustomizationData.color);
         }
 
         if (player2CustomizationData.color != default)
         {
-            //player2Customization.ChangeColor(player2CustomizationData.color);
             player2ColorIndex = Array.IndexOf(colors, player2CustomizationData.color);
         }
     }
 
-    public void SetCustomization(CustomizationType customizationType, GameObject gameObject, int player)
+    public void SetCustomization(CustomizationType customizationType, string name, int player)
     {
         PlayerCustomizationData playerCustomizationData = player == 1 ? player1CustomizationData : player2CustomizationData;
         PlayerCustomization playerCustomization = player == 1 ? player1Customization : player2Customization;
@@ -78,23 +76,23 @@ public class CustomizationMenuManager : MonoBehaviour
         switch (customizationType)
         {
             case CustomizationType.Hat :
-                playerCustomizationData.hat = gameObject;
-                return;
+                playerCustomizationData.hat = name;
+                break;
             case CustomizationType.Glasses :
-                playerCustomizationData.glasses = gameObject;
-                return;
+                playerCustomizationData.glasses = name;
+                break;
             case CustomizationType.Mustache :
-                playerCustomizationData.mustache = gameObject;
-                return;
+                playerCustomizationData.mustache = name;
+                break;
             case CustomizationType.Neck :
-                playerCustomizationData.neck = gameObject;
-                return;
+                playerCustomizationData.neck = name;
+                break;
             case CustomizationType.Flower :
-                playerCustomizationData.flower = gameObject;
-                return;
+                playerCustomizationData.flower = name;
+                break;
         }
         
-        //playerCustomization.SetCustomization(customizationType, gameObject);
+        playerCustomization.SetCustomization(customizationType, name);
     }
 
     void ChangeColor()
@@ -107,7 +105,7 @@ public class CustomizationMenuManager : MonoBehaviour
                 player1ColorIndex = 0;
             }
             player1CustomizationData.color = colors[player1ColorIndex];
-            //player1Customization.ChangeColor(player1CustomizationData.color);
+            player1Customization.ChangeColor(player1CustomizationData.color);
         }
         else if (Input.GetButtonDown("Change ColorP2"))
         {
@@ -117,7 +115,7 @@ public class CustomizationMenuManager : MonoBehaviour
                 player2ColorIndex = 0;
             }
             player2CustomizationData.color = colors[player2ColorIndex];
-            //player2Customization.ChangeColor(player2CustomizationData.color);
+            player2Customization.ChangeColor(player2CustomizationData.color);
         }
         
         //Debug
