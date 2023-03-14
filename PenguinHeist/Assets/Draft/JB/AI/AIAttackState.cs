@@ -39,6 +39,7 @@ public class AIAttackState : AIState
 
     IEnumerator Attack(WeaponSO weaponData, AIEntity entity)
     {
+        //Shoot
         for (int i = 0; i < weaponData.shotsPerClick; i++)
         {
             entity.curMagazineBullets--;
