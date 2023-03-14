@@ -4,33 +4,31 @@ using UnityEngine;
 
 public class MoneyBag : MonoBehaviour, IInteractible
 {
-    [SerializeField] float interactionDuration = 1f;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    //[SerializeField] float interactionDuration = 1f;
 
     public float GetInteractionDuration()
     {
-        return interactionDuration;
+        return 0.6f;
     }
 
     public void Interact(PlayerInteraction _playerInteraction)
     {
-        gameObject.SetActive(false);
+    }
+
+    public void InteractImmediate(PlayerInteraction _playerInteraction)
+    {
+        _playerInteraction.PplayerBag.CarryBag(this);
+        Destroy(gameObject);
     }
 
     public bool IsInteractable()
     {
         return true;
     }
+
+    public InteractionType GetInteractionType()
+    {
+        return InteractionType.MONEY_BAG;
+    }
+
 }

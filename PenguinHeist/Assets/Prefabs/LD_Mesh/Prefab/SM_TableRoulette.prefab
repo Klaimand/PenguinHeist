@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 166558795178818209}
-  - component: {fileID: 1482205305160041978}
   m_Layer: 0
   m_Name: SM_TableRoulette
   m_TagString: Untagged
@@ -33,20 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -183.026, z: 0}
---- !u!64 &1482205305160041978
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649764075406483483}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &7298681261671202335
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,6 +43,7 @@ GameObject:
   - component: {fileID: 7247197155872372150}
   - component: {fileID: 7159593007745777227}
   - component: {fileID: 5333837388914144040}
+  - component: {fileID: 8690066491791719635}
   m_Layer: 0
   m_Name: Roulette
   m_TagString: Untagged
@@ -130,3 +116,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8690066491791719635
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298681261671202335}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2573165926002547224, guid: 38f75ff1ae056f842b6e89cee02cfc15, type: 3}
