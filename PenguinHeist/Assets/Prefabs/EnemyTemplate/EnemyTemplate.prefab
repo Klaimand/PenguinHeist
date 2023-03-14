@@ -205,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 2504148330069392560}
   aIStateType: 0
+  aiType: 1
   agent: {fileID: 2504148330069392718}
   weaponData: {fileID: 0}
   chaseAndAttackRange: 7.92
@@ -215,6 +216,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   entity: {fileID: 2504148330069392567}
+  takeBagState: {fileID: 0}
 --- !u!114 &2504148330069392567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +233,7 @@ MonoBehaviour:
   aiStateManager: {fileID: 2504148330069392566}
   curMagazineBullets: 0
   isReloading: 0
+  isHoldingShield: 0
   currentAttackCd: 0
   minMaxLaunchTorque: {x: 100, y: 200}
   health: 30
@@ -248,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 2504148330069392562}
   previousState: {fileID: 0}
+  speed: 1.5
   aIStateType: 0
   wayPoints:
   - {x: 0, y: 0.5, z: 0}
@@ -292,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 2504148330069392716}
   previousState: {fileID: 2504148330069392560}
+  speed: 8
   aIStateType: 0
 --- !u!114 &2504148330069392563
 MonoBehaviour:
@@ -307,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 2504148330069392717}
   previousState: {fileID: 2504148330069392716}
+  speed: 8
   aIStateType: 0
 --- !u!114 &2504148330069392716
 MonoBehaviour:
@@ -322,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 2504148330069392563}
   previousState: {fileID: 2504148330069392562}
+  speed: 8
   aIStateType: 0
 --- !u!114 &2504148330069392717
 MonoBehaviour:
@@ -337,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 2504148330069392560}
   previousState: {fileID: 2504148330069392716}
+  speed: 8
   aIStateType: 0
   omega: 0.5
 --- !u!195 &2504148330069392718
