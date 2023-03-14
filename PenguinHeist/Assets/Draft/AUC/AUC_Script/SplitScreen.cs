@@ -119,13 +119,14 @@ public class SplitScreen : MonoBehaviour {
 	private void AssignMaterialAndShader()
 	{
 		//Creates both temporary materials required to create the splitscreen.
-		Material tempMat = new Material(Shader.Find("Unlit/Color"));
-		tempMat.color = splitterColor;
-		splitter.GetComponent<Renderer>().material = tempMat;
+		//Material tempMat = new Material(Shader.Find("Unlit/Color"));
+		//tempMat.color = splitterColor;
+		//splitter.GetComponent<Renderer>().material = tempMat;
+		//Material tempMat2 = new Material(Shader.Find("Mask/SplitScreen"));
+		//split.GetComponent<Renderer>().material = tempMat2;
+		
 		splitter.GetComponent<Renderer>().sortingOrder = 2;
 		splitter.layer = LayerMask.NameToLayer("TransparentFX");
-		Material tempMat2 = new Material(Shader.Find("Mask/SplitScreen"));
-		split.GetComponent<Renderer>().material = tempMat2;
 		split.layer = LayerMask.NameToLayer("TransparentFX");
 	}
 
