@@ -16,21 +16,26 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
 
     public float playerReviveTimer = 7.5f;
     private float _reviveTimer = default;
-    
+
     public float invincibleDuration = 2f;
 
     public TextMeshProUGUI playerHealthDebugText;
     public TextMeshProUGUI playerStateDebugText;
-    
+
 
     public bool inReanimation;
     public bool isInvincible;
-    
+
     [Header("Rescue Bar")]
     public GameObject knockOutCanvas;
     [SerializeField] private Slider lifeSlider;
     [SerializeField] private Image sliderImage;
-    
+
+    public bool IsNotAlive => playerstate != PlayerState.ALIVE;
+    public bool IsGettingUp => playerstate == PlayerState.GETTING_UP;
+
+    [SerializeField] float gettingUpTime = 0.8f;
+
     #endregion
 
     #region Event Methods
@@ -41,25 +46,31 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         InitPlayerHealth();
     }
 
-    private void InitPlayerHealth()
+    private void InitPlayerHealth(bool _revived = false)
     {
         // Health Init Values
         currentHealth = maxHealth;
         playerHealthDebugText.text = currentHealth.ToString();
         _knockOutTimer = playerKnockOutTimer;
         _reviveTimer = playerReviveTimer;
-        playerstate = PlayerState.ALIVE;
-        
+
+        playerstate = _revived ? PlayerState.GETTING_UP : PlayerState.ALIVE;
+
         // Res part
         lifeSlider.maxValue = playerKnockOutTimer;
         lifeSlider.value = playerKnockOutTimer;
         knockOutCanvas.SetActive(false);
-        
+
         StartCoroutine(ReviveInvincibility(invincibleDuration));
-        
+
         // TODO - Enlever debug
         playerStateDebugText.text = $"ALIVE";
         playerStateDebugText.color = Color.green;
+
+        if (_revived)
+        {
+            StartCoroutine(GetUp());
+        }
     }
 
     // Update is called once per frame
@@ -71,7 +82,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
             case PlayerState.KNOCKOUT: OnKnockOut(); break;
             case PlayerState.DEAD: break;
             case PlayerState.REVIVE: OnRevive(); break;
-            /*default: throw new ArgumentOutOfRangeException();*/
+                /*default: throw new ArgumentOutOfRangeException();*/
         }
     }
 
@@ -94,7 +105,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         playerstate = PlayerState.KNOCKOUT;
         knockOutCanvas.SetActive(true);
         Debug.Log(knockOutCanvas);
-        
+
         // TODO - Enlever debug
         playerStateDebugText.text = $"KNOCK-OUT";
         playerStateDebugText.color = Color.yellow;
@@ -108,26 +119,27 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         lifeSlider.maxValue = playerKnockOutTimer;
         lifeSlider.value = playerKnockOutTimer;
         knockOutCanvas.SetActive(false);
-        
+
         // TODO - Enlever debug
         playerStateDebugText.text = $"DEAD";
         playerStateDebugText.color = Color.black;
     }
-    
+
+    [ContextMenu("Revive Player")]
     private void RevivePlayer()
     {
-        InitPlayerHealth();
+        InitPlayerHealth(true);
     }
 
     private void OnKnockOut()
     {
         _knockOutTimer -= Time.deltaTime;
-        
+
         lifeSlider.value = _knockOutTimer;
-        sliderImage.color = Color.Lerp(Color.red, Color.green, _knockOutTimer/playerKnockOutTimer);
-        
+        sliderImage.color = Color.Lerp(Color.red, Color.green, _knockOutTimer / playerKnockOutTimer);
+
         if (_knockOutTimer > 0) return;
-        
+
         // No more time to Revive
         PlayerDeath();
     }
@@ -142,15 +154,15 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         {
             playerReviveTimer = 0;
         }
-        
+
         inReanimation = true;
-        
+
         if (_reviveTimer < playerReviveTimer) return;
         inReanimation = false;
         RevivePlayer();
     }
 
-    
+
     [ContextMenu("Kill Player")]
     void Kill()
     {
@@ -163,16 +175,24 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         yield return new WaitForSeconds(_invincibleDuration);
         isInvincible = false;
     }
+
+
+    IEnumerator GetUp()
+    {
+        yield return new WaitForSeconds(gettingUpTime);
+        playerstate = PlayerState.ALIVE;
+    }
+
     #endregion
 
     #region IInteractable Implementation
     public void Interact(PlayerInteraction _playerInteraction)
     {
-        RevivePlayer(); // TODO Modif par rester appuyez 
+        RevivePlayer(); // TODO Modif par rester appuyer
         Debug.Log("Interact for revive");
         playerstate = PlayerState.REVIVE;
     }
- 
+
     public float GetInteractionDuration()
     {
         return 3.5f;
@@ -182,6 +202,17 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     {
         return playerstate == PlayerState.KNOCKOUT;
     }
+
+    public void InteractImmediate(PlayerInteraction _playerInteraction)
+    {
+
+    }
+
+    public InteractionType GetInteractionType()
+    {
+        return InteractionType.REVIVE;
+    }
+
     #endregion
 }
 
@@ -190,5 +221,6 @@ public enum PlayerState
     ALIVE,
     KNOCKOUT,
     DEAD,
-    REVIVE
+    REVIVE,
+    GETTING_UP
 }

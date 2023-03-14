@@ -21,6 +21,7 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] PlayerBag playerBag;
     [SerializeField] PlayerInteraction playerInteraction;
     [SerializeField] PlayerMelee playerMelee;
+    [SerializeField] PlayerHealth playerHealth;
     [SerializeField] Animator animator;
     [SerializeField] Animator moneyBagAnimator;
     [SerializeField] Animator batonAnimator;
@@ -29,6 +30,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     [Header("Values")]
     [SerializeField] float speedIdleThreshold = 0.2f;
+    [SerializeField] float layerWeightChangeTime = 0.1f;
 
     LocomotionState curState = LocomotionState.IDLE;
 
@@ -77,6 +79,17 @@ public class PlayerAnimationController : MonoBehaviour
 
     void ProcessCurState()
     {
+        if (playerHealth.IsGettingUp)
+        {
+            curState = LocomotionState.REZ;
+            return;
+        }
+        else if (playerHealth.IsNotAlive)
+        {
+            curState = LocomotionState.DEAD;
+            return;
+        }
+
         if (playerInteraction.IsInteracting)
         {
             if (playerBag.IsCarrying)
@@ -90,10 +103,12 @@ public class PlayerAnimationController : MonoBehaviour
         if (controller.Speed < speedIdleThreshold)
         {
             curState = LocomotionState.IDLE;
+            return;
         }
         else
         {
             curState = LocomotionState.WALK;
+            return;
         }
     }
 
@@ -103,6 +118,22 @@ public class PlayerAnimationController : MonoBehaviour
         {
             moneyBagAnimator.SetTrigger("collect");
             //print("aaa");
+        }
+
+        if (lastState != LocomotionState.DEAD && lastState != LocomotionState.REZ &&
+        (curState == LocomotionState.DEAD || curState == LocomotionState.REZ))
+        {
+            SetAnimatorWeight(animator, 1, false, layerWeightChangeTime);
+            SetAnimatorWeight(animator, 2, false, layerWeightChangeTime);
+            //animator.SetLayerWeight(1, 0f);
+            //animator.SetLayerWeight(2, 0f);
+        }
+        else if ((lastState == LocomotionState.DEAD || lastState == LocomotionState.REZ) && curState != LocomotionState.DEAD && curState != LocomotionState.REZ)
+        {
+            //animator.SetLayerWeight(1, 1f);
+            //animator.SetLayerWeight(2, 1f);
+            SetAnimatorWeight(animator, 1, true, layerWeightChangeTime);
+            SetAnimatorWeight(animator, 2, true, layerWeightChangeTime);
         }
 
         //if (lastState == LocomotionState.MONEY_BAG && curState != LocomotionState.MONEY_BAG)
@@ -123,7 +154,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         if (playerInteraction.IsInteracting) showGun = false;
 
-        //if is dead
+        if (playerHealth.IsNotAlive) showGun = false;
 
         if (showGun != gunsParent.activeInHierarchy)
         {
@@ -165,5 +196,28 @@ public class PlayerAnimationController : MonoBehaviour
     {
         animator.SetTrigger("melee");
         batonAnimator.SetTrigger("hit");
+    }
+
+    void SetAnimatorWeight(Animator _animator, int _layerIndex, bool _increase, float _time)
+    {
+        StartCoroutine(SetAnimatorLayerWeightCoroutine(_animator, _layerIndex, _increase, _time));
+    }
+
+    IEnumerator SetAnimatorLayerWeightCoroutine(Animator _animator, int _layerIndex, bool _increase, float _time)
+    {
+        float t = 0f;
+
+        float a = _increase ? 0f : 1f;
+        float b = _increase ? 1f : 0f;
+
+        while (t < _time)
+        {
+            _animator.SetLayerWeight(_layerIndex, Mathf.Lerp(a, b, t / _time));
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        _animator.SetLayerWeight(_layerIndex, b);
     }
 }

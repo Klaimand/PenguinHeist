@@ -11,6 +11,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] PlayerShoot playerShoot;
     [SerializeField] PlayerInteraction playerInteraction;
     [SerializeField] PlayerBag playerBag;
+    [SerializeField] PlayerHealth playerHealth;
 
     [Header("Values")]
     [SerializeField] float axisDeadzone = 0.1f;
@@ -88,6 +89,8 @@ public class PlayerController2 : MonoBehaviour
         rawAxis.NormalizeIfGreater();
 
         if (playerInteraction.IsInteracting) rawAxis = Vector2.zero;
+
+        if (playerHealth.IsNotAlive) rawAxis = Vector2.zero;
 
         smoothedAxis = Vector2.SmoothDamp(smoothedAxis, rawAxis, ref refAxisVelocity, axisSmoothTime, axisMaxSpeed);
     }

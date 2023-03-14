@@ -5,7 +5,8 @@ using UnityEngine;
 public enum InteractionType
 {
     DEFAULT,
-    MONEY_BAG
+    MONEY_BAG,
+    REVIVE
 }
 
 public interface IInteractible

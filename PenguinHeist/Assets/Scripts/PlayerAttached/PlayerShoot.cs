@@ -13,6 +13,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] PlayerInteraction playerInteraction;
     [SerializeField] PlayerMelee melee;
     [SerializeField] PlayerBag playerBag;
+    [SerializeField] PlayerHealth playerHealth;
 
     [SerializeField] float aimDeadzone = 0.1f;
     [SerializeField] float shootTriggerDeadzone = 0.1f;
@@ -67,9 +68,6 @@ public class PlayerShoot : MonoBehaviour
         });
     }
 
-
-    [SerializeField] Transform debugTargetTransform;
-
     public Action OnPlayerShoot;
     public Action OnPlayerChangeWeapon;
 
@@ -110,9 +108,6 @@ public class PlayerShoot : MonoBehaviour
             isAiming = false;
             targetPos = transform.position;
         }
-
-        //isAiming = true;
-        //targetPos = debugTargetTransform.position;
 
         CheckShoot();
 
@@ -168,6 +163,8 @@ public class PlayerShoot : MonoBehaviour
         if (!isPressingShootInput) return;
 
         if (timeSinceLastClick < curWeapon.fireRate) return;
+
+        if (playerHealth.IsNotAlive) return;
 
         timeSinceLastClick = 0f;
         StartCoroutine(DoBurstShoot());
