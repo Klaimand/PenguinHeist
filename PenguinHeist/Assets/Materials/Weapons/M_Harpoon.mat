@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Harpoon
-  m_Shader: {fileID: -6465566751694194690, guid: 16e2c9b4bfd76c0498a7c70991bc9308, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: ef3a2e2412b91d74fb14d373a9c0bef4, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -57,12 +57,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Emissive:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MGO:
-        m_Texture: {fileID: 2800000, guid: 860701efb4533264487e09ad03c4419c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9541bef82bfd0b040ad53b41abbf5ee8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6bf843dedc21aa042a35099dfd965af1, type: 3}
+        m_Texture: {fileID: 2800000, guid: b4c843481ac5a344693e61006c6e65e8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -74,7 +78,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 5068cd4ea26eccd4b8ed9155400c55b9, type: 3}
+        m_Texture: {fileID: 2800000, guid: c4f00d08bf7c4334dbecdfdaffe13c9b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -113,6 +117,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EmissivePower: 2
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
