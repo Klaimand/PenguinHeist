@@ -1810,10 +1810,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1148529878144075561, guid: dce36e8912887f24599dc52c487c73a1, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 1bf42a7bf9b5fee4492196ca2231b6ea, type: 2}
     - target: {fileID: 2504148330069392570, guid: dce36e8912887f24599dc52c487c73a1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1861,10 +1857,6 @@ PrefabInstance:
     - target: {fileID: 2504148330069392719, guid: dce36e8912887f24599dc52c487c73a1, type: 3}
       propertyPath: m_Name
       value: PolicemanTemplate
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504148330069392719, guid: dce36e8912887f24599dc52c487c73a1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce36e8912887f24599dc52c487c73a1, type: 3}

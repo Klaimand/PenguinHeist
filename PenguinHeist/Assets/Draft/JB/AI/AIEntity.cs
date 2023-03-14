@@ -20,6 +20,7 @@ public class AIEntity : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        isHoldingShield = true;
         aiStateManager.weaponData = weaponData;
     }
 

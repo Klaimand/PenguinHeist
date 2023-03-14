@@ -4,14 +4,22 @@ public class Shield : MonoBehaviour, IDamageable
 {
     [SerializeField] int health = 100;
     [SerializeField] AIEntity aiEntity;
-    
+
+    bool dead = false;
+
     public void TakeDamage(int _damage)
     {
         health -= _damage;
-        if (health <= 0)
+        if (!dead && health <= 0)
         {
+            dead = true;
             aiEntity.isHoldingShield = false;
-            Destroy(gameObject);
+
+            //gameObject.layer = LayerMask.NameToLayer("Default");
+            transform.parent = null;
+            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+            rb.AddTorque(Random.onUnitSphere * 20f);
+            Destroy(gameObject, 10f);
         }
     }
 }
