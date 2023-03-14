@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8559650553493464044
+--- !u!1 &2604701451317199322
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9043839926906681686}
-  - component: {fileID: 5345200917401270003}
-  - component: {fileID: 7910854924372247097}
-  - component: {fileID: 2497017211520690928}
+  - component: {fileID: 3417689542361389920}
+  - component: {fileID: 1783928009565902021}
+  - component: {fileID: 4550111560585666575}
   m_Layer: 0
-  m_Name: SM_PillarPrefab
+  m_Name: SM_DoorBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9043839926906681686
+--- !u!4 &3417689542361389920
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8559650553493464044}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 2604701451317199322}
+  m_LocalRotation: {x: -0.0068859374, y: -0.01572129, z: -0.9158488, w: 0.40115637}
+  m_LocalPosition: {x: 1.12, y: 1.08, z: 0.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 9175230866610645934}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!33 &5345200917401270003
+  m_LocalEulerAnglesHint: {x: -1.967, y: 0, z: -132.692}
+--- !u!33 &1783928009565902021
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8559650553493464044}
-  m_Mesh: {fileID: 5416423827460139436, guid: 91eb7db7dad7126459a62a4de6b61928, type: 3}
---- !u!23 &7910854924372247097
+  m_GameObject: {fileID: 2604701451317199322}
+  m_Mesh: {fileID: 6347343762069344509, guid: 58e4ba4025ba6074da95ca99456c1da7, type: 3}
+--- !u!23 &4550111560585666575
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8559650553493464044}
+  m_GameObject: {fileID: 2604701451317199322}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,17 +83,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2497017211520690928
-CapsuleCollider:
+--- !u!1 &8367449997925855508
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8559650553493464044}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.69699365
-  m_Height: 6.648757
-  m_Direction: 2
-  m_Center: {x: 0.010895371, y: 0.015699267, z: 2.673518}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9175230866610645934}
+  m_Layer: 0
+  m_Name: ExitDoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9175230866610645934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367449997925855508}
+  m_LocalRotation: {x: -0.29883623, y: 0.6408564, z: 0.6408564, w: 0.29883623}
+  m_LocalPosition: {x: 0.84782386, y: -0.787871, z: -1.3835118}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3417689542361389920}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
