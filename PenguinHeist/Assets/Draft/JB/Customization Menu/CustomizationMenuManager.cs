@@ -130,26 +130,12 @@ public class CustomizationMenuManager : MonoBehaviour
         if (Input.GetButtonDown("Confirm"))
         {
             player1Confirm = !player1Confirm;
-            if (player1Confirm)
-            {
-                player1ConfirmText.text = "Confirmed";
-            }
-            else
-            {
-                player1ConfirmText.text = "Confirm ?";
-            }
+            player1ConfirmText.text = player1Confirm ? "Confirmed" : "Confirm ?";
         }
         else if (Input.GetButtonDown("ConfirmP2"))
         {
             player2Confirm = !player2Confirm;
-            if (player2Confirm)
-            {
-                player2ConfirmText.text = "Confirmed";
-            }
-            else
-            {
-                player2ConfirmText.text = "Confirm ?";
-            }
+            player2ConfirmText.text = player2Confirm ? "Confirmed" : "Confirm ?";
         }
     }
 }
