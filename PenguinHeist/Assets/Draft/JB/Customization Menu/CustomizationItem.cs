@@ -39,39 +39,39 @@ public class CustomizationItem : MonoBehaviour, IUpdateSelectedHandler
         switch (customizationType)
         {
             case CustomizationType.Hat :
-                if (playerCustomizationData.hat == default)
+                if (playerCustomizationData.hat == String.Empty)
                 {
                     return;
                 }
-                currentIndex = Array.IndexOf(customizationItemData.customizationItemsGameObject, playerCustomizationData.hat);
+                currentIndex = Array.IndexOf(customizationItemData.customizationItemsName, playerCustomizationData.hat);
                 break;
             case CustomizationType.Glasses :
-                if (playerCustomizationData.glasses == default)
+                if (playerCustomizationData.glasses == String.Empty)
                 {
                     return;
                 }
-                currentIndex = Array.IndexOf(customizationItemData.customizationItemsGameObject, playerCustomizationData.glasses);
+                currentIndex = Array.IndexOf(customizationItemData.customizationItemsName, playerCustomizationData.glasses);
                 break;
             case CustomizationType.Mustache :
-                if (playerCustomizationData.mustache == default)
+                if (playerCustomizationData.mustache == String.Empty)
                 {
                     return;
                 }
-                currentIndex = Array.IndexOf(customizationItemData.customizationItemsGameObject, playerCustomizationData.mustache);
+                currentIndex = Array.IndexOf(customizationItemData.customizationItemsName, playerCustomizationData.mustache);
                 break;
             case CustomizationType.Neck :
-                if (playerCustomizationData.neck == default)
+                if (playerCustomizationData.neck == String.Empty)
                 {
                     return;
                 }
-                currentIndex = Array.IndexOf(customizationItemData.customizationItemsGameObject, playerCustomizationData.neck);
+                currentIndex = Array.IndexOf(customizationItemData.customizationItemsName, playerCustomizationData.neck);
                 break;
             case CustomizationType.Flower :
-                if (playerCustomizationData.flower == default)
+                if (playerCustomizationData.flower == String.Empty)
                 {
                     return;
                 }
-                currentIndex = Array.IndexOf(customizationItemData.customizationItemsGameObject, playerCustomizationData.flower);
+                currentIndex = Array.IndexOf(customizationItemData.customizationItemsName, playerCustomizationData.flower);
                 break;
         }
         image.sprite = customizationItemData.customizationItemsImage[currentIndex];
@@ -99,7 +99,7 @@ public class CustomizationItem : MonoBehaviour, IUpdateSelectedHandler
                 }
             }
             image.sprite = customizationItemData.customizationItemsImage[currentIndex];
-            CustomizationMenuManager.instance.SetCustomization(customizationItemData.customizationType, customizationItemData.customizationItemsGameObject[currentIndex], player);
+            CustomizationMenuManager.instance.SetCustomization(customizationItemData.customizationType, customizationItemData.customizationItemsName[currentIndex], player);
             currentDelay = nextItemDelay;
         }
     }
