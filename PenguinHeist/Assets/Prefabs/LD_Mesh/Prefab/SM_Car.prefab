@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4431601184306151200}
   - component: {fileID: 734067332163022981}
   - component: {fileID: 3299758710718153807}
-  - component: {fileID: 7185792901856188788}
+  - component: {fileID: 856480419162461334}
   m_Layer: 0
   m_Name: SM_Car
   m_TagString: Untagged
@@ -96,8 +96,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7185792901856188788
-MeshCollider:
+--- !u!136 &856480419162461334
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,10 +106,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2783131832183395012, guid: 69cd15dda3bc11946bb1f4a43142882e, type: 3}
+  m_Radius: 5.846619
+  m_Height: 11.693238
+  m_Direction: 1
+  m_Center: {x: -0.5051674, y: 0.0000004930631, z: 1.3871465}
 --- !u!1001 &180275770984891820
 PrefabInstance:
   m_ObjectHideFlags: 0
