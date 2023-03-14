@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,11 +9,14 @@ public enum  AIStateType
     Walk,
     Death,
     Interact,
-    Shoot,
     GunHold,
-    Reload,
-    HoldShield,
-    Hit
+    HoldShield
+}
+
+public enum AIType
+{
+    Police,
+    Mafia
 }
 
 public class AIStateManager : MonoBehaviour
@@ -21,6 +25,7 @@ public class AIStateManager : MonoBehaviour
     [Tooltip("Current state of the AI and first state to run")]
     [SerializeField] public AIState currentState;
     [SerializeField] public AIStateType aIStateType;
+    [SerializeField] public AIType aiType = AIType.Mafia;
     [Header("NavMesh")]
     public NavMeshAgent agent;
     [HideInInspector] public WeaponSO weaponData;
@@ -31,10 +36,16 @@ public class AIStateManager : MonoBehaviour
     public float attackRange;
     [Tooltip("Distance to move back when the player is too close( Only for mafia agent)")]
     public float moveBackRange;
-    public Transform player;
+    [HideInInspector] public Transform player;
     [Tooltip("Obstacles of the AI vision")]
     public LayerMask obstacleMask;
     public AIEntity entity;
+    [SerializeField] AITakeBagState takeBagState;
+
+    private void Start()
+    {
+        ChooseClosestPlayer();
+    }
 
     void Update()
     {
@@ -54,6 +65,32 @@ public class AIStateManager : MonoBehaviour
     private void SwitchToTheNextState(AIState nextState)
     {
         currentState = nextState;
-        aIStateType = currentState.aIStateType;
+        if (currentState.aIStateType != AIStateType.TPose)
+        {
+            aIStateType = currentState.aIStateType;
+        }
+    }
+
+    public void SwitchToTakeBag(Transform bag)
+    {
+        aIStateType = AIStateType.Interact;
+        currentState = takeBagState;
+        takeBagState.Init(agent, bag);
+    }
+    
+    void ChooseClosestPlayer()
+    {
+        agent.SetDestination(LevelManager.instance.player1.position);
+        float distanceToPlayer1 = agent.remainingDistance;
+        agent.SetDestination(LevelManager.instance.player2.position);
+        float distanceToPlayer2 = agent.remainingDistance;
+        if (distanceToPlayer1 < distanceToPlayer2)
+        {
+            player = LevelManager.instance.player1;
+        }
+        else
+        {
+            player = LevelManager.instance.player2;
+        }
     }
 }

@@ -39,6 +39,7 @@ public class AIAttackState : AIState
 
     IEnumerator Attack(WeaponSO weaponData, AIEntity entity)
     {
+        //Shoot
         for (int i = 0; i < weaponData.shotsPerClick; i++)
         {
             entity.curMagazineBullets--;
@@ -77,7 +78,6 @@ public class AIAttackState : AIState
     
     IEnumerator Reload(WeaponSO weapon, AIEntity entity)
     {
-        entity.aiStateManager.aIStateType = AIStateType.Reload;
         yield return new WaitForSeconds(weapon.reloadTime);
         entity.curMagazineBullets = weapon.bulletsPerMagazine;
         entity.isReloading = false;
