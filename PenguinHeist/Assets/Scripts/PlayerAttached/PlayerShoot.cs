@@ -180,7 +180,7 @@ public class PlayerShoot : MonoBehaviour
             if (curMagazineBullets > 0)
             {
                 Shoot();
-                TextTest();
+                //TextTest();
                 timeSinceLastBullet = 0f;
             }
             else if (curTotalBullets > 0)

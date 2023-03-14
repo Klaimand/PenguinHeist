@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class AIEntity : MonoBehaviour, IDamageable
 {
     [SerializeField] private WeaponSO weaponData;
-    [SerializeField] AIStateManager aiStateManager;
+    [SerializeField] public AIStateManager aiStateManager;
     [HideInInspector] public int curMagazineBullets;
     [HideInInspector] public bool isReloading;
     [HideInInspector] public float currentAttackCd;
@@ -22,6 +22,7 @@ public class AIEntity : MonoBehaviour, IDamageable
     [ContextMenu("Die")]
     void Die()
     {
+        aiStateManager.aIStateType = AIStateType.Death;
         DropWeapon();
         Destroy(transform.gameObject);
     }
@@ -46,5 +47,6 @@ public class AIEntity : MonoBehaviour, IDamageable
         {
             Die();
         }
+        aiStateManager.aIStateType = AIStateType.Hit;
     }
 }

@@ -3,7 +3,12 @@ guid: d6afed1e2415e7d40a7495685b785840
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PM3D_Sphere3D1_9
+    second: {fileID: 2100000, guid: 4986e82999978294fab0943acb0a019d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

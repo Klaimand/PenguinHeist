@@ -336,7 +336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &937793611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,6 +989,12 @@ MonoBehaviour:
   splitDistance: 9
   splitterColor: {r: 0, g: 0, b: 0, a: 1}
   splitterWidth: 0.05
+  splitterWidthOnDistance:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   camera1: {fileID: 239004215572360724}
   camera2: {fileID: 1835247316}
   yOffset: 16
@@ -999,6 +1005,7 @@ MonoBehaviour:
   offSetByStickMultiplier: 1.05
   player1OffSetCam: {x: 0, y: 0, z: 0}
   player2OffSetCam: {x: 0, y: 0, z: 0}
+  distance: 0
 --- !u!4 &239004215572360751
 Transform:
   m_ObjectHideFlags: 0
