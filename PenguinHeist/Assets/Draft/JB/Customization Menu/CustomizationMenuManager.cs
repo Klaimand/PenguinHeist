@@ -15,22 +15,25 @@ public class CustomizationMenuManager : MonoBehaviour
 {
     public static CustomizationMenuManager instance;
     
-    public PlayerCustomizationData player1CustomizationData;
-    public PlayerCustomizationData player2CustomizationData;
+    public PlayerCustomizationData player1CustomizationData = default;
+    public PlayerCustomizationData player2CustomizationData = default;
+    
     [SerializeField] private PlayerCustomization player1Customization;
     [SerializeField] private PlayerCustomization player2Customization;
+    
     [SerializeField] Color[] colors;
+    
     int player1ColorIndex = 0;
     int player2ColorIndex = 0;
+    
     [Header("Debug")] 
     [SerializeField] private TextMeshProUGUI player1Text;
     [SerializeField] private TextMeshProUGUI player2Text;
     [SerializeField] private TextMeshProUGUI player1ConfirmText;
     [SerializeField] private TextMeshProUGUI player2ConfirmText;
     
-
-    private bool player1Confirm;
-    private bool player2Confirm;
+    private bool isPlayer1Confirmed;
+    private bool isPlayer2Confirmed;
 
     private void Awake()
     {
@@ -49,10 +52,22 @@ public class CustomizationMenuManager : MonoBehaviour
         Init();
     }
 
+    private GameObject readyCanvas;
+    private float timerTwoPlayerReady;
+    private bool isReady;
     private void Update()
     {
-        ChangeColor();
-        Confirm();
+        if (!(isPlayer1Confirmed & isPlayer2Confirmed)) return;
+        
+        // if (!isReady)
+        // {
+        //     readyCanvas.SetActive(true);
+        //     timerTwoPlayerReady = 0;
+        //     isReady = true;
+        // }
+        //
+        // timerTwoPlayerReady += Time.deltaTime;
+        // if (timerTwoPlayerReady < 5f) return;
     }
 
     void Init()
@@ -95,45 +110,44 @@ public class CustomizationMenuManager : MonoBehaviour
         playerCustomization.SetCustomization(customizationType, name);
     }
 
-    void ChangeColor()
+   public void ChangeColor(int playerIndex)
     {
-        if (Input.GetButtonDown("Change Color"))
+        if (playerIndex == 0 )
         {
             player1ColorIndex++;
-            if (player1ColorIndex >= colors.Length)
-            {
-                player1ColorIndex = 0;
-            }
+            
+            if (player1ColorIndex >= colors.Length) player1ColorIndex = 0;
+            
             player1CustomizationData.color = colors[player1ColorIndex];
             player1Customization.ChangeColor(player1CustomizationData.color);
+            
+            player1Text.color = player1CustomizationData.color; // Debug
         }
-        else if (Input.GetButtonDown("Change ColorP2"))
+        else
         {
             player2ColorIndex++;
-            if (player2ColorIndex >= colors.Length)
-            {
-                player2ColorIndex = 0;
-            }
+            if (player2ColorIndex >= colors.Length) player2ColorIndex = 0;
+            
             player2CustomizationData.color = colors[player2ColorIndex];
             player2Customization.ChangeColor(player2CustomizationData.color);
+            
+            player2Text.color = player2CustomizationData.color; // Debug
         }
-        
-        //Debug
-        player1Text.color = player1CustomizationData.color;
-        player2Text.color = player2CustomizationData.color;
     }
 
-    void Confirm()
+    public void Confirm(int playerIndex)
     {
-        if (Input.GetButtonDown("Confirm"))
+        Debug.Log(playerIndex);
+        
+        if (playerIndex == 0)
         {
-            player1Confirm = !player1Confirm;
-            player1ConfirmText.text = player1Confirm ? "Confirmed" : "Confirm ?";
+            isPlayer1Confirmed = !isPlayer1Confirmed;
+            player1ConfirmText.text = isPlayer1Confirmed ? "Confirmed" : "Confirm ?";
         }
-        else if (Input.GetButtonDown("ConfirmP2"))
+        else
         {
-            player2Confirm = !player2Confirm;
-            player2ConfirmText.text = player2Confirm ? "Confirmed" : "Confirm ?";
+            isPlayer2Confirmed = !isPlayer2Confirmed;
+            player2ConfirmText.text = isPlayer2Confirmed ? "Confirmed" : "Confirm ?";
         }
     }
 }
