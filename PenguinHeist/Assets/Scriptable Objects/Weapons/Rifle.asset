@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef2fda6e5a0d5b418b00573ec490f91, type: 3}
+  m_Name: Rifle
+  m_EditorClassIdentifier: 
+  spread: 30
+  bulletsPerMagazine: 60
+  totalBulletsOnPickup: 200
+  reloadTime: 3
+  fireRate: 0.45
+  shotsPerClick: 3
+  timeBetweenShots: 0.085
+  weaponPrefab: {fileID: 5731604685418708665, guid: 5cbc12528689bff4e9ae7833fe860c8d, type: 3}
+  bulletPrefab: {fileID: 7369557161259263665, guid: efd294d8884c9294bb071532f20350e0, type: 3}
+  muzzleFlash: {fileID: 0}
+  weaponIndex: 2
