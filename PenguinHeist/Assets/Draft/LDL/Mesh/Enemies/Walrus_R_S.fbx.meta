@@ -3,7 +3,12 @@ guid: 432034bcdc5025a4389b26c22bb5f8ba
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Morse
+    second: {fileID: 2100000, guid: 0cb8c76563b3e83428220d01bab054e7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

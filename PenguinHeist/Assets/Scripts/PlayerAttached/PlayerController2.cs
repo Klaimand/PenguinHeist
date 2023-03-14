@@ -47,16 +47,16 @@ public class PlayerController2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (playerIndex == 0)
+        switch (playerIndex)
         {
-            hMove = "Horizontal";
-            vMove = "Vertical";
-        }
-
-        if (playerIndex == 1)
-        {
-            hMove = "HorizontalP2";
-            vMove = "VerticalP2";
+            case 0:
+                hMove = "Horizontal";
+                vMove = "Vertical";
+                break;
+            case 1:
+                hMove = "HorizontalP2";
+                vMove = "VerticalP2";
+                break;
         }
     }
 
