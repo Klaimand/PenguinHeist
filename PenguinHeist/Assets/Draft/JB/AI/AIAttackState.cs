@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class AIAttackState : AIState
 {
+    public Action OnEnemyShoot;
+
     protected RaycastHit hit;
 
     public override void MoveTo(NavMeshAgent agent, Vector3 destination)
@@ -39,7 +41,8 @@ public class AIAttackState : AIState
 
     IEnumerator Attack(WeaponSO weaponData, AIEntity entity)
     {
-        //Shoot
+        OnEnemyShoot?.Invoke(); //shoot
+
         for (int i = 0; i < weaponData.shotsPerClick; i++)
         {
             entity.curMagazineBullets--;
@@ -68,14 +71,14 @@ public class AIAttackState : AIState
         }
 
         entity.currentAttackCd = 0f;
-        StartCoroutine(Attack(weapon,entity));
+        StartCoroutine(Attack(weapon, entity));
     }
-    
+
     void IncreaseTimers(AIEntity entity)
     {
         entity.currentAttackCd += Time.deltaTime;
     }
-    
+
     IEnumerator Reload(WeaponSO weapon, AIEntity entity)
     {
         yield return new WaitForSeconds(weapon.reloadTime);
