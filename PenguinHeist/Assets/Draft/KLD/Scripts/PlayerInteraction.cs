@@ -5,6 +5,9 @@ using System;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    [SerializeField] PlayerBag playerBag;
+    public PlayerBag PplayerBag => playerBag;
+
     [SerializeField] LayerMask interactionLayers;
 
     [SerializeField] float fwdCastDistance = 0.4f;
@@ -13,6 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     bool isDetectingInteraction = false;
 
     bool isInteracting = false;
+    public bool IsInteracting => isInteracting;
 
     public Action OnPlayerInteract;
 
@@ -35,7 +39,7 @@ public class PlayerInteraction : MonoBehaviour
 
         isDetectingInteraction = true;
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (!playerBag.IsCarrying && Input.GetKeyDown(KeyCode.G))
         {
             for (int i = 0; i < cols.Length; i++)
             {
@@ -45,6 +49,7 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     if (ii.GetInteractionDuration() > 0f)
                     {
+                        ii.InteractImmediate(this);
                         isInteracting = true;
                         StartCoroutine(WaitAndInteract(ii.GetInteractionDuration(), ii));
                     }
