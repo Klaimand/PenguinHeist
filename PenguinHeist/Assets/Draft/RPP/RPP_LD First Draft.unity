@@ -8607,6 +8607,10 @@ PrefabInstance:
       propertyPath: wayPoints.Array.data[4].z
       value: -37.147285
       objectReference: {fileID: 0}
+    - target: {fileID: 2504148330069392561, guid: 8b4ef0aa9fccf724eafaab713b7e83d5, type: 3}
+      propertyPath: viewRadius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2504148330069392566, guid: 8b4ef0aa9fccf724eafaab713b7e83d5, type: 3}
       propertyPath: player
       value: 
@@ -16731,7 +16735,7 @@ GameObject:
   - component: {fileID: 1537334372}
   - component: {fileID: 1537334371}
   - component: {fileID: 1537334375}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground 50:40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
