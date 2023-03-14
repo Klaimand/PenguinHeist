@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8128094710613096350}
   - component: {fileID: 5143973368723945531}
   - component: {fileID: 6955783028069944561}
+  - component: {fileID: 8130374336140908529}
   m_Layer: 0
   m_Name: SM_CouchPillow
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8130374336140908529
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8901113698834410788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5114722, y: 1.8401526, z: 1.5209078}
+  m_Center: {x: -0.0049963593, y: 0.12555858, z: 0.7667076}

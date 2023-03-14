@@ -24,7 +24,8 @@ public class WaveManager : MonoBehaviour
         {
             for (int i = 0; i < enemyCountToSpawn; i++)
             {
-                Instantiate(enemies[Random.Range(0, enemies.Length)], spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+                LevelManager.instance.AddPoliceEnemy(Instantiate(enemies[Random.Range(0, enemies.Length)], 
+                    spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity).GetComponent<AIStateManager>());
             }
             yield return new WaitForSeconds(spawnDelay);
         }

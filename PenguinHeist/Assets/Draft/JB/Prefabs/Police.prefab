@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3328721621561081936}
   - component: {fileID: 3328721621561081937}
   - component: {fileID: 3328721621561081942}
+  - component: {fileID: 2669387335993290256}
   m_Layer: 7
   m_Name: Police
   m_TagString: Untagged
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 3328721621561081936}
   aIStateType: 0
+  aiType: 1
   agent: {fileID: 3328721621561081933}
   weaponData: {fileID: 0}
   chaseAndAttackRange: 8.41
@@ -150,6 +152,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   entity: {fileID: 3328721621561081939}
+  takeBagState: {fileID: 2669387335993290256}
 --- !u!114 &3328721621561081939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +169,7 @@ MonoBehaviour:
   aiStateManager: {fileID: 3328721621561081938}
   curMagazineBullets: 0
   isReloading: 0
+  isHoldingShield: 0
   currentAttackCd: 0
   minMaxLaunchTorque: {x: 100, y: 200}
   health: 30
@@ -214,3 +218,18 @@ MonoBehaviour:
   nextState: {fileID: 3328721621561081937}
   previousState: {fileID: 3328721621561081936}
   aIStateType: 2
+--- !u!114 &2669387335993290256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328721621561081940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96724fa3ea19b744ab3995e5f984371e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 0}
+  previousState: {fileID: 0}
+  aIStateType: 0
