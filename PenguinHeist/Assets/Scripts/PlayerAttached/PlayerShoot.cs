@@ -14,6 +14,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] PlayerMelee melee;
     [SerializeField] PlayerBag playerBag;
 
+    [SerializeField] float aimDeadzone = 0.1f;
     [SerializeField] float shootTriggerDeadzone = 0.1f;
 
     bool isAiming = false;
@@ -36,6 +37,7 @@ public class PlayerShoot : MonoBehaviour
     public int CurTotalBullets => curTotalBullets;
 
     bool isReloading = false;
+    public bool IsReloading => isReloading;
 
     //timers
     float timeSinceLastClick = 0f;
@@ -69,6 +71,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] Transform debugTargetTransform;
 
     public Action OnPlayerShoot;
+    public Action OnPlayerChangeWeapon;
 
 
     // Start is called before the first frame update
@@ -120,6 +123,9 @@ public class PlayerShoot : MonoBehaviour
     {
         rawAimAxis.x = Input.GetAxisRaw(lookInputHorizontalAxis);
         rawAimAxis.y = Input.GetAxisRaw(lookInputVerticalAxis);
+
+        rawAimAxis.ZeroIfBelow(aimDeadzone);
+
         rightTriggerAxis = Input.GetAxisRaw(rTriggerInput);
 
         isPressingShootInput = rightTriggerAxis > shootTriggerDeadzone || Input.GetKey(KeyCode.Space);
@@ -130,6 +136,8 @@ public class PlayerShoot : MonoBehaviour
         curWeapon = _weapon;
         curMagazineBullets = curWeapon.bulletsPerMagazine;
         curTotalBullets = curWeapon.totalBulletsOnPickup;
+
+        OnPlayerChangeWeapon?.Invoke();
     }
 
     public void InitWeapon(WeaponSO _weapon, int _curBulletsInMag, int _curTotalBullets)
@@ -143,6 +151,8 @@ public class PlayerShoot : MonoBehaviour
         curWeapon = _weapon;
         curMagazineBullets = _curBulletsInMag;
         curTotalBullets = _curTotalBullets;
+
+        OnPlayerChangeWeapon?.Invoke();
     }
 
     void CheckShoot()

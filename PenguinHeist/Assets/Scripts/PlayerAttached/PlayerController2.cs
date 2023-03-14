@@ -98,12 +98,13 @@ public class PlayerController2 : MonoBehaviour
 
         Vector3 playerToTargetPos = playerShoot.TargetPos - transform.position;
 
-        aimAngleClamped = 0.5f;
+        //aimAngleClamped = 0.5f;
 
         runningBackward = false;
 
         if (rb.velocity.magnitude > rbVelocityDead)
         {
+            aimAngleClamped = 0.5f;
             if (playerShoot.IsAiming)
             {
                 wantedRotation = Quaternion.LookRotation(playerToTargetPos);

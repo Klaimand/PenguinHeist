@@ -26,6 +26,8 @@ public class WeaponSO : ScriptableObject
 
     public GameObject muzzleFlash = null;
 
+    public int weaponIndex = 0;
+
     void OnValidate()
     {
         bulletsPerMagazine.ClampAtZero();

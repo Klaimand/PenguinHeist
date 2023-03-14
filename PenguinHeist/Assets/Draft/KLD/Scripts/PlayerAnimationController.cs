@@ -20,10 +20,12 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] PlayerShoot playerShoot;
     [SerializeField] PlayerBag playerBag;
     [SerializeField] PlayerInteraction playerInteraction;
+    [SerializeField] PlayerMelee playerMelee;
     [SerializeField] Animator animator;
     [SerializeField] Animator moneyBagAnimator;
     [SerializeField] Animator batonAnimator;
     [SerializeField] Animator[] weaponsAnimators;
+    [SerializeField] GameObject gunsParent;
 
     [Header("Values")]
     [SerializeField] float speedIdleThreshold = 0.2f;
@@ -32,14 +34,18 @@ public class PlayerAnimationController : MonoBehaviour
 
     LocomotionState lastState = LocomotionState.IDLE;
 
+    int curWeaponIndex = 0;
+
     void OnEnable()
     {
         playerShoot.OnPlayerShoot += Shoot;
+        playerShoot.OnPlayerChangeWeapon += InitWeaponAnimator;
     }
 
     void OnDisable()
     {
         playerShoot.OnPlayerShoot -= Shoot;
+        playerShoot.OnPlayerChangeWeapon -= InitWeaponAnimator;
     }
 
     // Start is called before the first frame update
@@ -51,6 +57,8 @@ public class PlayerAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ProcessGunParent();
+
         ProcessCurState();
 
         ProcessLastState();
@@ -60,13 +68,15 @@ public class PlayerAnimationController : MonoBehaviour
         animator.SetFloat("aimAngle", controller.AimAngleClamped);
 
         animator.SetBool("isCarrying", playerBag.IsCarrying);
+
+        animator.SetBool("isReloading", playerShoot.IsReloading);
+
+        weaponsAnimators[curWeaponIndex].SetBool("isReloading", playerShoot.IsReloading);
         //animator.SetFloat("walkingSpeed", controller.RunningBackward ? -1f : 1f);
     }
 
     void ProcessCurState()
     {
-
-
         if (playerInteraction.IsInteracting)
         {
             if (playerBag.IsCarrying)
@@ -103,13 +113,46 @@ public class PlayerAnimationController : MonoBehaviour
         lastState = curState;
     }
 
+    void ProcessGunParent()
+    {
+        bool showGun = true;
+
+        if (playerBag.IsCarrying) showGun = false;
+
+        if (playerMelee.IsAttacking) showGun = false;
+
+        if (playerInteraction.IsInteracting) showGun = false;
+
+        //if is dead
+
+        if (showGun != gunsParent.activeInHierarchy)
+        {
+            gunsParent.SetActive(showGun);
+        }
+    }
+
     void Shoot()
     {
         animator.SetTrigger("shoot");
 
-        foreach (var curAnimator in weaponsAnimators)
+        weaponsAnimators[curWeaponIndex].SetTrigger("shoot");
+    }
+
+    void InitWeaponAnimator()
+    {
+        weaponsAnimators[curWeaponIndex].SetBool("isReloading", false);
+
+        for (int i = 0; i < weaponsAnimators.Length; i++)
         {
-            curAnimator.SetTrigger("shoot");
+            if (i == playerShoot.CurWeapon.weaponIndex)
+            {
+                curWeaponIndex = i;
+                weaponsAnimators[i].transform.parent.gameObject.SetActive(true);
+            }
+            else
+            {
+                weaponsAnimators[i].transform.parent.gameObject.SetActive(false);
+            }
         }
     }
 
