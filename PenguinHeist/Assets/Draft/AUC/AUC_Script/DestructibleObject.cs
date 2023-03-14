@@ -18,7 +18,18 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     [SerializeField] private float sliderOpenSize = 0.35f;
     [SerializeField] private float sliderCloseSize = 0f;
     [SerializeField] private float objectFeedbackOffsetSize = 0.15f;
-    
+
+    [Header("UI FB")]
+    [SerializeField] private Ease enterUIEase;
+    [SerializeField] private float openUIDuration;
+    [SerializeField] private Ease exitUIEase;
+    [SerializeField] private float exitUIDuration;
+
+    [Header("GameObject FB")]
+    [SerializeField] private Ease enterGOEase;
+    [SerializeField] private float openGODuration;
+    [SerializeField] private Ease exitGOEase;
+    [SerializeField] private float exitGODuration;
     
     private bool getHurt;
     private float timePassedWithCanvas;
@@ -64,18 +75,18 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         if (getHurt)
         {
             lifeSlider.transform.DOKill();
-            lifeSlider.transform.DOScale(sliderOpenSize, .55f).SetEase(Ease.OutSine);
+            lifeSlider.transform.DOScale(sliderOpenSize, openUIDuration).SetEase(enterUIEase);
             
             transform.DOKill();
-            transform.DOScale(objectSize + objectFeedbackOffsetSize, 0.185f).SetEase(Ease.OutSine).OnComplete(() =>
+            transform.DOScale(objectSize + objectFeedbackOffsetSize, openGODuration).SetEase(enterGOEase).OnComplete(() =>
             {
-                transform.DOScale(objectSize, 0.1f).SetEase(Ease.InBack);
+                transform.DOScale(objectSize, exitGODuration).SetEase(exitGOEase);
             });
         }
         else
         {
             lifeSlider.transform.DOKill();
-            lifeSlider.transform.DOScale(sliderCloseSize, 0.175f).SetEase(Ease.InBack);
+            lifeSlider.transform.DOScale(sliderCloseSize, exitUIDuration).SetEase(exitUIEase);
         }
     }
 
