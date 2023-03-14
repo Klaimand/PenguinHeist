@@ -107,7 +107,7 @@ public class PlayerController2 : MonoBehaviour
 
         if (rb.velocity.magnitude > rbVelocityDead)
         {
-            aimAngleClamped = 0.5f;
+            //aimAngleClamped = 0.5f;
             if (playerShoot.IsAiming)
             {
                 wantedRotation = Quaternion.LookRotation(playerToTargetPos);
@@ -121,6 +121,7 @@ public class PlayerController2 : MonoBehaviour
         }
         else if (playerShoot.IsAiming)
         {
+            /*
             Vector3 playerToLookAtTransform = playerShoot.TargetPos - transform.position;
 
             float forwardToAimAngle = Vector3.SignedAngle(transform.forward, playerToLookAtTransform, Vector3.up);
@@ -144,6 +145,8 @@ public class PlayerController2 : MonoBehaviour
 
                 wantedRotation = Quaternion.Euler(transform.rotation.eulerAngles + eulerRotationToDo);
             }
+            */
+            wantedRotation = Quaternion.LookRotation(playerToTargetPos);
         }
 
         Quaternion rot = Quaternion.Euler(0f,
