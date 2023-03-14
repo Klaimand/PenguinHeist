@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class AIEntity : MonoBehaviour, IDamageable
 {
     [SerializeField] private WeaponSO weaponData;
+    public WeaponSO Weapon => weaponData;
     [SerializeField] public AIStateManager aiStateManager;
     [HideInInspector] public int curMagazineBullets;
     [HideInInspector] public bool isReloading; // In AIAttackState

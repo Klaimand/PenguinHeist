@@ -13813,6 +13813,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3981583970543405996, guid: dce36e8912887f24599dc52c487c73a1, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2073d5524b33e4e4d90c4bc3053ba3c9, type: 2}
     - target: {fileID: 2504148330069392570, guid: dce36e8912887f24599dc52c487c73a1, type: 3}
       propertyPath: m_RootOrder
       value: 13

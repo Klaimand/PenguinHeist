@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef2fda6e5a0d5b418b00573ec490f91, type: 3}
-  m_Name: TestShotgunEnemy
+  m_Name: Enemy_Harpoon
   m_EditorClassIdentifier: 
-  spread: 21
-  bulletsPerMagazine: 10
-  totalBulletsOnPickup: 45
-  reloadTime: 2.5
-  fireRate: 1
-  shotsPerClick: 10
-  timeBetweenShots: 0
-  weaponPrefab: {fileID: 8665988871215075261, guid: bc004188593ae3e4d93880ada9586a2a, type: 3}
-  bulletPrefab: {fileID: 184667529128792319, guid: a371a24481c898e4ea87e44cfddad9c6, type: 3}
+  spread: 2
+  bulletsPerMagazine: 1
+  totalBulletsOnPickup: 20
+  reloadTime: 0.7
+  fireRate: 0.1
+  shotsPerClick: 1
+  timeBetweenShots: 0.1
+  weaponPrefab: {fileID: 4989580525760871767, guid: bbf95808bb289d144a3f96a708ca630b, type: 3}
+  bulletPrefab: {fileID: 7621924122847530229, guid: 48955d5962ac9c043b3a6f80521bf148, type: 3}
   muzzleFlash: {fileID: 0}
-  weaponIndex: 0
+  weaponIndex: 1

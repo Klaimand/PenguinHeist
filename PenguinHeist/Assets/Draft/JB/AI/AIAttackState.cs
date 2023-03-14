@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class AIAttackState : AIState
 {
+    [SerializeField] Transform canon;
+
     public Action OnEnemyShoot;
 
     protected RaycastHit hit;
@@ -20,7 +22,7 @@ public class AIAttackState : AIState
         if (!Physics.Raycast(transform.position, stateManager.player.position - transform.position, out hit, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
         {
             transform.LookAt(stateManager.player);
-            CheckAttack(stateManager.weaponData, stateManager.entity);
+            CheckAttack(stateManager.weaponData, stateManager.entity, 1);
         }
         else
         {
@@ -53,21 +55,23 @@ public class AIAttackState : AIState
 
             dir = Quaternion.Euler(0f, rdmAngle, 0f) * dir;
 
-            Instantiate(weaponData.bulletPrefab, transform.position, Quaternion.LookRotation(dir));
+            Instantiate(weaponData.bulletPrefab, canon.position, Quaternion.LookRotation(dir));
 
             yield return new WaitForSeconds(weaponData.timeBetweenShots);
         }
     }
 
-    protected void CheckAttack(WeaponSO weapon, AIEntity entity)
+    protected void CheckAttack(WeaponSO weapon, AIEntity entity, int rr = 0)
     {
         if (entity.currentAttackCd < weapon.fireRate) return;
-        if (entity.curMagazineBullets < 0)
-        {
-            if (entity.isReloading) return;
 
+        if (entity.isReloading) return;
+
+        if (entity.curMagazineBullets <= 0)
+        {
             entity.isReloading = true;
             StartCoroutine(Reload(weapon, entity));
+            return;
         }
 
         entity.currentAttackCd = 0f;

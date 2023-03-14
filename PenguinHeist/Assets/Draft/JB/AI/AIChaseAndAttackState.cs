@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class AIChaseAndAttackState : AIAttackState
 {
-    
+
     public override void MoveTo(NavMeshAgent agent, Vector3 destination)
     {
         agent.SetDestination(destination);
@@ -16,7 +16,7 @@ public class AIChaseAndAttackState : AIAttackState
         {
             CheckAttack(stateManager.weaponData, stateManager.entity);
         }
-        
+
         if (stateManager.agent.remainingDistance > stateManager.chaseAndAttackRange)
         {
             return previousState;

@@ -10,7 +10,7 @@ public class EnemyAnimatorController : MonoBehaviour
     [SerializeField] AIStateManager aIStateManager;
     [SerializeField] AIEntity aIEntity;
     [SerializeField] AIAttackState aIAttackState;
-
+    [SerializeField] Transform gunParent;
 
     void OnEnable()
     {
@@ -22,7 +22,11 @@ public class EnemyAnimatorController : MonoBehaviour
         aIAttackState.OnEnemyShoot -= Shoot;
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        gunParent.GetChild(aIEntity.Weapon.weaponIndex).gameObject.SetActive(true);
+    }
+
     void Update()
     {
         animator.SetInteger("enemyState", (int)aIStateManager.aIStateType);

@@ -124,6 +124,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2504148328508720947}
+  - {fileID: 2143195973170293808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -314,6 +315,7 @@ MonoBehaviour:
   previousState: {fileID: 2504148330069392716}
   speed: 8
   aIStateType: 0
+  canon: {fileID: 2143195973170293808}
 --- !u!114 &2504148330069392716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +332,7 @@ MonoBehaviour:
   previousState: {fileID: 2504148330069392562}
   speed: 8
   aIStateType: 0
+  canon: {fileID: 2143195973170293808}
 --- !u!114 &2504148330069392717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +349,7 @@ MonoBehaviour:
   previousState: {fileID: 2504148330069392716}
   speed: 8
   aIStateType: 0
+  canon: {fileID: 0}
   omega: 0.5
 --- !u!195 &2504148330069392718
 NavMeshAgent:
@@ -369,3 +373,34 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &7014222768780945854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143195973170293808}
+  m_Layer: 7
+  m_Name: Canon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2143195973170293808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014222768780945854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2504148330069392570}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef2fda6e5a0d5b418b00573ec490f91, type: 3}
-  m_Name: TestShotgunEnemy
+  m_Name: Enemy_Rifle
   m_EditorClassIdentifier: 
-  spread: 21
-  bulletsPerMagazine: 10
-  totalBulletsOnPickup: 45
-  reloadTime: 2.5
-  fireRate: 1
-  shotsPerClick: 10
-  timeBetweenShots: 0
-  weaponPrefab: {fileID: 8665988871215075261, guid: bc004188593ae3e4d93880ada9586a2a, type: 3}
-  bulletPrefab: {fileID: 184667529128792319, guid: a371a24481c898e4ea87e44cfddad9c6, type: 3}
+  spread: 30
+  bulletsPerMagazine: 60
+  totalBulletsOnPickup: 200
+  reloadTime: 3
+  fireRate: 0.45
+  shotsPerClick: 3
+  timeBetweenShots: 0.085
+  weaponPrefab: {fileID: 5731604685418708665, guid: 5cbc12528689bff4e9ae7833fe860c8d, type: 3}
+  bulletPrefab: {fileID: 7162472966670466337, guid: cf745b92c6d4f724388e89726e5707ba, type: 3}
   muzzleFlash: {fileID: 0}
-  weaponIndex: 0
+  weaponIndex: 2
