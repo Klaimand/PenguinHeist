@@ -45,6 +45,7 @@ public class AIStateManager : MonoBehaviour
     private void Start()
     {
         ChooseClosestPlayer();
+        agent.speed = currentState.speed;
     }
 
     void Update()
@@ -65,6 +66,7 @@ public class AIStateManager : MonoBehaviour
     private void SwitchToTheNextState(AIState nextState)
     {
         currentState = nextState;
+        agent.speed = currentState.speed;
         if (currentState.aIStateType != AIStateType.TPose)
         {
             aIStateType = currentState.aIStateType;

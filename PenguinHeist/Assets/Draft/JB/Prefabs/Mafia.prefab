@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 8137348318017020565}
   - component: {fileID: 8137348318017020522}
   - component: {fileID: 8137348318017020523}
+  - component: {fileID: 1045341439688874793}
   m_Layer: 7
   m_Name: Mafia
   m_TagString: Untagged
@@ -227,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 8137348318017020566}
   aIStateType: 2
+  aiType: 1
   agent: {fileID: 8137348318017020512}
   weaponData: {fileID: 0}
   chaseAndAttackRange: 8.41
@@ -237,6 +239,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   entity: {fileID: 8137348318017020520}
+  takeBagState: {fileID: 1045341439688874793}
 --- !u!114 &8137348318017020520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +256,7 @@ MonoBehaviour:
   aiStateManager: {fileID: 8137348318017020527}
   curMagazineBullets: 0
   isReloading: 0
+  isHoldingShield: 0
   currentAttackCd: 0
   minMaxLaunchTorque: {x: 100, y: 200}
   health: 30
@@ -362,3 +366,18 @@ MonoBehaviour:
   previousState: {fileID: 8137348318017020522}
   aIStateType: 2
   omega: 0.5
+--- !u!114 &1045341439688874793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137348318017020513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96724fa3ea19b744ab3995e5f984371e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 0}
+  previousState: {fileID: 0}
+  aIStateType: 0

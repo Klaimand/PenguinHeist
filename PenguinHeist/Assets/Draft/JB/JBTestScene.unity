@@ -3294,6 +3294,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1673030079}
+    - target: {fileID: 8137348318017020566, guid: 88bbef5284e649d4c93854a4e1a9f11e, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8137348318017020567, guid: 88bbef5284e649d4c93854a4e1a9f11e, type: 3}
       propertyPath: targetMask.m_Bits
       value: 64
@@ -4169,6 +4173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
   previousState: {fileID: 0}
+  speed: 8
   aIStateType: 0
 --- !u!114 &4650330287533998111 stripped
 MonoBehaviour:
