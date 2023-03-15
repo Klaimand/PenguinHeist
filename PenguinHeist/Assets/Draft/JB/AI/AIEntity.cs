@@ -33,6 +33,7 @@ public class AIEntity : MonoBehaviour, IDamageable
     {
         if (isDead) return;
 
+        aiStateManager.agent.isStopped = true;
         col.enabled = false;
 
         isDead = true;
@@ -71,6 +72,12 @@ public class AIEntity : MonoBehaviour, IDamageable
     {
         //Hit
         if (isDead) return;
+
+        if (aiStateManager.currentState == aiStateManager.moveState)
+        {
+            aiStateManager.ChooseClosestPlayer();
+            aiStateManager.SwitchToTheNextState(aiStateManager.chaseState);
+        }
 
         OnHit?.Invoke();
         health -= _damage;
