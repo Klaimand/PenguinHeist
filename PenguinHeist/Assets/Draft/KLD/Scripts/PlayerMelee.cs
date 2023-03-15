@@ -14,6 +14,7 @@ public class PlayerMelee : MonoBehaviour
 
     bool isAttacking = false;
     public bool IsAttacking => isAttacking;
+
     
     [Header("Input")]
     public string meleeInput;
@@ -24,6 +25,8 @@ public class PlayerMelee : MonoBehaviour
     [SerializeField] private Transform meleeContactPoint;
     [SerializeField] private float meleeContactRadius = 0.5f;
     [SerializeField] private int damage = 10;
+
+    public AudioSource meleeSfx;
 
     private void Start()
     {
@@ -53,6 +56,7 @@ public class PlayerMelee : MonoBehaviour
         
         if (isPressingMeleeInput)
         {
+            meleeSfx.Play();
             animationController.Melee();
             isAttacking = true;
             StartCoroutine(WaitAndCanAttack());
