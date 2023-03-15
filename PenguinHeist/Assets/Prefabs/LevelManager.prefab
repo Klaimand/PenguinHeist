@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526989237546848692}
   - component: {fileID: 526989237546848695}
+  - component: {fileID: 6979981532888070681}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -28,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4067710903743329841}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,3 +49,70 @@ MonoBehaviour:
   player1: {fileID: 0}
   player2: {fileID: 0}
   mafiaEnemies: []
+  objectivesManager: {fileID: 6979981532888070681}
+--- !u!114 &6979981532888070681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526989237546848694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3293074975d17da46864e4be81433b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nbObjectives: 8
+--- !u!1 &4093115680536238557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4067710903743329841}
+  - component: {fileID: 4601172487187459240}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4067710903743329841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093115680536238557}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.7647717, y: 17.346863, z: -28.07626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 526989237546848692}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4601172487187459240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093115680536238557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87fad40009f28374a96540996f2e2ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints:
+  - {x: 2.6114383, y: 0.5, z: 14.037219}
+  - {x: 33.652214, y: 0.5, z: 13.216092}
+  - {x: 0.9310894, y: 0.5, z: -23.774021}
+  - {x: 21.881691, y: 0.5, z: -39.020782}
+  enemies:
+  - {fileID: 2504148330069392719, guid: dce36e8912887f24599dc52c487c73a1, type: 3}
+  spawnDelay: 15
+  enemyCountToSpawn: 2
