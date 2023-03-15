@@ -10,11 +10,12 @@ public class AIEntity : MonoBehaviour, IDamageable
     [SerializeField] public AIStateManager aiStateManager;
     [HideInInspector] public int curMagazineBullets;
     [HideInInspector] public bool isReloading; // In AIAttackState
-    [HideInInspector] public bool isHoldingShield; // In Shield
+    public bool isHoldingShield = false; // In Shield
     [HideInInspector] public float currentAttackCd;
     [Tooltip("Launch force for the weapon when it drops")]
     [SerializeField] Vector2 minMaxLaunchTorque = new Vector2(100f, 200f);
     [SerializeField] private float health = 30;
+    [SerializeField] Collider col;
 
     bool isDead = false;
     public bool IsDead => isDead;
@@ -23,7 +24,7 @@ public class AIEntity : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        isHoldingShield = true;
+        //isHoldingShield = true;
         aiStateManager.weaponData = weaponData;
     }
 
@@ -31,6 +32,8 @@ public class AIEntity : MonoBehaviour, IDamageable
     void Die()
     {
         if (isDead) return;
+
+        col.enabled = false;
 
         isDead = true;
         if (aiStateManager.aiType == AIType.Police)

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WalrusHitLayer
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/B_Root
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Clavicle.L
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Clavicle.L/B_UArm.L
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Clavicle.L/B_UArm.L/B_LArm.L
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Clavicle.R
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Clavicle.R/B_UArm.R
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Clavicle.R/B_UArm.R/B_LArm.R
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Head
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Head/B_Glasses
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Head/B_Hat
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Head/B_Moustache.L
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Head/B_Moustache.R
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Head/B_Tooth.L
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Pelvis/B_Spine_001/B_Spine_002/B_Head/B_Tooth.R
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Pelvis/B_Stomach
+    m_Weight: 1
+  - m_Path: Armature/B_Root/B_Pelvis/B_Tail_001
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Tail_001/B_Tail_002
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Tail_001/B_Tail_002/B_TailTip.L
+    m_Weight: 0
+  - m_Path: Armature/B_Root/B_Pelvis/B_Tail_001/B_Tail_002/B_TailTip.R
+    m_Weight: 0
+  - m_Path: Morse
+    m_Weight: 0
