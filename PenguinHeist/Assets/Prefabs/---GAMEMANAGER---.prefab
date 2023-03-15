@@ -86,14 +86,5 @@ MonoBehaviour:
     canBeOverriden: 0
     randomVolume: 0.5
     randomPitch: 0
-  - name: Music
-    clips:
-    - {fileID: 8300000, guid: 3fd009cd71bde0943bd79e7ecdef89b9, type: 3}
-    group: {fileID: 594852259744105077, guid: 4541141d493656040a302a856d3546dd, type: 2}
-    volume: 1
-    pitch: 0
-    canBeOverriden: 0
-    randomVolume: 0.5
-    randomPitch: 0
   soundsToPlayOnStart:
   - Music

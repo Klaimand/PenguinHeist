@@ -1617,9 +1617,8 @@ MonoBehaviour:
     m_Bits: 2112
   fwdCastDistance: 0.24
   castRadius: 1.2
-
   interractInput: 
-  pickupSfx: {fileID: 3647351007498855953}
+  pickupSfx: {fileID: 0}
 --- !u!114 &1561667144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1638,10 +1637,8 @@ MonoBehaviour:
   minMaxLaunchForce: {x: 2.5, y: 4.5}
   minMaxLaunchTorque: {x: 30, y: 60}
   minLaunchTime: 0.2
-
   interractInput: 
-  launchSfx: {fileID: 556807506497683633}
-
+  launchSfx: {fileID: 0}
 --- !u!114 &1561667148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1658,7 +1655,6 @@ MonoBehaviour:
   playerBag: {fileID: 1561667144}
   animationController: {fileID: 1561667139}
   meleeAttackDuration: 0.5
-
   meleeInput: 
   lTrigger: 0
   isPressingMeleeInput: 0

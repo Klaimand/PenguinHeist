@@ -32,17 +32,6 @@ public class PlayerBag : MonoBehaviour
         };
     }
 
-    private void Start()
-    {
-        var playerIndex = GetComponent<PlayerController2>().playerIndex;
-        interractInput = playerIndex switch
-        {
-            0 => $"Interract",
-            1 => $"InterractP2",
-            _ => interractInput
-        };
-    }
-
     void Update()
     {
         if (isCarrying)
