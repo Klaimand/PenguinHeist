@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8426477460114895790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7059313512613503147}
+  m_Layer: 0
+  m_Name: PS_Guts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7059313512613503147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426477460114895790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3406345675406672971}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3174778656237790719
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7059313512613503147}
+    m_Modifications:
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 576744054720985870, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+      propertyPath: m_Name
+      value: Guts
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+--- !u!4 &3406345675406672971 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 237231753574883764, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+  m_PrefabInstance: {fileID: 3174778656237790719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8611854172252115239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6596761766079116504, guid: 54cc3d41cd861e9438435bb3520786f4, type: 3}
+  m_PrefabInstance: {fileID: 3174778656237790719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!75 &951025650550541605
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8611854172252115239}
+  m_Enabled: 1
+  m_Force: {x: 10, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
