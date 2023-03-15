@@ -11,6 +11,22 @@ public class WaveManager : MonoBehaviour
     [SerializeField] float spawnDelay;
     [Tooltip("Number of enemies to spawn")]
     [SerializeField] int enemyCountToSpawn;
+    
+    public static WaveManager instance;
+    
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    float waveCount;
 
     [ContextMenu("Start Waves")]
     public void StartWaves()
@@ -22,7 +38,8 @@ public class WaveManager : MonoBehaviour
     {
         while (true)
         {
-            for (int i = 0; i < enemyCountToSpawn; i++)
+            waveCount++;
+            for (int i = 0; i < enemyCountToSpawn + waveCount; i++)
             {
                 LevelManager.instance.AddPoliceEnemy(Instantiate(enemies[Random.Range(0, enemies.Length)], 
                     spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity).GetComponent<AIStateManager>());

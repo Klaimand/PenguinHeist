@@ -28,6 +28,7 @@ public class AIStateManager : MonoBehaviour
     [SerializeField] public AIStateType aIStateType; //a relier aux anims
     [SerializeField] public AIType aiType = AIType.Mafia;
     [HideInInspector] public AIChaseState chaseState;
+    [HideInInspector] public AIMoveState moveState;
     [Header("NavMesh")]
     public NavMeshAgent agent;
     [HideInInspector] public WeaponSO weaponData;
@@ -50,6 +51,7 @@ public class AIStateManager : MonoBehaviour
         agent.speed = currentState.speed;
         chaseState = GetComponent<AIChaseState>();
         takeBagState = GetComponent<AITakeBagState>();
+        moveState = GetComponent<AIMoveState>();
     }
 
     void Update()
@@ -85,12 +87,12 @@ public class AIStateManager : MonoBehaviour
         SwitchToTheNextState(takeBagState);
     }
 
-    void ChooseClosestPlayer()
+    public void ChooseClosestPlayer()
     {
-        agent.SetDestination(LevelManager.instance.player1.position);
-        float distanceToPlayer1 = agent.remainingDistance;
-        agent.SetDestination(LevelManager.instance.player2.position);
-        float distanceToPlayer2 = agent.remainingDistance;
+        //agent.SetDestination(LevelManager.instance.player1.position);
+        float distanceToPlayer1 = Vector3.Distance(transform.position, LevelManager.instance.player1.position);
+        //agent.SetDestination(LevelManager.instance.player2.position);
+        float distanceToPlayer2 = Vector3.Distance(transform.position, LevelManager.instance.player2.position);
         if (distanceToPlayer1 < distanceToPlayer2)
         {
             player = LevelManager.instance.player1;
