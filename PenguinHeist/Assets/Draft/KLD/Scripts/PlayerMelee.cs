@@ -19,6 +19,11 @@ public class PlayerMelee : MonoBehaviour
     public string meleeInput;
     public float lTrigger;
     public bool isPressingMeleeInput;
+    
+    [Header("Melee Contact Point")]
+    [SerializeField] private Transform meleeContactPoint;
+    [SerializeField] private float meleeContactRadius = 0.5f;
+    [SerializeField] private int damage = 10;
 
     private void Start()
     {
@@ -56,7 +61,32 @@ public class PlayerMelee : MonoBehaviour
 
     IEnumerator WaitAndCanAttack()
     {
+        StartCoroutine(MakeDamage());
         yield return new WaitForSeconds(meleeAttackDuration);
         isAttacking = false;
+    }
+    
+    IEnumerator MakeDamage()
+    {
+        yield return new WaitForSeconds(meleeAttackDuration - 0.1f);
+        Collider[] hitColliders = Physics.OverlapSphere(meleeContactPoint.position, meleeContactRadius);
+        IDamageable damageable;
+        foreach (var hitCollider in hitColliders)
+        {
+            damageable = hitCollider.GetComponent<IDamageable>();
+            if (damageable != default)
+            {
+                hitCollider.GetComponent<IDamageable>().TakeDamage(damage);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        if (meleeContactPoint != default)
+        {
+            Gizmos.DrawWireSphere(meleeContactPoint.position, meleeContactRadius);
+        }
     }
 }

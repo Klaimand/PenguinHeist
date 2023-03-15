@@ -1549,6 +1549,40 @@ MonoBehaviour:
   meleeInput: 
   lTrigger: 0
   isPressingMeleeInput: 0
+  meleeContactPoint: {fileID: 6541181446293710175}
+  meleeContactRadius: 0.5
+  damage: 10
+--- !u!1 &5854964172697512581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6541181446293710175}
+  m_Layer: 6
+  m_Name: Melee Contact Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6541181446293710175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854964172697512581}
+  m_LocalRotation: {x: -9.942545e-15, y: -9.409491e-22, z: -5.2721393e-29, w: 1}
+  m_LocalPosition: {x: 0.0044, y: 0.0135, z: 0.0282}
+  m_LocalScale: {x: 0.027985776, y: 0.027985776, z: 0.027985776}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8256834661433182281}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5966510177227120676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3276,3 +3310,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &8256834661433182281 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5214364687404442723, guid: 5544b7e18094cc74e81c9744b0baf5fd, type: 3}
+  m_PrefabInstance: {fileID: 4986876293924606932}
+  m_PrefabAsset: {fileID: 0}
