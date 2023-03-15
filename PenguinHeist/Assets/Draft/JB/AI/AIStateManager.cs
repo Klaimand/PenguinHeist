@@ -2,15 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum  AIStateType
+public enum AIStateType
 {
     TPose,
-    Idle,
-    Walk,
-    Death,
-    Interact,
-    GunHold,
-    HoldShield
+    Idle = 1,
+    Walk = 2,
+    Death = 3,
+    Interact = 5,
+    //GunHold,
+    //HoldShield
 }
 
 public enum AIType
@@ -24,7 +24,7 @@ public class AIStateManager : MonoBehaviour
     [Header("State")]
     [Tooltip("Current state of the AI and first state to run")]
     [SerializeField] public AIState currentState;
-    [SerializeField] public AIStateType aIStateType;
+    [SerializeField] public AIStateType aIStateType; //a relier aux anims
     [SerializeField] public AIType aiType = AIType.Mafia;
     [Header("NavMesh")]
     public NavMeshAgent agent;
@@ -50,6 +50,8 @@ public class AIStateManager : MonoBehaviour
 
     void Update()
     {
+        if (entity.IsDead) return;
+
         RunStateMachine();
     }
 
@@ -79,7 +81,7 @@ public class AIStateManager : MonoBehaviour
         currentState = takeBagState;
         takeBagState.Init(agent, bag);
     }
-    
+
     void ChooseClosestPlayer()
     {
         agent.SetDestination(LevelManager.instance.player1.position);

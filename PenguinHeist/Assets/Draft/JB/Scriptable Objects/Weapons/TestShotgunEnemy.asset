@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestShotgunEnemy
   m_EditorClassIdentifier: 
   spread: 21
-  bulletsPerMagazine: 15
+  bulletsPerMagazine: 10
   totalBulletsOnPickup: 45
   reloadTime: 2.5
   fireRate: 1
@@ -22,3 +22,4 @@ MonoBehaviour:
   weaponPrefab: {fileID: 8665988871215075261, guid: bc004188593ae3e4d93880ada9586a2a, type: 3}
   bulletPrefab: {fileID: 184667529128792319, guid: a371a24481c898e4ea87e44cfddad9c6, type: 3}
   muzzleFlash: {fileID: 0}
+  weaponIndex: 0

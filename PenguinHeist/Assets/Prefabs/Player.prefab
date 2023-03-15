@@ -1403,7 +1403,7 @@ MonoBehaviour:
   playerHealth: {fileID: 7755359143251137845}
   aimDeadzone: 0.4
   shootTriggerDeadzone: 0.1
-  curWeapon: {fileID: 11400000, guid: 52a7cf4a361731c4f98c18ad5bddaeb1, type: 2}
+  curWeapon: {fileID: 11400000, guid: eb9eab0f22681da43aaec26ae45906e1, type: 2}
   testText: {fileID: 0}
   baseSize: 0
   startShootTextEase: 2
@@ -1510,6 +1510,7 @@ MonoBehaviour:
     m_Bits: 2112
   fwdCastDistance: 0.24
   castRadius: 1.2
+  interractInput: 
 --- !u!114 &1561667144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,6 +1529,7 @@ MonoBehaviour:
   minMaxLaunchForce: {x: 2.5, y: 4.5}
   minMaxLaunchTorque: {x: 30, y: 60}
   minLaunchTime: 0.2
+  interractInput: 
 --- !u!114 &1561667148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1544,6 +1546,9 @@ MonoBehaviour:
   playerBag: {fileID: 1561667144}
   animationController: {fileID: 1561667139}
   meleeAttackDuration: 0.5
+  meleeInput: 
+  lTrigger: 0
+  isPressingMeleeInput: 0
 --- !u!1 &5966510177227120676
 GameObject:
   m_ObjectHideFlags: 0

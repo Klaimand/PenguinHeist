@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef2fda6e5a0d5b418b00573ec490f91, type: 3}
+  m_Name: Harpoon
+  m_EditorClassIdentifier: 
+  spread: 2
+  bulletsPerMagazine: 1
+  totalBulletsOnPickup: 20
+  reloadTime: 0.7
+  fireRate: 0.1
+  shotsPerClick: 1
+  timeBetweenShots: 0.1
+  weaponPrefab: {fileID: 4989580525760871767, guid: bbf95808bb289d144a3f96a708ca630b, type: 3}
+  bulletPrefab: {fileID: 2398662158381748242, guid: d6644d00835f6964b87efc4f3361bf51, type: 3}
+  muzzleFlash: {fileID: 0}
+  weaponIndex: 1

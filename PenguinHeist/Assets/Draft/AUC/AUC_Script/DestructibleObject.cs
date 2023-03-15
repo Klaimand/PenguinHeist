@@ -7,23 +7,34 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     [Header("References")]
     [SerializeField] private Slider lifeSlider;
     [SerializeField] private Image sliderImage;
-    
+
     [Header("Object Setting")]
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
-    
+
     [Space]
     [Header("Feebacks")]
     [SerializeField] private float timingCanvasVisible = 4.5f;
     [SerializeField] private float sliderOpenSize = 0.35f;
     [SerializeField] private float sliderCloseSize = 0f;
     [SerializeField] private float objectFeedbackOffsetSize = 0.15f;
-    
-    
+
+    [Header("UI FB")]
+    [SerializeField] private Ease enterUIEase;
+    [SerializeField] private float openUIDuration;
+    [SerializeField] private Ease exitUIEase;
+    [SerializeField] private float exitUIDuration;
+
+    [Header("GameObject FB")]
+    [SerializeField] private Ease enterGOEase;
+    [SerializeField] private float openGODuration;
+    [SerializeField] private Ease exitGOEase;
+    [SerializeField] private float exitGODuration;
+
     private bool getHurt;
     private float timePassedWithCanvas;
     private float objectSize;
-    
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -38,7 +49,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     private void FixedUpdate()
     {
         if (!getHurt) return;
-        
+
         timePassedWithCanvas += Time.deltaTime;
         if (timePassedWithCanvas > timingCanvasVisible)
         {
@@ -51,7 +62,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         ResetCanvas(true);
         currentHealth -= _damage;
         lifeSlider.value = currentHealth;
-        sliderImage.color = Color.Lerp(Color.red, Color.green, (float)currentHealth/maxHealth);
+        sliderImage.color = Color.Lerp(Color.red, Color.green, (float)currentHealth / maxHealth);
         if (currentHealth > 0) return;
         Destruct();
     }
@@ -64,24 +75,24 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         if (getHurt)
         {
             lifeSlider.transform.DOKill();
-            lifeSlider.transform.DOScale(sliderOpenSize, .55f).SetEase(Ease.OutSine);
-            
+            lifeSlider.transform.DOScale(sliderOpenSize, openUIDuration).SetEase(enterUIEase);
+
             transform.DOKill();
-            transform.DOScale(objectSize + objectFeedbackOffsetSize, 0.185f).SetEase(Ease.OutSine).OnComplete(() =>
+            transform.DOScale(objectSize + objectFeedbackOffsetSize, openGODuration).SetEase(enterGOEase).OnComplete(() =>
             {
-                transform.DOScale(objectSize, 0.1f).SetEase(Ease.InBack);
+                transform.DOScale(objectSize, exitGODuration).SetEase(exitGOEase);
             });
         }
         else
         {
             lifeSlider.transform.DOKill();
-            lifeSlider.transform.DOScale(sliderCloseSize, 0.175f).SetEase(Ease.InBack);
+            lifeSlider.transform.DOScale(sliderCloseSize, exitUIDuration).SetEase(exitUIEase);
         }
     }
 
     private void Destruct()
     {
-        Debug.Log($"{gameObject.name} destroyed");
+        //Debug.Log($"{gameObject.name} destroyed");
         gameObject.SetActive(false);
         // TODO Add fx 
     }
