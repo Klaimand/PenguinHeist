@@ -37,8 +37,9 @@ public class CustomizationMenuManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI player2Text;
     [SerializeField] private TextMeshProUGUI player1ConfirmText;
     [SerializeField] private TextMeshProUGUI player2ConfirmText;
-    
+
     private bool isPlayer1Confirmed;
+
     private bool isPlayer2Confirmed;
 
     private void Awake()
@@ -58,9 +59,11 @@ public class CustomizationMenuManager : MonoBehaviour
         Init();
     }
 
-    private GameObject readyCanvas;
+    [SerializeField] private GameObject readyCanvas;
     private float timerTwoPlayerReady;
     private bool isReady;
+    [SerializeField] private bool _isPlayer1Confirmed;
+
     private void Update()
     {
         if (!(isPlayer1Confirmed & isPlayer2Confirmed)) return;
@@ -145,7 +148,7 @@ public class CustomizationMenuManager : MonoBehaviour
 
     public void Confirm(int playerIndex)
     {
-        Debug.Log(playerIndex);
+        CustomizationAnimationManager.instance.TriggerLever(playerIndex);
         
         if (playerIndex == 0)
         {
@@ -158,6 +161,15 @@ public class CustomizationMenuManager : MonoBehaviour
             isPlayer2Confirmed = !isPlayer2Confirmed;
             player2ConfirmText.text = isPlayer2Confirmed ? "Confirmed" : "Confirm ?";
             UIAnimation.DoPUnchScale(player2ConfirmButton, 0.1f, 0.2f);
+        }
+        CheckIfReady();
+    }
+    
+    void CheckIfReady()
+    {
+        if (isPlayer1Confirmed && isPlayer2Confirmed)
+        {
+            readyCanvas.SetActive(true);
         }
     }
 }
