@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6161586542374645517}
   - component: {fileID: 6161586542374645516}
   - component: {fileID: 6161586542374645555}
+  - component: {fileID: 5063552956661567108}
   m_Layer: 0
   m_Name: ---GAMEMANAGER---
   m_TagString: Untagged
@@ -46,7 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventsManager: {fileID: 6161586542374645555}
-  EventsManager: {fileID: 6161586542374645555}
+  audioManager: {fileID: 5063552956661567108}
+  playerPrefab: {fileID: 0}
+  playerList: []
 --- !u!114 &6161586542374645555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +63,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventsList: {fileID: 11400000, guid: c35c26656fe7db54db21bda1e2296087, type: 2}
+--- !u!114 &5063552956661567108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161586542374645518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d08da8bf028dd4a98ced294f6a7543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 4541141d493656040a302a856d3546dd, type: 2}
+  sounds:
+  - name: Music
+    clips:
+    - {fileID: 8300000, guid: 3fd009cd71bde0943bd79e7ecdef89b9, type: 3}
+    group: {fileID: 594852259744105077, guid: 4541141d493656040a302a856d3546dd, type: 2}
+    volume: 1
+    pitch: 0
+    canBeOverriden: 0
+    randomVolume: 0.5
+    randomPitch: 0
+  - name: Music
+    clips:
+    - {fileID: 8300000, guid: 3fd009cd71bde0943bd79e7ecdef89b9, type: 3}
+    group: {fileID: 594852259744105077, guid: 4541141d493656040a302a856d3546dd, type: 2}
+    volume: 1
+    pitch: 0
+    canBeOverriden: 0
+    randomVolume: 0.5
+    randomPitch: 0
+  soundsToPlayOnStart:
+  - Music

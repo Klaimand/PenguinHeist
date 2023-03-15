@@ -36,6 +36,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
 
     [SerializeField] float gettingUpTime = 0.8f;
 
+    public AudioSource damageSfx;
+    public AudioSource knockoutSfx;
+    public AudioSource reviveSfx;
+
     #endregion
 
     #region Event Methods
@@ -94,7 +98,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     {
         currentHealth -= _damage;
         playerHealthDebugText.text = currentHealth.ToString();
-        if (currentHealth > 0) return;
+        
+        if (currentHealth > 0)
+        {
+            damageSfx.Play();
+            return;
+        }
 
         // No more hp
         PlayerKnockOut();
@@ -102,6 +111,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
 
     private void PlayerKnockOut()
     {
+        if (playerstate == PlayerState.KNOCKOUT) return;
+        
+        knockoutSfx.Play();
         playerstate = PlayerState.KNOCKOUT;
         knockOutCanvas.SetActive(true);
         Debug.Log(knockOutCanvas);
@@ -128,6 +140,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     [ContextMenu("Revive Player")]
     private void RevivePlayer()
     {
+        reviveSfx.Play();
         InitPlayerHealth(true);
     }
 

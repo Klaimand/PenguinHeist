@@ -19,8 +19,23 @@ public class PlayerBag : MonoBehaviour
     [SerializeField] float minLaunchTime = 0.2f;
 
 
+<<<<<<< Updated upstream
 
     bool canLaunch = false;
+=======
+    public AudioSource launchSfx;
+
+    private void Start()
+    {
+        var playerIndex = GetComponent<PlayerController2>().playerIndex;
+        interractInput = playerIndex switch
+        {
+            0 => $"Interract",
+            1 => $"InterractP2",
+            _ => interractInput
+        };
+    }
+>>>>>>> Stashed changes
 
     void Update()
     {
@@ -44,6 +59,8 @@ public class PlayerBag : MonoBehaviour
     {
         isCarrying = false;
         animationController.LaunchBag();
+        
+        launchSfx.Play();
 
         Rigidbody rb = Instantiate(moneyBagPrefab, launchPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
 

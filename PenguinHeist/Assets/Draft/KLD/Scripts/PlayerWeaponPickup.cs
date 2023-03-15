@@ -17,6 +17,8 @@ public class PlayerWeaponPickup : MonoBehaviour
     bool canPickup = false;
     public string pickUpInput;
 
+    public AudioSource pickupSfx;
+
     void Start()
     {
         var myIndex = transform.parent.GetComponent<PlayerController2>().playerIndex;
@@ -54,6 +56,8 @@ public class PlayerWeaponPickup : MonoBehaviour
         {
             if (canPickup)
             {
+                pickupSfx.Play();
+                
                 //drop weapon
                 Weapon oldWeapon = Instantiate(playerShoot.CurWeapon.weaponPrefab, launchPoint.position, Quaternion.identity).GetComponent<Weapon>();
                 oldWeapon.Init(playerShoot.CurMagazineBullets, playerShoot.CurTotalBullets);

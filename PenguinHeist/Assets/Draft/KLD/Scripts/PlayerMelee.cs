@@ -13,6 +13,27 @@ public class PlayerMelee : MonoBehaviour
 
     bool isAttacking = false;
     public bool IsAttacking => isAttacking;
+<<<<<<< Updated upstream
+=======
+    
+    [Header("Input")]
+    public string meleeInput;
+    public float lTrigger;
+    public bool isPressingMeleeInput;
+
+    public AudioSource meleeSfx;
+
+    private void Start()
+    {
+        var playerIndex = GetComponent<PlayerController2>().playerIndex;
+        meleeInput = playerIndex switch
+        {
+            0 => $"LeftTrigger",
+            1 => $"LeftTriggerP2",
+            _ => meleeInput
+        };
+    }
+>>>>>>> Stashed changes
 
     void Update()
     {
@@ -31,6 +52,7 @@ public class PlayerMelee : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
+            meleeSfx.Play();
             animationController.Melee();
             isAttacking = true;
             StartCoroutine(WaitAndCanAttack());
