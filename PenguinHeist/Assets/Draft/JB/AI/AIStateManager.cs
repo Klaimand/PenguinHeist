@@ -11,6 +11,7 @@ public enum AIStateType
     Interact = 5,
     //GunHold,
     //HoldShield
+    WalkBack = 17
 }
 
 public enum AIType
