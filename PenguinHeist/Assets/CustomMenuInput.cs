@@ -19,6 +19,7 @@ public class CustomMenuInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(CustomizationMenuManager.instance.isTwoPlayerReady) return;
         if (Input.GetButtonDown(changeColorInput)) ColorInput();
         if (Input.GetButtonDown(confirmInput)) ConfirmInput();
     }
