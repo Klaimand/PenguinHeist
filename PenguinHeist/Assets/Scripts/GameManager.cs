@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] EventsManager eventsManager;
+    [SerializeField] KLD_AudioManager audioManager;
     public EventsManager EventsManager => eventsManager;
+    public KLD_AudioManager AudioManager => audioManager;
 
     public GameObject playerPrefab;
     public PlayerController2[] playerList;

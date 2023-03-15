@@ -34,7 +34,7 @@ public class AiMoveStateEditor : Editor
             Handles.Label(aiMoveState.wayPoints[i], "WayPoint " + i);
         }
 
-        if (Application.isPlaying)
+        /*if (Application.isPlaying)
         {
             NavMeshPath path;
             GameObject go;
@@ -61,6 +61,7 @@ public class AiMoveStateEditor : Editor
             
             //Save chanes
             EditorUtility.SetDirty(aiMoveState);
-        }
+        }*/
+        EditorUtility.SetDirty(aiMoveState);
     }
 }

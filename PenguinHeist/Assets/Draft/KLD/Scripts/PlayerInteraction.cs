@@ -22,6 +22,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public string interractInput;
 
+    public AudioSource pickupSfx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +59,7 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     if (ii.GetInteractionDuration() > 0f)
                     {
+                        pickupSfx.Play();
                         ii.InteractImmediate(this);
                         isInteracting = true;
                         StartCoroutine(WaitAndInteract(ii.GetInteractionDuration(), ii));
