@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,7 @@ public class PlayerMelee : MonoBehaviour
 
     bool isAttacking = false;
     public bool IsAttacking => isAttacking;
-<<<<<<< Updated upstream
-=======
+
     
     [Header("Input")]
     public string meleeInput;
@@ -33,7 +33,6 @@ public class PlayerMelee : MonoBehaviour
             _ => meleeInput
         };
     }
->>>>>>> Stashed changes
 
     void Update()
     {
@@ -43,14 +42,14 @@ public class PlayerMelee : MonoBehaviour
     void CheckMelee()
     {
         if (playerInteraction.IsInteracting) return;
-
         if (playerBag.IsCarrying) return;
-
         //if player is dead return
-
         if (isAttacking) return;
-
-        if (Input.GetKeyDown(KeyCode.K))
+        
+        lTrigger = Input.GetAxis(meleeInput);
+        isPressingMeleeInput = lTrigger > 0.5f;
+        
+        if (isPressingMeleeInput)
         {
             meleeSfx.Play();
             animationController.Melee();

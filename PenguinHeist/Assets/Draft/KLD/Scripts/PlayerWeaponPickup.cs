@@ -52,7 +52,7 @@ public class PlayerWeaponPickup : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Pickup"))
+        if (Input.GetButtonDown(pickUpInput))
         {
             if (canPickup)
             {

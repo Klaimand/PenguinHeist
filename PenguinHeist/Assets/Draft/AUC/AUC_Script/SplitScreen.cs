@@ -2,7 +2,12 @@
 
 public class SplitScreen : MonoBehaviour {
 
-	/*Reference both the transforms of the two players on screen.
+	[SerializeField] Material renderMat;
+	/*
+	[SerializeField] private float multiplyAngle;
+	*/
+
+ 	/*Reference both the transforms of the two players on screen.
 	Necessary to find out their current positions.*/
 	[Header("Players Transform")]
 	[SerializeField] private Transform player1;
@@ -28,20 +33,21 @@ public class SplitScreen : MonoBehaviour {
 	
 	[SerializeField] private int twoCamsLerpSpeed = 15;
 	[SerializeField] private int oneCamsLerpSpeed = 15;
-	[SerializeField] private float offSetByStickMultiplier = 1.05f;
+	[SerializeField] private float offSetByStickMultiplier = 0.35f;
+	
 	[HideInInspector] public Vector3 player1OffSetCam;
 	[HideInInspector] public Vector3 player2OffSetCam;
 	
 	//The two quads used to draw the second screen, both of which are initalized in the start function.
-	private GameObject splitter;
+	//private GameObject splitter;
 	private GameObject split;
 	private bool isSplit;
 	public float distance;
 	
 	void Start ()
 	{
-		splitter = transform.GetChild(0).gameObject;
-		split = splitter.transform.GetChild(0).gameObject;
+		//splitter = transform.GetChild(0).gameObject;
+		//split = splitter.transform.GetChild(0).gameObject;
 		isSplit = false;
 		
 		Camera c1 = camera1.GetComponent<Camera>();
@@ -49,8 +55,6 @@ public class SplitScreen : MonoBehaviour {
 		c2.depth = c1.depth - 1;
 		c2.cullingMask = ~(1 << LayerMask.NameToLayer("TransparentFX"));
 		c1.transform.rotation = c2.transform.rotation = Quaternion.Euler(cameraAngle,0,0);
-		
-		AssignMaterialAndShader();
 	}
 	
 	void FixedUpdate() 
@@ -65,7 +69,7 @@ public class SplitScreen : MonoBehaviour {
 		else angle = Mathf.Rad2Deg * Mathf.Asin (zDistance / distance) - 90;
 		
 		//Rotates the splitter according to the new angle.
-		splitter.transform.localEulerAngles = new Vector3 (0, 0, angle);
+		//splitter.transform.localEulerAngles = new Vector3 (0, 0, angle);
 
 		//Gets the exact midpoint between the two players.
 		Vector3 midPoint = new Vector3 ((player1.position.x + player2.position.x) / 2, (player1.position.y + player2.position.y) / 2, (player1.position.z + player2.position.z) / 2); 
@@ -89,9 +93,8 @@ public class SplitScreen : MonoBehaviour {
 			player1OffSetCam = player1.forward.normalized * offSetByStickMultiplier;
 			player2OffSetCam = player2.forward.normalized * offSetByStickMultiplier;
 			
-			if (!splitter.activeSelf) // Si splitter est désactivé
+			if (!camera2.activeSelf) // Si splitter est désactivé
 			{
-				splitter.SetActive (true);
 				camera2.SetActive (true);
 				camera2.transform.position = camera1.transform.position;
 			} 
@@ -105,7 +108,7 @@ public class SplitScreen : MonoBehaviour {
 		else
 		{
 			isSplit = false;
-			if (splitter.activeSelf) splitter.SetActive (false);
+			//if (splitter.activeSelf) splitter.SetActive (false);
 			camera2.SetActive (false);
 		}
 
@@ -114,36 +117,13 @@ public class SplitScreen : MonoBehaviour {
 			Vector3.Lerp(camera1.transform.position,midPoint + new Vector3(0,yOffset,zOffset),Time.deltaTime * oneCamsLerpSpeed);
 		
 		SetSplitterLineWidth();
-	}
-	
-	private void AssignMaterialAndShader()
-	{
-		//Creates both temporary materials required to create the splitscreen.
-		//Material tempMat = new Material(Shader.Find("Unlit/Color"));
-		//tempMat.color = splitterColor;
-		//splitter.GetComponent<Renderer>().material = tempMat;
-		//Material tempMat2 = new Material(Shader.Find("Mask/SplitScreen"));
-		//split.GetComponent<Renderer>().material = tempMat2;
-		
-		splitter.GetComponent<Renderer>().sortingOrder = 2;
-		splitter.layer = LayerMask.NameToLayer("TransparentFX");
-		split.layer = LayerMask.NameToLayer("TransparentFX");
+		renderMat.SetFloat("_Angle", angle + 180f);
+		renderMat.SetInt("_Split", isSplit ? 1 : 0);
 	}
 
 	private void SetSplitterLineWidth()
 	{
-		splitterWidth = splitterWidthOnDistance.Evaluate(distance) / 10;
-		splitter.transform.localScale = new Vector3(2.5f, splitterWidth, 1);
+		splitterWidth = splitterWidthOnDistance.Evaluate(distance - splitDistance) / 10;
+		renderMat.SetFloat("_Size", splitterWidth); 
 	}
-
-	/*private void CreateSpliterLine()
-	{
-		splitter = GameObject.CreatePrimitive(PrimitiveType.Quad);
-		splitter.name = $"Splitter line";
-		splitter.transform.parent = gameObject.transform;
-		splitter.transform.localPosition = Vector3.forward;
-		splitter.transform.localScale = new Vector3(2.5f, splitterWidth / 10, 1);
-		splitter.transform.localEulerAngles = Vector3.zero;
-		splitter.SetActive(false);
-	}*/
 }

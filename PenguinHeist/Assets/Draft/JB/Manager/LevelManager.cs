@@ -9,6 +9,9 @@ public class LevelManager : MonoBehaviour
     public List<AIStateManager> mafiaEnemies;
     List<AIStateManager> policeEnemies = new List<AIStateManager>();
 
+    [SerializeField] ObjectivesManager objectivesManager;
+    public ObjectivesManager ObjectivesManager => objectivesManager;
+
     private void Awake()
     {
         if (instance == null)
@@ -20,17 +23,17 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     public void RemoveMafiaEnemy(AIStateManager enemy)
     {
         mafiaEnemies.Remove(enemy);
     }
-    
+
     public void RemovePoliceEnemy(AIStateManager enemy)
     {
         policeEnemies.Remove(enemy);
     }
-    
+
     public void AddPoliceEnemy(AIStateManager enemy)
     {
         policeEnemies.Add(enemy);

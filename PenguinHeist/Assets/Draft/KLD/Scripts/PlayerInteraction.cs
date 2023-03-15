@@ -17,21 +17,23 @@ public class PlayerInteraction : MonoBehaviour
 
     bool isInteracting = false;
     public bool IsInteracting => isInteracting;
-
     public Action OnPlayerInteract;
 
-<<<<<<< Updated upstream
-=======
 
     public string interractInput;
 
     public AudioSource pickupSfx;
 
->>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
-
+        var playerIndex = GetComponent<PlayerController2>().playerIndex;
+        interractInput = playerIndex switch
+        {
+            0 => $"Interract",
+            1 => $"InterractP2",
+            _ => interractInput
+        };
     }
 
     // Update is called once per frame
@@ -47,7 +49,7 @@ public class PlayerInteraction : MonoBehaviour
 
         isDetectingInteraction = true;
 
-        if (!playerBag.IsCarrying && Input.GetKeyDown(KeyCode.G))
+        if (!playerBag.IsCarrying && Input.GetButtonDown(interractInput))
         {
             for (int i = 0; i < cols.Length; i++)
             {
