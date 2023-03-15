@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DestructibleObject : MonoBehaviour, IDamageable
 {
@@ -30,6 +31,9 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     [SerializeField] private float openGODuration;
     [SerializeField] private Ease exitGOEase;
     [SerializeField] private float exitGODuration;
+
+    [SerializeField] UnityEvent onObjectTakeDamage;
+    [SerializeField] UnityEvent onObjectDestroy;
 
     private bool getHurt;
     private float timePassedWithCanvas;
@@ -63,6 +67,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         currentHealth -= _damage;
         lifeSlider.value = currentHealth;
         sliderImage.color = Color.Lerp(Color.red, Color.green, (float)currentHealth / maxHealth);
+        onObjectTakeDamage.Invoke();
         if (currentHealth > 0) return;
         Destruct();
     }
@@ -93,8 +98,9 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     private void Destruct()
     {
         //Debug.Log($"{gameObject.name} destroyed");
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         // TODO Add fx 
+        onObjectDestroy.Invoke();
     }
 
     [ContextMenu("DoDamage10")]
