@@ -81,6 +81,7 @@ MonoBehaviour:
   rb: {fileID: 184667529128792290}
   speed: 25
   damage: 10
+  piercingBullet: 0
   impactFX: {fileID: 6917962191964234512, guid: 6ff51c06425042942be771ce1c2dc132, type: 3}
 --- !u!1 &184667530260606036
 GameObject:
@@ -247,23 +248,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4449340885584535248, guid: 83468fdb0c3398c42910f857cca69d00, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4449340885584535248, guid: 83468fdb0c3398c42910f857cca69d00, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 4449340885584535248, guid: 83468fdb0c3398c42910f857cca69d00, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4449340885584535248, guid: 83468fdb0c3398c42910f857cca69d00, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4449340885584535248, guid: 83468fdb0c3398c42910f857cca69d00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4449340885584535248, guid: 83468fdb0c3398c42910f857cca69d00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

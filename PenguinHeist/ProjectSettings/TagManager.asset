@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Weapon
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Player
@@ -21,7 +22,7 @@ TagManager:
   - Blood
   - PhysicalObjects
   - 
-  - 
+  - TestLayer
   - 
   - 
   - 
