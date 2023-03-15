@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef2fda6e5a0d5b418b00573ec490f91, type: 3}
+  m_Name: Enemy_Revolver
+  m_EditorClassIdentifier: 
+  spread: 5
+  bulletsPerMagazine: 6
+  totalBulletsOnPickup: 90
+  reloadTime: 1
+  fireRate: 0.4
+  shotsPerClick: 1
+  timeBetweenShots: 0.1
+  weaponPrefab: {fileID: 2700202361262549559, guid: c16deac657375594589141a178bb83d3, type: 3}
+  bulletPrefab: {fileID: 6640240255071874592, guid: 9862e7d3500c8234fb97ee6087cfd9f4, type: 3}
+  muzzleFlash: {fileID: 0}
+  weaponIndex: 0

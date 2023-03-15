@@ -7,11 +7,11 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     [Header("References")]
     [SerializeField] private Slider lifeSlider;
     [SerializeField] private Image sliderImage;
-    
+
     [Header("Object Setting")]
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
-    
+
     [Space]
     [Header("Feebacks")]
     [SerializeField] private float timingCanvasVisible = 4.5f;
@@ -30,11 +30,11 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     [SerializeField] private float openGODuration;
     [SerializeField] private Ease exitGOEase;
     [SerializeField] private float exitGODuration;
-    
+
     private bool getHurt;
     private float timePassedWithCanvas;
     private float objectSize;
-    
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -49,7 +49,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     private void FixedUpdate()
     {
         if (!getHurt) return;
-        
+
         timePassedWithCanvas += Time.deltaTime;
         if (timePassedWithCanvas > timingCanvasVisible)
         {
@@ -62,7 +62,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         ResetCanvas(true);
         currentHealth -= _damage;
         lifeSlider.value = currentHealth;
-        sliderImage.color = Color.Lerp(Color.red, Color.green, (float)currentHealth/maxHealth);
+        sliderImage.color = Color.Lerp(Color.red, Color.green, (float)currentHealth / maxHealth);
         if (currentHealth > 0) return;
         Destruct();
     }
@@ -76,7 +76,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         {
             lifeSlider.transform.DOKill();
             lifeSlider.transform.DOScale(sliderOpenSize, openUIDuration).SetEase(enterUIEase);
-            
+
             transform.DOKill();
             transform.DOScale(objectSize + objectFeedbackOffsetSize, openGODuration).SetEase(enterGOEase).OnComplete(() =>
             {
@@ -92,7 +92,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
 
     private void Destruct()
     {
-        Debug.Log($"{gameObject.name} destroyed");
+        //Debug.Log($"{gameObject.name} destroyed");
         gameObject.SetActive(false);
         // TODO Add fx 
     }
