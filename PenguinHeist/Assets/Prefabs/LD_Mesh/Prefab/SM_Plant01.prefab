@@ -326,6 +326,14 @@ MonoBehaviour:
   sliderOpenSize: 0.35
   sliderCloseSize: 0
   objectFeedbackOffsetSize: 0.15
+  enterUIEase: 0
+  openUIDuration: 0
+  exitUIEase: 0
+  exitUIDuration: 0
+  enterGOEase: 5
+  openGODuration: 0.1
+  exitGOEase: 24
+  exitGODuration: 0.5
 --- !u!1 &6040217356490083448
 GameObject:
   m_ObjectHideFlags: 0
