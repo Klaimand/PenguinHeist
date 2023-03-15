@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 2504148330069392716}
   - component: {fileID: 2504148330069392717}
   - component: {fileID: 2504148330069392718}
+  - component: {fileID: 4963852108790917766}
   m_Layer: 7
   m_Name: EnemyTemplate
   m_TagString: Untagged
@@ -207,6 +208,7 @@ MonoBehaviour:
   currentState: {fileID: 2504148330069392560}
   aIStateType: 2
   aiType: 1
+  chaseState: {fileID: 0}
   agent: {fileID: 2504148330069392718}
   weaponData: {fileID: 0}
   chaseAndAttackRange: 7.92
@@ -374,6 +376,23 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4963852108790917766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2504148330069392719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96724fa3ea19b744ab3995e5f984371e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 0}
+  previousState: {fileID: 0}
+  speed: 8
+  aIStateType: 0
+  bag: {fileID: 0}
 --- !u!1 &4880781025793779165
 GameObject:
   m_ObjectHideFlags: 0
