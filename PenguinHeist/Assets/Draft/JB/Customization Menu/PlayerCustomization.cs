@@ -5,11 +5,11 @@ using UnityEngine.Serialization;
 public class PlayerCustomization : MonoBehaviour
 {
     [SerializeField] PlayerCustomizationData playerCustomizationData;
-    public string hat;
-    public string glasses;
-    public string mustache;
-    public string neck;
-    public string flower;
+    [HideInInspector] public string hat;
+    [HideInInspector] public string glasses;
+    [HideInInspector] public string mustache;
+    [HideInInspector] public string neck;
+    [HideInInspector] public string flower;
     [SerializeField] SkinnedMeshRenderer skinnedMeshRenderer;
     
     GameObject hatGameObject;
