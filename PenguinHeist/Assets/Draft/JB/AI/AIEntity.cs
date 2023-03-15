@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class AIEntity : MonoBehaviour, IDamageable
 {
     [SerializeField] private WeaponSO weaponData;
+    public WeaponSO Weapon => weaponData;
     [SerializeField] public AIStateManager aiStateManager;
     [HideInInspector] public int curMagazineBullets;
     [HideInInspector] public bool isReloading; // In AIAttackState
@@ -15,14 +16,23 @@ public class AIEntity : MonoBehaviour, IDamageable
     [SerializeField] Vector2 minMaxLaunchTorque = new Vector2(100f, 200f);
     [SerializeField] private float health = 30;
 
+    bool isDead = false;
+    public bool IsDead => isDead;
+
+    public Action OnHit;
+
     private void Start()
     {
+        isHoldingShield = true;
         aiStateManager.weaponData = weaponData;
     }
 
     [ContextMenu("Die")]
     void Die()
     {
+        if (isDead) return;
+
+        isDead = true;
         if (aiStateManager.aiType == AIType.Police)
         {
             LevelManager.instance.RemovePoliceEnemy(aiStateManager);
@@ -33,7 +43,7 @@ public class AIEntity : MonoBehaviour, IDamageable
         }
         aiStateManager.aIStateType = AIStateType.Death;
         DropWeapon();
-        Destroy(transform.gameObject);
+        //Destroy(transform.gameObject);
     }
 
     void DropWeapon()
@@ -52,6 +62,9 @@ public class AIEntity : MonoBehaviour, IDamageable
     public void TakeDamage(int _damage)
     {
         //Hit
+        if (isDead) return;
+
+        OnHit?.Invoke();
         health -= _damage;
         if (health <= 0)
         {

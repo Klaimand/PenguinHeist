@@ -104,7 +104,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     {
         playerstate = PlayerState.KNOCKOUT;
         knockOutCanvas.SetActive(true);
-        Debug.Log(knockOutCanvas);
+        //Debug.Log(knockOutCanvas);
 
         // TODO - Enlever debug
         playerStateDebugText.text = $"KNOCK-OUT";
