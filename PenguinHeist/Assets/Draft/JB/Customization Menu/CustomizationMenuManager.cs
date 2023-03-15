@@ -145,7 +145,7 @@ public class CustomizationMenuManager : MonoBehaviour
 
     public void Confirm(int playerIndex)
     {
-        Debug.Log(playerIndex);
+        CustomizationAnimationManager.instance.TriggerLever(playerIndex);
         
         if (playerIndex == 0)
         {
