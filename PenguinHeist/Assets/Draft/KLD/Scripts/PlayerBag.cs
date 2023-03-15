@@ -46,6 +46,7 @@ public class PlayerBag : MonoBehaviour
         isCarrying = true;
         canLaunch = false;
         StartCoroutine(WaitAndCanLaunch());
+        LevelManager.instance.StopEnemyTakeBag(_moneyBag.transform);
     }
 
     void LaunchBag()
@@ -57,6 +58,7 @@ public class PlayerBag : MonoBehaviour
 
         rb.velocity = launchPoint.forward * Random.Range(minMaxLaunchForce.x, minMaxLaunchForce.y);
         rb.AddTorque(Random.onUnitSphere * Random.Range(minMaxLaunchTorque.x, minMaxLaunchTorque.y));
+        LevelManager.instance.EnemyTakeBag(rb.transform);
     }
 
     IEnumerator WaitAndCanLaunch()

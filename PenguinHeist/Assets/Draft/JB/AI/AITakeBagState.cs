@@ -1,9 +1,11 @@
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.AI;
+using Vector3 = UnityEngine.Vector3;
 
 public class AITakeBagState : AIState
 {
-    private Transform bag;
+    [HideInInspector] public Transform bag;
     
     public void Init(NavMeshAgent agent, Transform bag)
     {
@@ -18,10 +20,10 @@ public class AITakeBagState : AIState
 
     public override AIState RunCurrentState(AIStateManager stateManager)
     {
-        MoveTo(stateManager.agent, stateManager.player.position);
-        if (stateManager.agent.remainingDistance <= stateManager.chaseAndAttackRange)
+        MoveTo(stateManager.agent, new Vector3(bag.position.x, 0.5f, bag.position.z));
+        if (stateManager.agent.remainingDistance <= stateManager.agent.stoppingDistance && Vector3.Distance(stateManager.transform.position, new Vector3(bag.position.x, 0.5f, bag.position.z)) <= stateManager.agent.stoppingDistance)
         {
-            return nextState;
+            stateManager.aIStateType = AIStateType.Interact;
         }
         return null;
     }
