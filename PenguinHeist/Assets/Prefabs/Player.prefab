@@ -1455,6 +1455,7 @@ GameObject:
   - component: {fileID: 1561667140}
   - component: {fileID: 1561667144}
   - component: {fileID: 1561667148}
+  - component: {fileID: 1969085239390296267}
   - component: {fileID: 8034712766063722074}
   - component: {fileID: 3647351007498855953}
   - component: {fileID: 556807506497683633}
@@ -1699,6 +1700,18 @@ MonoBehaviour:
   meleeContactRadius: 0.5
   damage: 10
   meleeSfx: {fileID: 8034712766063722074}
+--- !u!114 &1969085239390296267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986876294537289575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656671f354789914d8ef2b1e40213fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &8034712766063722074
 AudioSource:
   m_ObjectHideFlags: 0
