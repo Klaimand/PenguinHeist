@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,48 +13,50 @@ public class Safe : MonoBehaviour
     public Animator myAnimator;
     public SphereCollider myCollider;
     public int chestGauje;
-    public int playerIndex;
-    public string yInput;
     public float timer;
     public bool canInput;
     public Slider heistSlider;
-    public List<PlayerController2> playerInRange;
+    public List<PlayerOpenChest> playerInRange;
     public ParticleSystem psChest;
+    public ParticleSystem psChestIsHere;
     [Space(10)] [Header("On Safe Open")] public UnityEvent OnSafeOpenEvent;
     
     #region Events Methods
     public void Start()
     {
-        yInput = playerIndex switch
-        {
-            0 => $"Change Color",
-            1 => $"Change ColorP2",
-        };
-
         heistSlider.maxValue = 100f;
         heistSlider.minValue = 0f;
         heistSlider.value = heistSlider.minValue;
-        
         heistCanvas.SetActive(false);
+        psChestIsHere.Play();
         isOpen = false;
     }
 
+    public bool inputPressed;
     private void Update()
     {
         if(isOpen) return;
-        InputOpenChest();
+        if (inputPressed)
+        {
+            InputOpenChest();
+            inputPressed = false;
+        }
+
+        DecreasePoints();
     }
     
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
         if (isOpen) return;
+        var player = other.GetComponent<PlayerOpenChest>();
         
-        playerInRange.Add(other.GetComponent<PlayerController2>());
+        playerInRange.Add(player);
         if (playerInRange.Count > 0)
         {
             canInput = true;
             heistCanvas.SetActive(true);
+            player.currentSafe = this;
         }
     }
 
@@ -61,27 +64,34 @@ public class Safe : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         if (isOpen) return;
+        var player = other.GetComponent<PlayerOpenChest>();
+        playerInRange.Remove(player);
         
-        playerInRange.Remove(other.GetComponent<PlayerController2>());
         if (playerInRange.Count < 1)
         {
             canInput = false;
             heistCanvas.SetActive(false);
+            player.currentSafe = null;
         }
     }
+
 
     #endregion
 
 
     #region Methods
     
-    void InputOpenChest()
+    public void InputOpenChest()
     {
-        if (!this.isOpen && Input.GetButtonDown(yInput) && canInput)
+        if (!this.isOpen && canInput)
         {
-            chestGauje += 5;
+            chestGauje += 3;
+            FeedBackTweening();
         }
+    }
 
+    public void DecreasePoints()
+    {
         if (chestGauje < 1) return;
 
         timer += Time.deltaTime; 
@@ -114,14 +124,25 @@ public class Safe : MonoBehaviour
         GivePlayerMoney();
     }
 
+    public Transform bagSpawnPoint;
     private void GivePlayerMoney()
     {
         psChest.Play();
-        GameObject GO = Instantiate(bagPrefab, transform.position + Vector3.forward * 2 + Vector3.up, Quaternion.identity);
+        GameObject GO = Instantiate(bagPrefab, bagSpawnPoint.position + transform.forward, Quaternion.identity);
+        GO.transform.DOScale(0, 0.001f).OnComplete(() => 
+            GO.transform.DOScale(1, 1.15f).SetEase(Ease.OutElastic)); 
         Rigidbody rb = GO.GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * Random.Range(2.5f,3.5f));
+        rb.AddForce(transform.forward * Random.Range(2.5f * 3, 3.5f * 3.5f));
         rb.AddTorque(Random.onUnitSphere * Random.Range(100, 300));
+        Destroy(psChestIsHere.gameObject);
     }
 
+    public Image _image;
+    public RectTransform _Rect;
+    public void FeedBackTweening()
+    {
+        _image.rectTransform.DOShakePosition(0.185f, new Vector3(1, 1 ,1), 35);
+    }
+        
     #endregion
 }

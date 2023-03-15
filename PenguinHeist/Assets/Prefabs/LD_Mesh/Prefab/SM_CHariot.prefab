@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1739101238781025771}
   - component: {fileID: 3426496912204960334}
   - component: {fileID: 606204192744531588}
-  - component: {fileID: 7714137072920210269}
   m_Layer: 0
   m_Name: SM_CHariot
   m_TagString: Untagged
@@ -26,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398745849043634001}
-  m_LocalRotation: {x: -0.5000007, y: 0.4999993, z: 0.4999993, w: 0.5000007}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -84,16 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7714137072920210269
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398745849043634001}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.3064862, y: 2.3376637, z: 1.3332486}
-  m_Center: {x: -0.028766606, y: -0.048511982, z: 0.34716523}
