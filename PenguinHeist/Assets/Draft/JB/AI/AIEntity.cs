@@ -19,6 +19,8 @@ public class AIEntity : MonoBehaviour, IDamageable
     bool isDead = false;
     public bool IsDead => isDead;
 
+    public Action OnHit;
+
     private void Start()
     {
         isHoldingShield = true;
@@ -60,6 +62,9 @@ public class AIEntity : MonoBehaviour, IDamageable
     public void TakeDamage(int _damage)
     {
         //Hit
+        if (isDead) return;
+
+        OnHit?.Invoke();
         health -= _damage;
         if (health <= 0)
         {
