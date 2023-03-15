@@ -15,6 +15,12 @@ public class AiMoveStateEditor : Editor
         //agent = aiMoveState.transform.parent.GetComponent<NavMeshAgent>();
     }
 
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        serializedObject.ApplyModifiedProperties();
+    }
+
     private void OnSceneGUI()
     {
         if (aiMoveState.wayPoints == default)
@@ -54,10 +60,7 @@ public class AiMoveStateEditor : Editor
             Destroy(go);
             
             //Save chanes
-            if (GUI.changed)
-            {
-                EditorUtility.SetDirty(aiMoveState);
-            }
+            EditorUtility.SetDirty(aiMoveState);
         }
     }
 }

@@ -24,12 +24,14 @@ Shader "Custom/ExtendIslands"
             struct appdata {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                float2 uv2 : TEXCOORD1;
 
             };
             
             struct v2f {
                 float2 uv: TEXCOORD0; //once again might have to change later to texcoord1?
                 float4 vertex : SV_POSITION;
+                float2 uv2 : TEXCOORD1;
             };
 
             sampler2D _MainTex;
@@ -41,20 +43,20 @@ Shader "Custom/ExtendIslands"
             v2f vert(appdata v) {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv2 = TRANSFORM_TEX(v.uv2, _MainTex);
                 return o;
             }
 
             fixed4 frag(v2f i) : SV_Target{
                 float2 offsets[8] = {float2(-_OffsetUV, 0), float2(_OffsetUV, 0), float2(0, _OffsetUV), float2(0, -_OffsetUV), float2(-_OffsetUV, _OffsetUV), float2(_OffsetUV, _OffsetUV), float2(_OffsetUV, -_OffsetUV), float2(-_OffsetUV, -_OffsetUV)};
-                float2 uv = i.uv;
-                float4 color = tex2D(_MainTex, uv);
-                float4 island = tex2D(_UVIslands, uv);
+                float2 uv2 = i.uv2;
+                float4 color = tex2D(_MainTex, uv2);
+                float4 island = tex2D(_UVIslands, uv2);
 
                 if (island.z < 1) {
                     float extendedColor = color;
                     for (int i = 0; i < offsets.Length; i++) {
-                        float2 currentUV = uv + offsets[i] * _MainTex_TexelSize.xy;
+                        float2 currentUV = uv2 + offsets[i] * _MainTex_TexelSize.xy;
                         float offsettedColor = tex2D(_MainTex, currentUV);
                         extendedColor = max(offsettedColor, extendedColor);
                     }

@@ -39,6 +39,7 @@ public class PlayerShoot : MonoBehaviour
 
     bool isReloading = false;
     public bool IsReloading => isReloading;
+    bool canShoot = false;
 
     //timers
     float timeSinceLastClick = 0f;
@@ -112,6 +113,8 @@ public class PlayerShoot : MonoBehaviour
         CheckShoot();
 
         IncreaseTimers();
+
+        ProcessCanShootForNextFrame();
     }
 
     void ProcessInputs()
@@ -150,8 +153,15 @@ public class PlayerShoot : MonoBehaviour
         OnPlayerChangeWeapon?.Invoke();
     }
 
+    void ProcessCanShootForNextFrame()
+    {
+        canShoot = !isReloading;
+    }
+
     void CheckShoot()
     {
+        if (!canShoot) return;
+
         if (playerBag.IsCarrying) return;
 
         if (melee.IsAttacking) return;

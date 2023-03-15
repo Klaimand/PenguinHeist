@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlbedoTexture:
-        m_Texture: {fileID: 2800000, guid: f7532d04ee40c3045ab448e91e084a5e, type: 3}
+        m_Texture: {fileID: 2800000, guid: d35e47ae7cb4ac7479742875e532823e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture1:
@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_2:
-        m_Texture: {fileID: 2800000, guid: f244db9b7f081f2489fd0772b092d3fb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 667ef52f453ef9648b72f45ae796872f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_3:
@@ -65,11 +65,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_4:
-        m_Texture: {fileID: 2800000, guid: d0dd061750d890a42a4cd849037bdab3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 16159c1c23cacdf40a8659134cbd49a2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_5:
-        m_Texture: {fileID: 2800000, guid: 328408a1a4084d94389b52ee132f9cd1, type: 3}
+        m_Texture: {fileID: 2800000, guid: c1a5d0fada37bbe4da92b490b50328af, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_6:
@@ -77,7 +77,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_7:
-        m_Texture: {fileID: 2800000, guid: 7c414ccf2ef78f94f8975ac12a2f4276, type: 3}
+        m_Texture: {fileID: 2800000, guid: 86bb865e0ccb3cd49a530f1760ec2d97, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture_8:
@@ -121,7 +121,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ground_Normal:
-        m_Texture: {fileID: 18700000, guid: f3bd925bd90365a4a9f7c64cb43317e1, type: 3}
+        m_Texture: {fileID: 18700000, guid: 9660ba85a01cc784c831d6d75f2acb99, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -169,9 +169,13 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
+    - _Carpet1_Saturation: 1
+    - _Carpet2_Saturation: 0.7
+    - _Carpet_Light: 0
     - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Color_Variation_Opacity: 0.5
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -182,6 +186,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Height: 0.5
+    - _Marble_Gloss: 0.5
     - _Metallic: 0.167
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -203,6 +209,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_Variation: {r: 0, g: 0.013265874, b: 0.34117648, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
