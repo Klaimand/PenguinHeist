@@ -31,6 +31,7 @@ public class CustomizationItem : MonoBehaviour, IUpdateSelectedHandler
 
     public void OnUpdateSelected(BaseEventData eventData)
     {
+        if (CustomizationMenuManager.instance.isTwoPlayerReady) return;
         NextCustomization();
     }
 
