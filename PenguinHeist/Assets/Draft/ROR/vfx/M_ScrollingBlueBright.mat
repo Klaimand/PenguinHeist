@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_ScrollingBlueDark$
+  m_Name: M_ScrollingBlueBright
   m_Shader: {fileID: -6465566751694194690, guid: 71ea16d8611a60848a3155271f6effbd, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -57,7 +57,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scrollspeed: 7.45
-    - _grandiant: -0.28
+    - _grandiant: 0.14
     m_Colors:
-    - _Color: {r: 0.47427326, g: 1.1378148, b: 3.7239234, a: 1}
+    - _Color: {r: 1.3754815, g: 3.973135, b: 4.942408, a: 1}
   m_BuildTextureStacks: []
