@@ -58,6 +58,9 @@ public class PlayerShoot : MonoBehaviour
     public Ease startShootTextEase;
     public Ease EndShootTextEase;
 
+    public AudioSource gunshotSfx;
+    public AudioSource reloadSfx;
+
     [ContextMenu("TextTest")]
     public void TextTest()
     {
@@ -225,6 +228,12 @@ public class PlayerShoot : MonoBehaviour
 
         dir = Quaternion.Euler(0f, rdmAngle, 0f) * dir;
 
+        if (curWeapon.gunshotSFX != null)
+        {
+            gunshotSfx.clip = curWeapon.gunshotSFX; 
+            gunshotSfx.Play();
+        }
+        
         Instantiate(curWeapon.bulletPrefab, canon.position, Quaternion.LookRotation(dir));
 
         if (curWeapon.muzzleFlash != null)
@@ -242,6 +251,7 @@ public class PlayerShoot : MonoBehaviour
         curMagazineBullets = Mathf.Min(curWeapon.bulletsPerMagazine, curTotalBullets);
         curTotalBullets -= curMagazineBullets;
         isReloading = false;
+        reloadSfx.Play();
 
         GameManager.instance.EventsManager.TriggerEvent("OnPlayerReloadEnd");
     }

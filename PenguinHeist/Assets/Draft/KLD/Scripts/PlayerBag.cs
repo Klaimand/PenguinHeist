@@ -15,9 +15,11 @@ public class PlayerBag : MonoBehaviour
 
     [SerializeField] float minLaunchTime = 0.2f;
 
+
     public string interractInput;
     
     bool canLaunch = false;
+    public AudioSource launchSfx;
 
     private void Start()
     {
@@ -53,6 +55,8 @@ public class PlayerBag : MonoBehaviour
     {
         isCarrying = false;
         animationController.LaunchBag();
+        
+        launchSfx.Play();
 
         Rigidbody rb = Instantiate(moneyBagPrefab, launchPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
 
