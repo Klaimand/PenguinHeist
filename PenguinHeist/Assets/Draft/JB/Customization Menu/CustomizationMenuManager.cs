@@ -26,6 +26,12 @@ public class CustomizationMenuManager : MonoBehaviour
     int player1ColorIndex = 0;
     int player2ColorIndex = 0;
     
+    [Header("Buttons")]
+    [SerializeField] private RectTransform player1ChangeColorButton;
+    [SerializeField] private RectTransform player2ChangeColorButton;
+    [SerializeField] private RectTransform player1ConfirmButton;
+    [SerializeField] private RectTransform player2ConfirmButton;
+    
     [Header("Debug")] 
     [SerializeField] private TextMeshProUGUI player1Text;
     [SerializeField] private TextMeshProUGUI player2Text;
@@ -121,6 +127,7 @@ public class CustomizationMenuManager : MonoBehaviour
             player1CustomizationData.color = colors[player1ColorIndex];
             player1Customization.ChangeColor(player1CustomizationData.color);
             
+            UIAnimation.DoPUnchScale(player1ChangeColorButton, 0.1f, 0.2f);
             player1Text.color = player1CustomizationData.color; // Debug
         }
         else
@@ -131,6 +138,7 @@ public class CustomizationMenuManager : MonoBehaviour
             player2CustomizationData.color = colors[player2ColorIndex];
             player2Customization.ChangeColor(player2CustomizationData.color);
             
+            UIAnimation.DoPUnchScale(player2ChangeColorButton, 0.1f, 0.2f);
             player2Text.color = player2CustomizationData.color; // Debug
         }
     }
@@ -143,11 +151,13 @@ public class CustomizationMenuManager : MonoBehaviour
         {
             isPlayer1Confirmed = !isPlayer1Confirmed;
             player1ConfirmText.text = isPlayer1Confirmed ? "Confirmed" : "Confirm ?";
+            UIAnimation.DoPUnchScale(player1ConfirmButton, 0.1f, 0.2f);
         }
         else
         {
             isPlayer2Confirmed = !isPlayer2Confirmed;
             player2ConfirmText.text = isPlayer2Confirmed ? "Confirmed" : "Confirm ?";
+            UIAnimation.DoPUnchScale(player2ConfirmButton, 0.1f, 0.2f);
         }
     }
 }
