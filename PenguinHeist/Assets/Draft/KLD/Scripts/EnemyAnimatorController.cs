@@ -15,11 +15,13 @@ public class EnemyAnimatorController : MonoBehaviour
     void OnEnable()
     {
         aIAttackState.OnEnemyShoot += Shoot;
+        aIEntity.OnHit += Hit;
     }
 
     void OnDisable()
     {
         aIAttackState.OnEnemyShoot -= Shoot;
+        aIEntity.OnHit -= Hit;
     }
 
     void Start()
@@ -37,5 +39,10 @@ public class EnemyAnimatorController : MonoBehaviour
     void Shoot()
     {
         animator.SetTrigger("shoot");
+    }
+
+    void Hit()
+    {
+        animator.SetTrigger("hit");
     }
 }

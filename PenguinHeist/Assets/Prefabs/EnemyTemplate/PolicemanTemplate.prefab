@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: -8615321760962074005}
-  aIStateType: 0
+  aIStateType: 2
   aiType: 1
   agent: {fileID: 2504148330069392718}
   weaponData: {fileID: 0}
@@ -547,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ccd560d253dbda1469acb092535ae079, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd560d253dbda1469acb092535ae079, type: 3}
