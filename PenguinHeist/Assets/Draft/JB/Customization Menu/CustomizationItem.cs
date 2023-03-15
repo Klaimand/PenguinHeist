@@ -12,6 +12,8 @@ public class CustomizationItem : MonoBehaviour, IUpdateSelectedHandler
     private float currentDelay;
     int currentIndex = 0;
 
+    [SerializeField] private Animator itemButtonAnimator;
+
     private void Awake()
     {
         image = GetComponent<Image>();
@@ -82,6 +84,7 @@ public class CustomizationItem : MonoBehaviour, IUpdateSelectedHandler
         string playerNb = player == 1 ? String.Empty : "P2";
         if (Mathf.Abs(Input.GetAxis("Vertical" + playerNb)) >= 0.99f && currentDelay < 0)
         {
+            CustomizationAnimationManager.instance.TriggerItemButton(itemButtonAnimator);
             if (Input.GetAxis("Vertical" + playerNb) >= 0.99f)
             {
                 currentIndex--;
