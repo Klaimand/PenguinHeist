@@ -28,6 +28,8 @@ public class WeaponSO : ScriptableObject
 
     public int weaponIndex = 0;
 
+    public AudioClip gunshotSFX;
+
     void OnValidate()
     {
         bulletsPerMagazine.ClampAtZero();

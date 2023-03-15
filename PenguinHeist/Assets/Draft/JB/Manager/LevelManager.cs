@@ -11,6 +11,10 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] ObjectivesManager objectivesManager;
     public ObjectivesManager ObjectivesManager => objectivesManager;
+    
+    Dictionary<Transform, AIStateManager> enemiesBag = new Dictionary<Transform, AIStateManager>();
+    
+    bool alarm = false;
 
     private void Awake()
     {
@@ -41,26 +45,37 @@ public class LevelManager : MonoBehaviour
 
     AIStateManager TakeRandomEnemy()
     {
-        AIStateManager randomPolice = policeEnemies[Random.Range(0, policeEnemies.Count)];
-        AIStateManager randomMafia = mafiaEnemies[Random.Range(0, mafiaEnemies.Count)];
         int random = Random.Range(0, 2);
-        if (random == 0)
+        if (policeEnemies.Count != 0 && random == 0)
         {
-            return randomPolice;
+            return policeEnemies[Random.Range(0, policeEnemies.Count)];
         }
-        else
-        {
-            return randomMafia;
-        }
+
+        return mafiaEnemies[Random.Range(0, mafiaEnemies.Count)];
     }
 
-    public void TakeBag(Transform bag)
+    public void EnemyTakeBag(Transform bag)
     {
         AIStateManager randomEnemy = TakeRandomEnemy();
+        randomEnemy.agent.isStopped = false;
+        enemiesBag.Add(bag, randomEnemy);
         if (randomEnemy.currentState is AITakeBagState)
         {
-            TakeBag(bag);
+            EnemyTakeBag(bag);
         }
         randomEnemy.SwitchToTakeBag(bag);
+    }
+
+    public void StopEnemyTakeBag(Transform bag)
+    {
+        if (!enemiesBag.ContainsKey(bag)) return;
+        enemiesBag[bag].currentState = enemiesBag[bag].chaseState;
+        enemiesBag.Remove(bag);
+    }
+    
+    public void StartAlarm()
+    {
+        if (alarm) return;
+        WaveManager.instance.StartWaves();
     }
 }

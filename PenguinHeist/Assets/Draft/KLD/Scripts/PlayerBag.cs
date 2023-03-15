@@ -15,9 +15,11 @@ public class PlayerBag : MonoBehaviour
 
     [SerializeField] float minLaunchTime = 0.2f;
 
+
     public string interractInput;
     
     bool canLaunch = false;
+    public AudioSource launchSfx;
 
     private void Start()
     {
@@ -46,17 +48,21 @@ public class PlayerBag : MonoBehaviour
         isCarrying = true;
         canLaunch = false;
         StartCoroutine(WaitAndCanLaunch());
+        LevelManager.instance.StopEnemyTakeBag(_moneyBag.transform);
     }
 
     void LaunchBag()
     {
         isCarrying = false;
         animationController.LaunchBag();
+        
+        launchSfx.Play();
 
         Rigidbody rb = Instantiate(moneyBagPrefab, launchPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
 
         rb.velocity = launchPoint.forward * Random.Range(minMaxLaunchForce.x, minMaxLaunchForce.y);
         rb.AddTorque(Random.onUnitSphere * Random.Range(minMaxLaunchTorque.x, minMaxLaunchTorque.y));
+        LevelManager.instance.EnemyTakeBag(rb.transform);
     }
 
     IEnumerator WaitAndCanLaunch()
