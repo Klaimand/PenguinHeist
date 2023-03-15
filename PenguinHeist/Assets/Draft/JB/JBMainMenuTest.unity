@@ -650,7 +650,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 849837898885682446}
-  - {fileID: 7085245631322825364}
+  - {fileID: 5338843793670497223}
   - {fileID: 152718833}
   - {fileID: 826088793354088040}
   - {fileID: 826088791961465795}
@@ -2606,7 +2606,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7130968486691922367}
-  - {fileID: 5338843793670497223}
+  - {fileID: 7085245631322825364}
   - {fileID: 783057895}
   - {fileID: 826088791625078384}
   - {fileID: 826088793286933325}
@@ -5327,7 +5327,7 @@ GameObject:
   - component: {fileID: 2231755263380391708}
   - component: {fileID: 7375882806316683376}
   m_Layer: 5
-  m_Name: machine2
+  m_Name: machine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6055,7 +6055,7 @@ GameObject:
   - component: {fileID: 2059847192321912209}
   - component: {fileID: 379979169332881734}
   m_Layer: 5
-  m_Name: machine1
+  m_Name: machine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6279,7 +6279,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1956635854}
+  m_Father: {fileID: 235194401}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -6692,7 +6692,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 235194401}
+  m_Father: {fileID: 1956635854}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
