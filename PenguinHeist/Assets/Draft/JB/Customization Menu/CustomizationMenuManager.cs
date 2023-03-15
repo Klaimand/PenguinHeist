@@ -1,6 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Screen = UnityEngine.Device.Screen;
 
 public enum CustomizationType
 {
@@ -32,15 +34,21 @@ public class CustomizationMenuManager : MonoBehaviour
     [SerializeField] private RectTransform player1ConfirmButton;
     [SerializeField] private RectTransform player2ConfirmButton;
     
-    [Header("Debug")] 
-    [SerializeField] private TextMeshProUGUI player1Text;
-    [SerializeField] private TextMeshProUGUI player2Text;
+    [Header("Confirm Texts")]
     [SerializeField] private TextMeshProUGUI player1ConfirmText;
     [SerializeField] private TextMeshProUGUI player2ConfirmText;
 
+    [Header("Players Ready")] 
+    [SerializeField] private Image playersReadyBackGround;
+    [SerializeField] private RectTransform readyText;
+    [SerializeField] private float launchDelay = 3;
+    [SerializeField] private TextMeshProUGUI launchText;
+    
     private bool isPlayer1Confirmed;
 
     private bool isPlayer2Confirmed;
+    
+    [HideInInspector] public bool isTwoPlayerReady;
 
     private void Awake()
     {
@@ -54,29 +62,22 @@ public class CustomizationMenuManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (isTwoPlayerReady)
+        {
+            launchDelay -= Time.deltaTime;
+            launchText.text = Mathf.CeilToInt(launchDelay).ToString();
+            if (launchDelay <= 0)
+            {
+                //Launch Game
+            }
+        }
+    }
+
     private void Start()
     {
         Init();
-    }
-
-    [SerializeField] private GameObject readyCanvas;
-    private float timerTwoPlayerReady;
-    private bool isReady;
-    [SerializeField] private bool _isPlayer1Confirmed;
-
-    private void Update()
-    {
-        if (!(isPlayer1Confirmed & isPlayer2Confirmed)) return;
-        
-        // if (!isReady)
-        // {
-        //     readyCanvas.SetActive(true);
-        //     timerTwoPlayerReady = 0;
-        //     isReady = true;
-        // }
-        //
-        // timerTwoPlayerReady += Time.deltaTime;
-        // if (timerTwoPlayerReady < 5f) return;
     }
 
     void Init()
@@ -131,7 +132,6 @@ public class CustomizationMenuManager : MonoBehaviour
             player1Customization.ChangeColor(player1CustomizationData.color);
             
             UIAnimation.DoPUnchScale(player1ChangeColorButton, 0.1f, 0.2f);
-            player1Text.color = player1CustomizationData.color; // Debug
         }
         else
         {
@@ -142,7 +142,6 @@ public class CustomizationMenuManager : MonoBehaviour
             player2Customization.ChangeColor(player2CustomizationData.color);
             
             UIAnimation.DoPUnchScale(player2ChangeColorButton, 0.1f, 0.2f);
-            player2Text.color = player2CustomizationData.color; // Debug
         }
     }
 
@@ -169,7 +168,10 @@ public class CustomizationMenuManager : MonoBehaviour
     {
         if (isPlayer1Confirmed && isPlayer2Confirmed)
         {
-            readyCanvas.SetActive(true);
+            isTwoPlayerReady = true;
+            UIAnimation.DoFade(playersReadyBackGround, 1, 186/255f);
+            UIAnimation.DoMove(readyText, 2, new Vector2(Screen.width/2, Screen.height/2));
+            launchText.gameObject.SetActive(true);
         }
     }
 }
