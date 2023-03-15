@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
     public ObjectivesManager ObjectivesManager => objectivesManager;
     
     Dictionary<Transform, AIStateManager> enemiesBag = new Dictionary<Transform, AIStateManager>();
+    
+    bool alarm = false;
 
     private void Awake()
     {
@@ -69,5 +71,11 @@ public class LevelManager : MonoBehaviour
         if (!enemiesBag.ContainsKey(bag)) return;
         enemiesBag[bag].currentState = enemiesBag[bag].chaseState;
         enemiesBag.Remove(bag);
+    }
+    
+    public void StartAlarm()
+    {
+        if (alarm) return;
+        WaveManager.instance.StartWaves();
     }
 }
