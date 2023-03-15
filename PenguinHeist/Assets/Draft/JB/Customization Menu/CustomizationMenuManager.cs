@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Screen = UnityEngine.Device.Screen;
 
@@ -68,11 +69,16 @@ public class CustomizationMenuManager : MonoBehaviour
         {
             launchDelay -= Time.deltaTime;
             launchText.text = Mathf.CeilToInt(launchDelay).ToString();
-            if (launchDelay <= 0)
+            if (launchDelay < 0)
             {
-                //Launch Game
+                LaunchGame();
             }
         }
+    }
+
+    private void LaunchGame()
+    {
+        SceneManager.LoadScene("BuildScene");
     }
 
     private void Start()
