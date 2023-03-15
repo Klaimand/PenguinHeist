@@ -178,6 +178,7 @@ MonoBehaviour:
   currentState: {fileID: -8615321760962074005}
   aIStateType: 2
   aiType: 1
+  chaseState: {fileID: 0}
   agent: {fileID: 2504148330069392718}
   weaponData: {fileID: 0}
   chaseAndAttackRange: 7.92
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: -1945094578695585567}
   previousState: {fileID: 0}
-  speed: 8
+  speed: 3
   aIStateType: 2
 --- !u!114 &-6855255422756157439
 MonoBehaviour:
@@ -219,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
   previousState: {fileID: -1945094578695585567}
-  speed: 8
+  speed: 3
   aIStateType: 1
   canon: {fileID: 3741397202835412987}
 --- !u!114 &-1945094578695585567
@@ -236,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: -6855255422756157439}
   previousState: {fileID: -8615321760962074005}
-  speed: 8
+  speed: 3
   aIStateType: 2
   canon: {fileID: 3741397202835412987}
 --- !u!114 &-3981583970543405996
@@ -274,8 +275,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
   previousState: {fileID: 0}
-  speed: 8
-  aIStateType: 4
+  speed: 3
+  aIStateType: 2
+  bag: {fileID: 0}
 --- !u!1 &3379050635011457832
 GameObject:
   m_ObjectHideFlags: 0
