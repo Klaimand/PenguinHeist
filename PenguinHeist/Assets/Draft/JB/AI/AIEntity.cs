@@ -44,9 +44,14 @@ public class AIEntity : MonoBehaviour, IDamageable
         {
             LevelManager.instance.RemoveMafiaEnemy(aiStateManager);
         }
+
+        if (aiStateManager.currentState == aiStateManager.takeBagState)
+        {
+            LevelManager.instance.StopEnemyTakeBag(aiStateManager.takeBagState.bag);
+            LevelManager.instance.EnemyTakeBag(aiStateManager.takeBagState.bag);
+        }
         aiStateManager.aIStateType = AIStateType.Death;
         DropWeapon();
-        //Destroy(transform.gameObject);
     }
 
     void DropWeapon()
