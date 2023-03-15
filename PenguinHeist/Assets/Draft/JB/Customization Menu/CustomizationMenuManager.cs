@@ -15,22 +15,31 @@ public class CustomizationMenuManager : MonoBehaviour
 {
     public static CustomizationMenuManager instance;
     
-    public PlayerCustomizationData player1CustomizationData;
-    public PlayerCustomizationData player2CustomizationData;
+    public PlayerCustomizationData player1CustomizationData = default;
+    public PlayerCustomizationData player2CustomizationData = default;
+    
     [SerializeField] private PlayerCustomization player1Customization;
     [SerializeField] private PlayerCustomization player2Customization;
+    
     [SerializeField] Color[] colors;
+    
     int player1ColorIndex = 0;
     int player2ColorIndex = 0;
+    
+    [Header("Buttons")]
+    [SerializeField] private RectTransform player1ChangeColorButton;
+    [SerializeField] private RectTransform player2ChangeColorButton;
+    [SerializeField] private RectTransform player1ConfirmButton;
+    [SerializeField] private RectTransform player2ConfirmButton;
+    
     [Header("Debug")] 
     [SerializeField] private TextMeshProUGUI player1Text;
     [SerializeField] private TextMeshProUGUI player2Text;
     [SerializeField] private TextMeshProUGUI player1ConfirmText;
     [SerializeField] private TextMeshProUGUI player2ConfirmText;
     
-
-    private bool player1Confirm;
-    private bool player2Confirm;
+    private bool isPlayer1Confirmed;
+    private bool isPlayer2Confirmed;
 
     private void Awake()
     {
@@ -49,28 +58,38 @@ public class CustomizationMenuManager : MonoBehaviour
         Init();
     }
 
+    private GameObject readyCanvas;
+    private float timerTwoPlayerReady;
+    private bool isReady;
     private void Update()
     {
-        ChangeColor();
-        Confirm();
+        if (!(isPlayer1Confirmed & isPlayer2Confirmed)) return;
+        
+        // if (!isReady)
+        // {
+        //     readyCanvas.SetActive(true);
+        //     timerTwoPlayerReady = 0;
+        //     isReady = true;
+        // }
+        //
+        // timerTwoPlayerReady += Time.deltaTime;
+        // if (timerTwoPlayerReady < 5f) return;
     }
 
     void Init()
     {
         if (player1CustomizationData.color != default)
         {
-            //player1Customization.ChangeColor(player1CustomizationData.color);
             player1ColorIndex = Array.IndexOf(colors, player1CustomizationData.color);
         }
 
         if (player2CustomizationData.color != default)
         {
-            //player2Customization.ChangeColor(player2CustomizationData.color);
             player2ColorIndex = Array.IndexOf(colors, player2CustomizationData.color);
         }
     }
 
-    public void SetCustomization(CustomizationType customizationType, GameObject gameObject, int player)
+    public void SetCustomization(CustomizationType customizationType, string name, int player)
     {
         PlayerCustomizationData playerCustomizationData = player == 1 ? player1CustomizationData : player2CustomizationData;
         PlayerCustomization playerCustomization = player == 1 ? player1Customization : player2Customization;
@@ -78,78 +97,67 @@ public class CustomizationMenuManager : MonoBehaviour
         switch (customizationType)
         {
             case CustomizationType.Hat :
-                playerCustomizationData.hat = gameObject;
-                return;
+                playerCustomizationData.hat = name;
+                break;
             case CustomizationType.Glasses :
-                playerCustomizationData.glasses = gameObject;
-                return;
+                playerCustomizationData.glasses = name;
+                break;
             case CustomizationType.Mustache :
-                playerCustomizationData.mustache = gameObject;
-                return;
+                playerCustomizationData.mustache = name;
+                break;
             case CustomizationType.Neck :
-                playerCustomizationData.neck = gameObject;
-                return;
+                playerCustomizationData.neck = name;
+                break;
             case CustomizationType.Flower :
-                playerCustomizationData.flower = gameObject;
-                return;
+                playerCustomizationData.flower = name;
+                break;
         }
         
-        //playerCustomization.SetCustomization(customizationType, gameObject);
+        playerCustomization.SetCustomization(customizationType, name);
     }
 
-    void ChangeColor()
+   public void ChangeColor(int playerIndex)
     {
-        if (Input.GetButtonDown("Change Color"))
+        if (playerIndex == 0 )
         {
             player1ColorIndex++;
-            if (player1ColorIndex >= colors.Length)
-            {
-                player1ColorIndex = 0;
-            }
+            
+            if (player1ColorIndex >= colors.Length) player1ColorIndex = 0;
+            
             player1CustomizationData.color = colors[player1ColorIndex];
-            //player1Customization.ChangeColor(player1CustomizationData.color);
+            player1Customization.ChangeColor(player1CustomizationData.color);
+            
+            UIAnimation.DoPUnchScale(player1ChangeColorButton, 0.1f, 0.2f);
+            player1Text.color = player1CustomizationData.color; // Debug
         }
-        else if (Input.GetButtonDown("Change ColorP2"))
+        else
         {
             player2ColorIndex++;
-            if (player2ColorIndex >= colors.Length)
-            {
-                player2ColorIndex = 0;
-            }
+            if (player2ColorIndex >= colors.Length) player2ColorIndex = 0;
+            
             player2CustomizationData.color = colors[player2ColorIndex];
-            //player2Customization.ChangeColor(player2CustomizationData.color);
+            player2Customization.ChangeColor(player2CustomizationData.color);
+            
+            UIAnimation.DoPUnchScale(player2ChangeColorButton, 0.1f, 0.2f);
+            player2Text.color = player2CustomizationData.color; // Debug
         }
-        
-        //Debug
-        player1Text.color = player1CustomizationData.color;
-        player2Text.color = player2CustomizationData.color;
     }
 
-    void Confirm()
+    public void Confirm(int playerIndex)
     {
-        if (Input.GetButtonDown("Confirm"))
+        Debug.Log(playerIndex);
+        
+        if (playerIndex == 0)
         {
-            player1Confirm = !player1Confirm;
-            if (player1Confirm)
-            {
-                player1ConfirmText.text = "Confirmed";
-            }
-            else
-            {
-                player1ConfirmText.text = "Confirm ?";
-            }
+            isPlayer1Confirmed = !isPlayer1Confirmed;
+            player1ConfirmText.text = isPlayer1Confirmed ? "Confirmed" : "Confirm ?";
+            UIAnimation.DoPUnchScale(player1ConfirmButton, 0.1f, 0.2f);
         }
-        else if (Input.GetButtonDown("ConfirmP2"))
+        else
         {
-            player2Confirm = !player2Confirm;
-            if (player2Confirm)
-            {
-                player2ConfirmText.text = "Confirmed";
-            }
-            else
-            {
-                player2ConfirmText.text = "Confirm ?";
-            }
+            isPlayer2Confirmed = !isPlayer2Confirmed;
+            player2ConfirmText.text = isPlayer2Confirmed ? "Confirmed" : "Confirm ?";
+            UIAnimation.DoPUnchScale(player2ConfirmButton, 0.1f, 0.2f);
         }
     }
 }

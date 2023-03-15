@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerCustomization : MonoBehaviour
 {
-    public Transform hat;
-    public Transform glasses;
-    public Transform mustache;
-    public Transform neck;
-    public Transform flower;
-    [SerializeField] Material material;
+    [SerializeField] PlayerCustomizationData playerCustomizationData;
+    public string hat;
+    public string glasses;
+    public string mustache;
+    public string neck;
+    public string flower;
+    [SerializeField] SkinnedMeshRenderer skinnedMeshRenderer;
     
     GameObject hatGameObject;
     GameObject glassesGameObject;
@@ -15,55 +18,107 @@ public class PlayerCustomization : MonoBehaviour
     GameObject neckGameObject;
     GameObject flowerGameObject;
 
-    public void SetCustomization(CustomizationType customizationType, GameObject gameObject)
+    private void Start()
+    {
+        SetCustomization(CustomizationType.Hat, playerCustomizationData.hat);
+        SetCustomization(CustomizationType.Glasses, playerCustomizationData.glasses);
+        SetCustomization(CustomizationType.Mustache, playerCustomizationData.mustache);
+        SetCustomization(CustomizationType.Neck, playerCustomizationData.neck);
+        SetCustomization(CustomizationType.Flower, playerCustomizationData.flower);
+        ChangeColor(playerCustomizationData.color);
+    }
+
+    public void SetCustomization(CustomizationType customizationType, string name)
     {
         switch (customizationType)
         {
             case CustomizationType.Hat :
-                if (hat != null)
+                if (hat != String.Empty)
                 {
-                    Destroy(hatGameObject);
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        if (transform.GetChild(i).name.Equals(hat))
+                        {
+                           transform.GetChild(i).gameObject.SetActive(false);
+                           break;
+                        }
+                    }
                 }
-                SetItem(hat, gameObject);
+                SetItem(out hat, name);
                 return;
             case CustomizationType.Glasses :
-                if (glasses != null)
+                if (glasses != String.Empty)
                 {
-                    Destroy(glassesGameObject);
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        if (transform.GetChild(i).name.Equals(glasses))
+                        {
+                            transform.GetChild(i).gameObject.SetActive(false); 
+                            break;
+                        }
+                    }
                 }
-                SetItem(glasses, gameObject);
+                SetItem(out glasses, name);
                 return;
             case CustomizationType.Mustache :
-                if (mustache != null)
+                if (mustache != String.Empty)
                 {
-                    Destroy(mustacheGameObject);
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        if (transform.GetChild(i).name.Equals(mustache))
+                        {
+                            transform.GetChild(i).gameObject.SetActive(false);
+                            break;
+                        }
+                    }
                 }
-                SetItem(mustache, gameObject);
+                SetItem(out mustache, name);
                 return;
             case CustomizationType.Neck :
-                if (neck != null)
+                if (neck != String.Empty)
                 {
-                    Destroy(neckGameObject);
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        if (transform.GetChild(i).name.Equals(neck))
+                        {
+                            transform.GetChild(i).gameObject.SetActive(false); 
+                            break;
+                        }
+                    }
                 }
-                SetItem(neck, gameObject);
+                SetItem(out neck, name);
                 return;
             case CustomizationType.Flower :
-                if (flower != null)
+                if (flower != String.Empty)
                 {
-                    Destroy(flowerGameObject);
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        if (transform.GetChild(i).name.Equals(flower))
+                        {
+                            transform.GetChild(i).gameObject.SetActive(false); 
+                            break;
+                        }
+                    }
                 }
-                SetItem(flower, gameObject);
+                SetItem(out flower, name);
                 return;
         }
     }
 
-    public GameObject SetItem(Transform item, GameObject gameObject)
+    public void SetItem(out string item, string name)
     {
-        return Instantiate(gameObject, item.position, Quaternion.identity, item);
+        item = name;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).name.Equals(name))
+            {
+                transform.GetChild(i).gameObject.SetActive(true); 
+            }
+        }
     }
 
     public void ChangeColor(Color color)
     {
-        material.SetColor("_CustomColor", color);
+        skinnedMeshRenderer.material.SetColor("_CustomColor", color);
     }
 }

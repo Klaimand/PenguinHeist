@@ -115,7 +115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1384599635
 Transform:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7da88d266f917b438e3f7fe2ee09551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerShoot: {fileID: 4986876294537289596}
+  playerShoot: {fileID: 0}
   launchPoint: {fileID: 2112467730}
   pickupCanvas: {fileID: 1419214611}
   minMaxLaunchForce: {x: 2.5, y: 4.5}
@@ -1319,15 +1319,8 @@ GameObject:
   - component: {fileID: 4986876294537289592}
   - component: {fileID: 4986876294537289593}
   - component: {fileID: 4986876294537289595}
-  - component: {fileID: 4986876294537289596}
-  - component: {fileID: 4986876294537289597}
-  - component: {fileID: 7755359143251137845}
-  - component: {fileID: 1561667139}
-  - component: {fileID: 1561667140}
-  - component: {fileID: 1561667144}
-  - component: {fileID: 1561667148}
   m_Layer: 6
-  m_Name: Player
+  m_Name: Player Customization Model
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1379,176 +1372,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 2
---- !u!114 &4986876294537289596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4986876294537289575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1195499866bde5468b28a611d52cea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canon: {fileID: 587931037}
-  playerInteraction: {fileID: 1561667140}
-  melee: {fileID: 1561667148}
-  playerBag: {fileID: 1561667144}
-  playerHealth: {fileID: 7755359143251137845}
-  aimDeadzone: 0.4
-  shootTriggerDeadzone: 0.1
-  curWeapon: {fileID: 11400000, guid: eb9eab0f22681da43aaec26ae45906e1, type: 2}
-  testText: {fileID: 0}
-  baseSize: 0
-  startShootTextEase: 2
-  EndShootTextEase: 30
---- !u!114 &4986876294537289597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4986876294537289575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aad010df5dedeb439a0c1ff86a8799b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerIndex: 0
-  rb: {fileID: 4986876294537289595}
-  playerShoot: {fileID: 4986876294537289596}
-  playerInteraction: {fileID: 1561667140}
-  playerBag: {fileID: 1561667144}
-  playerHealth: {fileID: 7755359143251137845}
-  axisDeadzone: 0.1
-  speed: 8
-  axisSmoothTime: 0.02
-  axisMaxSpeed: 18
-  rotationSmoothing: 0.075
-  rotSmoothTime: 0.025
-  rotMaxSpeed: 1260
-  rbVelocityDead: 0.2
-  hMove: 
-  vMove: 
-  ang: 37.5
---- !u!114 &7755359143251137845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4986876294537289575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a30e7b77710e8941a7dc0e9f7b7229c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  playerstate: 0
-  playerKnockOutTimer: 15
-  playerReviveTimer: 5
-  invincibleDuration: 2
-  playerHealthDebugText: {fileID: 3960613517481162768}
-  playerStateDebugText: {fileID: 6711593883377567335}
-  inReanimation: 0
-  isInvincible: 0
-  knockOutCanvas: {fileID: 8006161868536731387}
-  lifeSlider: {fileID: 2570155413442145133}
-  sliderImage: {fileID: 1422514662324996824}
-  gettingUpTime: 0.8
---- !u!114 &1561667139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4986876294537289575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2045a12d7ff19049b390c810164c1ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 4986876294537289597}
-  playerShoot: {fileID: 4986876294537289596}
-  playerBag: {fileID: 1561667144}
-  playerInteraction: {fileID: 1561667140}
-  playerMelee: {fileID: 1561667148}
-  playerHealth: {fileID: 7755359143251137845}
-  animator: {fileID: 945571242}
-  moneyBagAnimator: {fileID: 479171371}
-  batonAnimator: {fileID: 1804493790}
-  weaponsAnimators:
-  - {fileID: 1731010244287718342}
-  - {fileID: 1731010244191691195}
-  - {fileID: 1731010244255489061}
-  - {fileID: 1731010244033600585}
-  gunsParent: {fileID: 515372040}
-  speedIdleThreshold: 0.2
-  layerWeightChangeTime: 0.1
---- !u!114 &1561667140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4986876294537289575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 021762a466d36e241a7351d0e2e179bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBag: {fileID: 1561667144}
-  interactionLayers:
-    serializedVersion: 2
-    m_Bits: 2112
-  fwdCastDistance: 0.24
-  castRadius: 1.2
-  interractInput: 
---- !u!114 &1561667144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4986876294537289575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390ed14309979ff4a97c5cbfddda3b1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationController: {fileID: 1561667139}
-  moneyBagPrefab: {fileID: 6930362021375448754, guid: 2b333fdaea9e38f438f1001f05b188ca, type: 3}
-  launchPoint: {fileID: 2112467730}
-  minMaxLaunchForce: {x: 2.5, y: 4.5}
-  minMaxLaunchTorque: {x: 30, y: 60}
-  minLaunchTime: 0.2
-  interractInput: 
---- !u!114 &1561667148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4986876294537289575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec3091660ec910d4ab89e89d60a13c00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInteraction: {fileID: 1561667140}
-  playerBag: {fileID: 1561667144}
-  animationController: {fileID: 1561667139}
-  meleeAttackDuration: 0.5
-  meleeInput: 
-  lTrigger: 0
-  isPressingMeleeInput: 0
 --- !u!1 &5966510177227120676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,7 +1531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7259892883880411387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1833,7 +1661,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -0.000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1894,7 +1722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4731596303059478730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3036,6 +2864,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 1f976751f52287e45b33745cfa22a487, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7668234704010680612, guid: 1f976751f52287e45b33745cfa22a487, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 81.33389
@@ -3079,11 +2911,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 1f976751f52287e45b33745cfa22a487, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1f976751f52287e45b33745cfa22a487, type: 3}
---- !u!137 &1028064030599491666 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5436015555897748848, guid: 1f976751f52287e45b33745cfa22a487, type: 3}
-  m_PrefabInstance: {fileID: 4986876293501246754}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1901188176258680166 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2353534309058013116, guid: 1f976751f52287e45b33745cfa22a487, type: 3}
@@ -3114,7 +2941,7 @@ Animator:
   m_GameObject: {fileID: 5329333138348335219}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1f976751f52287e45b33745cfa22a487, type: 3}
-  m_Controller: {fileID: 9100000, guid: dcb14e0825e8667479028f2e615f880f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 806ca6199da41c540aedc528cedfa7ab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3125,7 +2952,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8360382752395597438
+--- !u!114 &8116615125735693306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3137,13 +2964,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f904ca10ff7ffc4cb45c513a798fef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCustomizationData: {fileID: 11400000, guid: 34a45a89add87984f9edffdf6e02addb, type: 2}
+  playerCustomizationData: {fileID: 0}
   hat: 
   glasses: 
   mustache: 
   neck: 
   flower: 
-  skinnedMeshRenderer: {fileID: 1028064030599491666}
+  skinnedMeshRenderer: {fileID: 0}
 --- !u!1001 &4986876293924606932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3214,6 +3041,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5544b7e18094cc74e81c9744b0baf5fd, type: 3}
       propertyPath: m_Name
       value: Baton_R_S
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5544b7e18094cc74e81c9744b0baf5fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 991458060365057202, guid: 5544b7e18094cc74e81c9744b0baf5fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
