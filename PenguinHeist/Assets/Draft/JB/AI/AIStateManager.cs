@@ -27,6 +27,7 @@ public class AIStateManager : MonoBehaviour
     [SerializeField] public AIState currentState;
     [SerializeField] public AIStateType aIStateType; //a relier aux anims
     [SerializeField] public AIType aiType = AIType.Mafia;
+    [HideInInspector] public AIChaseState chaseState;
     [Header("NavMesh")]
     public NavMeshAgent agent;
     [HideInInspector] public WeaponSO weaponData;
@@ -41,12 +42,14 @@ public class AIStateManager : MonoBehaviour
     [Tooltip("Obstacles of the AI vision")]
     public LayerMask obstacleMask;
     public AIEntity entity;
-    [SerializeField] AITakeBagState takeBagState;
+    [HideInInspector] public AITakeBagState takeBagState;
 
     private void Start()
     {
         ChooseClosestPlayer();
         agent.speed = currentState.speed;
+        chaseState = GetComponent<AIChaseState>();
+        takeBagState = GetComponent<AITakeBagState>();
     }
 
     void Update()
@@ -66,7 +69,7 @@ public class AIStateManager : MonoBehaviour
         }
     }
 
-    private void SwitchToTheNextState(AIState nextState)
+    public void SwitchToTheNextState(AIState nextState)
     {
         currentState = nextState;
         agent.speed = currentState.speed;
@@ -78,9 +81,8 @@ public class AIStateManager : MonoBehaviour
 
     public void SwitchToTakeBag(Transform bag)
     {
-        aIStateType = AIStateType.Interact;
-        currentState = takeBagState;
         takeBagState.Init(agent, bag);
+        SwitchToTheNextState(takeBagState);
     }
 
     void ChooseClosestPlayer()
