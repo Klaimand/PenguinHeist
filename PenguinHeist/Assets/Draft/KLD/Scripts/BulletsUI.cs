@@ -17,7 +17,7 @@ public class BulletsUI : MonoBehaviour
     public void UpdateUI()
     {
         if (playerShoot == null) Debug.LogError("PlayerShoot is null");
-
         text.text = playerShoot.CurMagazineBullets.ToString("00") + "/" + playerShoot.CurTotalBullets.ToString("000");
+        //TODO MOI WESH
     }
 }
