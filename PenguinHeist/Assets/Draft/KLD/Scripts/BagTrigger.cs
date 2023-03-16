@@ -9,7 +9,7 @@ public class BagTrigger : MonoBehaviour
 
     [SerializeField] float playerDistance = 10f;
 
-    List<Transform> players = new List<Transform>();
+    List<PlayerBag> players = new List<PlayerBag>();
 
     [SerializeField] Animator bagPenguinAnimator;
 
@@ -22,7 +22,7 @@ public class BagTrigger : MonoBehaviour
         players.Clear();
         foreach (var pl in p)
         {
-            players.Add(pl.transform);
+            players.Add(pl.GetComponent<PlayerBag>());
         }
     }
 
@@ -30,7 +30,7 @@ public class BagTrigger : MonoBehaviour
     {
         foreach (var player in players)
         {
-            if (!isPenguinOut && Vector3.Distance(transform.position, player.position) < playerDistance)
+            if (player.IsCarrying && !isPenguinOut && Vector3.Distance(transform.position, player.transform.position) < playerDistance)
             {
                 isPenguinOut = true;
                 bagPenguinAnimator.SetTrigger("goOut");
