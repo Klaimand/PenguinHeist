@@ -9773,7 +9773,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2398312427177134527}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.77}
+  m_LocalPosition: {x: 0, y: -0, z: 0.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29321,7 +29321,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8011820465408044580}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 20
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -29396,7 +29396,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 20
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -29565,8 +29565,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 2
+      scalar: 9
+      minScalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -30315,7 +30315,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 2
-      scalar: 3
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -30330,7 +30330,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.043475173
+          time: 0.01
           value: 1
           inSlope: 0
           outSlope: 0
@@ -31320,16 +31320,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.036082476
-          value: -0.9999974
-          inSlope: -2.951002
-          outSlope: -2.951002
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.74637246
-        - serializedVersion: 3
-          time: 0.060855642
+          time: 0.03
           value: 0
           inSlope: 0
           outSlope: 0
@@ -31344,7 +31335,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.036082476
+          time: 0.0075
           value: 1
           inSlope: 0.5779694
           outSlope: 0.5779694
@@ -31353,7 +31344,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.92682886
         - serializedVersion: 3
-          time: 0.06185563
+          time: 0.015
           value: 0
           inSlope: 0
           outSlope: 0
@@ -33155,8 +33146,8 @@ ParticleSystem:
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 0}
-      type: 0
-      properties: 0
+      type: 2
+      properties: 7
       emitProbability: 1
   LightsModule:
     enabled: 0

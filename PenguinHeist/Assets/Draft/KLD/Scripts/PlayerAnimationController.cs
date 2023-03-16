@@ -38,6 +38,8 @@ public class PlayerAnimationController : MonoBehaviour
 
     int curWeaponIndex = 0;
 
+    public AudioSource walkSfx;
+
     void OnEnable()
     {
         playerShoot.OnPlayerShoot += Shoot;
@@ -103,11 +105,13 @@ public class PlayerAnimationController : MonoBehaviour
         if (controller.Speed < speedIdleThreshold)
         {
             curState = LocomotionState.IDLE;
+            walkSfx.enabled = false;
             return;
         }
         else
         {
             curState = LocomotionState.WALK;
+            walkSfx.enabled = true;
             return;
         }
     }
