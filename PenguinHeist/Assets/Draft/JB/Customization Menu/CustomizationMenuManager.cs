@@ -176,7 +176,7 @@ public class CustomizationMenuManager : MonoBehaviour
         {
             isTwoPlayerReady = true;
             UIAnimation.DoFade(playersReadyBackGround, 1, 186/255f);
-            UIAnimation.DoMove(readyText, 2, new Vector2(Screen.width/2, Screen.height/2));
+            UIAnimation.DoMove(readyText, 2, new Vector3(0, 0,0));
             launchText.gameObject.SetActive(true);
         }
     }
