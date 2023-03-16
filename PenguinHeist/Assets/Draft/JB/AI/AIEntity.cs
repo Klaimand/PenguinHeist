@@ -25,6 +25,8 @@ public class AIEntity : MonoBehaviour, IDamageable
     public AudioSource damageSfx;
     public AudioSource deathSfx;
 
+    [SerializeField] GameObject guts;
+
     private void Start()
     {
         //isHoldingShield = true;
@@ -38,8 +40,8 @@ public class AIEntity : MonoBehaviour, IDamageable
 
         aiStateManager.agent.isStopped = true;
         col.enabled = false;
-        
-        if(deathSfx != null) deathSfx.Play();
+
+        if (deathSfx != null) deathSfx.Play();
 
         isDead = true;
         if (aiStateManager.aiType == AIType.Police)
@@ -58,6 +60,9 @@ public class AIEntity : MonoBehaviour, IDamageable
         }
         aiStateManager.aIStateType = AIStateType.Death;
         DropWeapon();
+
+        if (guts != null)
+            Instantiate(guts, transform.position, Quaternion.identity);
     }
 
     void DropWeapon()
@@ -77,9 +82,9 @@ public class AIEntity : MonoBehaviour, IDamageable
     {
         //Hit
         if (isDead) return;
-        
-        if(damageSfx != null) damageSfx.Play();
-        
+
+        if (damageSfx != null) damageSfx.Play();
+
         if (aiStateManager.currentState == aiStateManager.moveState)
         {
             aiStateManager.OnPlayerDetected?.Invoke();

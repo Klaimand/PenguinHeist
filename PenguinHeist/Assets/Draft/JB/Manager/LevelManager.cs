@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
@@ -19,7 +20,9 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private PlayerHealth playerHealth1;
     [SerializeField] private PlayerHealth playerHealth2;
-    
+
+    [SerializeField] Animator policeQuadAnimator;
+
     private void Awake()
     {
         if (instance == null)
@@ -89,6 +92,14 @@ public class LevelManager : MonoBehaviour
         if (alarm) return;
         alarm = true;
         WaveManager.instance.StartWaves();
+        policeQuadAnimator.SetTrigger("fadeIn");
+        StartCoroutine(WaitAndDisableAlarm());
+    }
+
+    IEnumerator WaitAndDisableAlarm()
+    {
+        yield return new WaitForSeconds(4f);
+        policeQuadAnimator.SetTrigger("fadeOut");
     }
 
     public PlayerHealth GetHealthFromTransform(Transform _transform)

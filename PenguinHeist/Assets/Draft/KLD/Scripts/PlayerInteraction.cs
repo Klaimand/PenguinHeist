@@ -19,14 +19,23 @@ public class PlayerInteraction : MonoBehaviour
     public bool IsInteracting => isInteracting;
     public Action OnPlayerInteract;
 
+    PlayerHealth playerHealth;
 
     public string interractInput;
 
     public AudioSource pickupSfx;
 
+    [SerializeField] GameObject reviveCanvas;
+
+    private void Awake()
+    {
+        playerHealth = GetComponent<PlayerHealth>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        reviveCanvas.SetActive(false);
         var playerIndex = GetComponent<PlayerController2>().playerIndex;
         interractInput = playerIndex switch
         {
@@ -48,6 +57,22 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         isDetectingInteraction = true;
+
+        bool isDetectingRevive = false;
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            IInteractible ii = cols[i].GetComponent<IInteractible>();
+
+            if (!playerHealth.IsNotAlive && ii.IsInteractable() && ii.GetInteractionType() == InteractionType.REVIVE)
+            {
+                isDetectingRevive = true;
+                reviveCanvas.SetActive(true);
+                break;
+            }
+        }
+
+        if (!isDetectingRevive) reviveCanvas.SetActive(false);
 
         if (!playerBag.IsCarrying && Input.GetButtonDown(interractInput))
         {
