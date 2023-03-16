@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2266365abf86b32439216d1cc9a80f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
 --- !u!1 &5638384783259885335
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,8 +363,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeSlider: {fileID: 8935056359531301577}
   sliderImage: {fileID: 6363859537626595225}
-  maxHealth: 40
-  currentHealth: 40
+  maxHealth: 15
+  currentHealth: 15
   timingCanvasVisible: 4.5
   sliderOpenSize: 0.35
   sliderCloseSize: 0
