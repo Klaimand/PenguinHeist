@@ -225,6 +225,7 @@ Transform:
   m_Children:
   - {fileID: 8136460862117586347}
   - {fileID: 6262241508331306287}
+  - {fileID: 9116083905449681581}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -308,6 +309,7 @@ MonoBehaviour:
   aIStateType: 2
   aiType: 1
   chaseState: {fileID: 0}
+  moveState: {fileID: 0}
   agent: {fileID: 8136460862940110806}
   weaponData: {fileID: 0}
   chaseAndAttackRange: 7.92
@@ -591,6 +593,117 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &617731847271474807
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8136460862940110370}
+    m_Modifications:
+    - target: {fileID: 1473051810336107700, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_Name
+      value: PS_Notice
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473051810336107700, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373796541825069655, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373796541825069655, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326679292229428642, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326679292229428642, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326679292229428642, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_Pivot.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326679292229428642, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_RenderMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326679292229428642, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_NormalDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326679292229428642, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_RenderAlignment
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424500760789498762, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424500760789498762, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.153
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+--- !u!198 &2910438851690845216 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2373796541825069655, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+  m_PrefabInstance: {fileID: 617731847271474807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9116083905449681581 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8507380874574300378, guid: 9db94f632f7e6b644b354a8df702c77a, type: 3}
+  m_PrefabInstance: {fileID: 617731847271474807}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1144910958782060865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1087,6 +1200,22 @@ MonoBehaviour:
   aIEntity: {fileID: 8136460862940110383}
   aIAttackState: {fileID: 8136460862940110379}
   gunParent: {fileID: 2808886317041854749}
+  aIMoveState: {fileID: 8136460862940110376}
+  onPlayerDetected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2910438851690845216}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &5521620245573092285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8746813946855207518, guid: 432034bcdc5025a4389b26c22bb5f8ba, type: 3}

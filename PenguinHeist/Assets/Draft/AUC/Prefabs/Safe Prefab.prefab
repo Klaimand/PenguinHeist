@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 6339176978045178094}
   - component: {fileID: 1548056900}
   - component: {fileID: 1548056901}
+  - component: {fileID: 5880399025854010797}
   m_Layer: 0
   m_Name: Safe Prefab
   m_TagString: Untagged
@@ -184,11 +185,35 @@ MonoBehaviour:
   psChestIsHere: {fileID: 7006711721252226878}
   OnSafeOpenEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5880399025854010797}
+        m_TargetAssemblyTypeName: Objective, Assembly-CSharp
+        m_MethodName: CompleteObjective
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   inputPressed: 0
   bagSpawnPoint: {fileID: 3611109393641856916}
   _image: {fileID: 6339176978659718020}
   _Rect: {fileID: 0}
+--- !u!114 &5880399025854010797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339176978045178095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3371c3d750cbc4099e4e283e9d5ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6339176978537481182
 GameObject:
   m_ObjectHideFlags: 0
