@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     public Transform player1;
     public Transform player2;
     public List<AIStateManager> mafiaEnemies;
-    List<AIStateManager> policeEnemies = new List<AIStateManager>();
+    public List<AIStateManager> policeEnemies = new List<AIStateManager>();
 
     [SerializeField] ObjectivesManager objectivesManager;
     public ObjectivesManager ObjectivesManager => objectivesManager;

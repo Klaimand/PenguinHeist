@@ -11,6 +11,9 @@ public class WaveManager : MonoBehaviour
     [SerializeField] float spawnDelay;
     [Tooltip("Number of enemies to spawn")]
     [SerializeField] int enemyCountToSpawn;
+
+    public int maxPolicemen = 30;
+    public int maxPolicemenSpawn = 8;
     
     public static WaveManager instance;
     
@@ -38,11 +41,18 @@ public class WaveManager : MonoBehaviour
     {
         while (true)
         {
-            waveCount++;
-            for (int i = 0; i < enemyCountToSpawn + waveCount; i++)
+            if (LevelManager.instance.policeEnemies.Count <= maxPolicemen)
             {
-                LevelManager.instance.AddPoliceEnemy(Instantiate(enemies[Random.Range(0, enemies.Length)], 
-                    spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity).GetComponent<AIStateManager>());
+                if (waveCount + enemyCountToSpawn <= maxPolicemenSpawn)
+                {
+                    waveCount++;
+                }
+                
+                for (int i = 0; i < enemyCountToSpawn + waveCount; i++)
+                {
+                    LevelManager.instance.AddPoliceEnemy(Instantiate(enemies[Random.Range(0, enemies.Length)], 
+                        spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity).GetComponent<AIStateManager>());
+                }
             }
             yield return new WaitForSeconds(spawnDelay);
         }

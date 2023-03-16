@@ -502,9 +502,9 @@ MonoBehaviour:
   moveState: {fileID: 0}
   agent: {fileID: 2504148330069392718}
   weaponData: {fileID: 0}
-  chaseAndAttackRange: 7.92
-  attackRange: 6.97
-  moveBackRange: 1.38
+  chaseAndAttackRange: 7
+  attackRange: 6
+  moveBackRange: 4
   player: {fileID: 0}
   obstacleMask:
     serializedVersion: 2
@@ -530,7 +530,7 @@ MonoBehaviour:
   isHoldingShield: 0
   currentAttackCd: 0
   minMaxLaunchTorque: {x: 100, y: 200}
-  health: 30
+  health: 80
   col: {fileID: 2504148330069392565}
   damageSfx: {fileID: 1021084024780660590}
   deathSfx: {fileID: 514571475836371247}
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d76338d114a4634f90503a67c8a596f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 10
+  viewRadius: 8
   viewAngle: 90
   targetMask:
     serializedVersion: 2
