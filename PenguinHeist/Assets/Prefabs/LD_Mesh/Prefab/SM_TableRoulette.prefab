@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7247197155872372150}
   - component: {fileID: 7159593007745777227}
   - component: {fileID: 5333837388914144040}
-  - component: {fileID: 8690066491791719635}
+  - component: {fileID: 5982239514480122055}
   m_Layer: 0
   m_Name: Roulette
   m_TagString: Untagged
@@ -117,8 +117,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8690066491791719635
-MeshCollider:
+--- !u!65 &5982239514480122055
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,10 +127,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2573165926002547224, guid: 38f75ff1ae056f842b6e89cee02cfc15, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 6.5, y: 2.5, z: 1.5}
+  m_Center: {x: -0.0000019073486, y: 0.24350506, z: 1.0401047}
 --- !u!1001 &2377010805727850991
 PrefabInstance:
   m_ObjectHideFlags: 0
