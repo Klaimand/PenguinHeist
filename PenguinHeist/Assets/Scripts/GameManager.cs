@@ -26,13 +26,4 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-    
-    private void Start()
-    {
-        for (int i = 0; i < playerList.Length; i++)
-        {
-            playerList[i].playerIndex = i;
-        }
-    }
-    
 }
