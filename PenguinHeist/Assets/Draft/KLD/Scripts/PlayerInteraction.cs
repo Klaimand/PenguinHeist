@@ -59,7 +59,9 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     if (ii.GetInteractionDuration() > 0f)
                     {
-                        pickupSfx.Play();
+                        if (pickupSfx != null)
+                            pickupSfx.Play();
+
                         ii.InteractImmediate(this);
                         isInteracting = true;
                         StartCoroutine(WaitAndInteract(ii.GetInteractionDuration(), ii));

@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
+using TMPro;
 
 public class ObjectivesManager : MonoBehaviour
 {
-    [SerializeField] int nbObjectives = 8;
+
+    [Header("References")]
+    [SerializeField] Image moneyBar;
+
+    [Header("Values")]
+    [SerializeField] int nbObjectives = 9;
+
+    [SerializeField] int minimumSecuredBags = 3;
 
     List<Objective> objectives = new List<Objective>();
 
     int bagsSecured = 0;
+
+
 
     void Start()
     {
@@ -30,6 +41,8 @@ public class ObjectivesManager : MonoBehaviour
         {
             Destroy(toDestroy[i].gameObject);
         }
+
+        UpdateUI();
     }
 
     public void CompleteObjective(Objective _objective)
@@ -40,6 +53,12 @@ public class ObjectivesManager : MonoBehaviour
     public void SecureBag()
     {
         bagsSecured++;
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        moneyBar.fillAmount = (float)bagsSecured / nbObjectives;
     }
 
 }

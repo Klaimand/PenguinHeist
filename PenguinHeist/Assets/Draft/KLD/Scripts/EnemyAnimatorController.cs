@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyAnimatorController : MonoBehaviour
 {
@@ -11,17 +12,24 @@ public class EnemyAnimatorController : MonoBehaviour
     [SerializeField] AIEntity aIEntity;
     [SerializeField] AIAttackState aIAttackState;
     [SerializeField] Transform gunParent;
+    [SerializeField] AIMoveState aIMoveState;
+
+    [SerializeField] UnityEvent onPlayerDetected;
 
     void OnEnable()
     {
         aIAttackState.OnEnemyShoot += Shoot;
         aIEntity.OnHit += Hit;
+
+        aIStateManager.OnPlayerDetected += OnPlayerDetected;
     }
 
     void OnDisable()
     {
         aIAttackState.OnEnemyShoot -= Shoot;
         aIEntity.OnHit -= Hit;
+
+        aIStateManager.OnPlayerDetected -= OnPlayerDetected;
     }
 
     void Start()
@@ -44,5 +52,10 @@ public class EnemyAnimatorController : MonoBehaviour
     void Hit()
     {
         animator.SetTrigger("hit");
+    }
+
+    void OnPlayerDetected()
+    {
+        onPlayerDetected.Invoke();
     }
 }
