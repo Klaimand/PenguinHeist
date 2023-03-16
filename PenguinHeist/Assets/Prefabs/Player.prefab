@@ -1694,6 +1694,9 @@ MonoBehaviour:
   playerBag: {fileID: 1561667144}
   animationController: {fileID: 1561667139}
   meleeAttackDuration: 0.5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 129
   meleeInput: 
   lTrigger: 0
   isPressingMeleeInput: 0
