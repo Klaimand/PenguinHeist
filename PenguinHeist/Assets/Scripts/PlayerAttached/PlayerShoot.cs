@@ -277,12 +277,6 @@ public class PlayerShoot : MonoBehaviour
     public Image weaponImage;
     void ChangeUIWeapon()
     {
-        if (playerBag.IsCarrying)
-        {
-            weaponImage.sprite = playerBag.BagSprite;
-            return;
-        }
-        
         weaponImage.sprite = curWeapon.weaponImage;
     }
 }
