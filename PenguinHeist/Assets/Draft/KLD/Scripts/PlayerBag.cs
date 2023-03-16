@@ -9,7 +9,7 @@ public class PlayerBag : MonoBehaviour
     [SerializeField] Transform launchPoint;
     [SerializeField] Vector2 minMaxLaunchForce = new Vector2(2.5f, 4.5f);
     [SerializeField] Vector2 minMaxLaunchTorque = new Vector2(30f, 60f);
-    
+
     bool isCarrying = false;
     public bool IsCarrying => isCarrying;
 
@@ -17,7 +17,7 @@ public class PlayerBag : MonoBehaviour
 
 
     public string interractInput;
-    
+
     bool canLaunch = false;
     public AudioSource launchSfx;
 
@@ -55,8 +55,9 @@ public class PlayerBag : MonoBehaviour
     {
         isCarrying = false;
         animationController.LaunchBag();
-        
-        launchSfx.Play();
+
+        if (launchSfx != null)
+            launchSfx.Play();
 
         Rigidbody rb = Instantiate(moneyBagPrefab, launchPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
 

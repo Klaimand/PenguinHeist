@@ -23,12 +23,10 @@ public class AIAttackState : AIState
     {
         if (!Physics.Raycast(transform.position, stateManager.player.position - transform.position, out hit, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
         {
-            transform.LookAt(stateManager.player);
-
-            //Vector3 lkvector = stateManager.player.position - transform.position;
-            //lkvector.y = 0f;
-
-            //Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lkvector), 0.1f);
+            Vector3 lkvector = stateManager.player.position - transform.position;
+            lkvector.y = 0f;
+            transform.rotation = Quaternion.Slerp( transform.rotation, Quaternion.LookRotation( lkvector ), Time.deltaTime );
+            
             CheckAttack(stateManager.weaponData, stateManager.entity, 1);
         }
         else

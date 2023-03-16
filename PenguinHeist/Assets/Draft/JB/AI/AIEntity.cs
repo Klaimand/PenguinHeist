@@ -75,6 +75,7 @@ public class AIEntity : MonoBehaviour, IDamageable
 
         if (aiStateManager.currentState == aiStateManager.moveState)
         {
+            aiStateManager.OnPlayerDetected?.Invoke();
             aiStateManager.ChooseClosestPlayer();
             aiStateManager.SwitchToTheNextState(aiStateManager.chaseState);
         }

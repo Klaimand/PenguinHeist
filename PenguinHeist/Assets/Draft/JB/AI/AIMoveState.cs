@@ -19,6 +19,8 @@ public class AIMoveState : AIState
         if (awareness.visibleTargets.Count > 0)
         {
             stateManager.player = awareness.visibleTargets[0];
+            stateManager.OnPlayerDetected?.Invoke();
+            //print("detected");
             return nextState;
         }
         if (stateManager.agent.remainingDistance <= stateManager.agent.stoppingDistance)
@@ -31,7 +33,7 @@ public class AIMoveState : AIState
     public void NextWayPoint(NavMeshAgent agent)
     {
         currentWayPoint++;
-        if (currentWayPoint>=wayPoints.Length)
+        if (currentWayPoint >= wayPoints.Length)
         {
             currentWayPoint = 0;
         }

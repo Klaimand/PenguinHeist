@@ -19,8 +19,8 @@ public class Safe : MonoBehaviour
     public List<PlayerOpenChest> playerInRange;
     public ParticleSystem psChest;
     public ParticleSystem psChestIsHere;
-    [Space(10)] [Header("On Safe Open")] public UnityEvent OnSafeOpenEvent;
-    
+    [Space(10)][Header("On Safe Open")] public UnityEvent OnSafeOpenEvent;
+
     #region Events Methods
     public void Start()
     {
@@ -35,7 +35,7 @@ public class Safe : MonoBehaviour
     public bool inputPressed;
     private void Update()
     {
-        if(isOpen) return;
+        if (isOpen) return;
         if (inputPressed)
         {
             InputOpenChest();
@@ -44,13 +44,13 @@ public class Safe : MonoBehaviour
 
         DecreasePoints();
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
         if (isOpen) return;
         var player = other.GetComponent<PlayerOpenChest>();
-        
+
         playerInRange.Add(player);
         if (playerInRange.Count > 0)
         {
@@ -66,7 +66,7 @@ public class Safe : MonoBehaviour
         if (isOpen) return;
         var player = other.GetComponent<PlayerOpenChest>();
         playerInRange.Remove(player);
-        
+
         if (playerInRange.Count < 1)
         {
             canInput = false;
@@ -80,7 +80,7 @@ public class Safe : MonoBehaviour
 
 
     #region Methods
-    
+
     public void InputOpenChest()
     {
         if (!this.isOpen && canInput)
@@ -94,17 +94,17 @@ public class Safe : MonoBehaviour
     {
         if (chestGauje < 1) return;
 
-        timer += Time.deltaTime; 
+        timer += Time.deltaTime;
         if (timer > 0.25f)
         {
             chestGauje -= 1;
             timer = 0;
         }
-        
+
         heistSlider.value = chestGauje;
 
         if (chestGauje <= 99) return;
-        
+
         Debug.Log("IZI MONEY BOOBA IS PROUD");
         OpenSafe();
     }
@@ -115,6 +115,7 @@ public class Safe : MonoBehaviour
         heistCanvas.SetActive(false);
         isOpen = true;
         StartCoroutine(OpenAndReward());
+        OnSafeOpenEvent.Invoke();
     }
 
     IEnumerator OpenAndReward()
@@ -129,8 +130,8 @@ public class Safe : MonoBehaviour
     {
         psChest.Play();
         GameObject GO = Instantiate(bagPrefab, bagSpawnPoint.position + transform.forward, Quaternion.identity);
-        GO.transform.DOScale(0, 0.001f).OnComplete(() => 
-            GO.transform.DOScale(1, 1.15f).SetEase(Ease.OutElastic)); 
+        GO.transform.DOScale(0, 0.001f).OnComplete(() =>
+            GO.transform.DOScale(1, 1.15f).SetEase(Ease.OutElastic));
         Rigidbody rb = GO.GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * Random.Range(2.5f * 3, 3.5f * 3.5f));
         rb.AddTorque(Random.onUnitSphere * Random.Range(100, 300));
@@ -141,8 +142,8 @@ public class Safe : MonoBehaviour
     public RectTransform _Rect;
     public void FeedBackTweening()
     {
-        _image.rectTransform.DOShakePosition(0.185f, new Vector3(1, 1 ,1), 35);
+        _image.rectTransform.DOShakePosition(0.185f, new Vector3(1, 1, 1), 35);
     }
-        
+
     #endregion
 }

@@ -45,6 +45,8 @@ public class AIStateManager : MonoBehaviour
     public AIEntity entity;
     [HideInInspector] public AITakeBagState takeBagState;
 
+    public Action OnPlayerDetected;
+
     private void Start()
     {
         ChooseClosestPlayer();

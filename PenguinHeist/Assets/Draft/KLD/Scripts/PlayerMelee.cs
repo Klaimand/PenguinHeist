@@ -12,15 +12,17 @@ public class PlayerMelee : MonoBehaviour
 
     [SerializeField] float meleeAttackDuration = 0.49f;
 
+    [SerializeField] LayerMask enemyMask;
+
     bool isAttacking = false;
     public bool IsAttacking => isAttacking;
 
-    
+
     [Header("Input")]
     public string meleeInput;
     public float lTrigger;
     public bool isPressingMeleeInput;
-    
+
     [Header("Melee Contact Point")]
     [SerializeField] private Transform meleeContactPoint;
     [SerializeField] private float meleeContactRadius = 0.5f;
@@ -50,10 +52,10 @@ public class PlayerMelee : MonoBehaviour
         if (playerBag.IsCarrying) return;
         //if player is dead return
         if (isAttacking) return;
-        
+
         lTrigger = Input.GetAxis(meleeInput);
         isPressingMeleeInput = lTrigger > 0.5f;
-        
+
         if (isPressingMeleeInput)
         {
             meleeSfx.Play();
@@ -69,11 +71,11 @@ public class PlayerMelee : MonoBehaviour
         yield return new WaitForSeconds(meleeAttackDuration);
         isAttacking = false;
     }
-    
+
     IEnumerator MakeDamage()
     {
         yield return new WaitForSeconds(meleeAttackDuration - 0.1f);
-        Collider[] hitColliders = Physics.OverlapSphere(meleeContactPoint.position, meleeContactRadius);
+        Collider[] hitColliders = Physics.OverlapSphere(meleeContactPoint.position, meleeContactRadius, enemyMask);
         IDamageable damageable;
         foreach (var hitCollider in hitColliders)
         {
