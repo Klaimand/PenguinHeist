@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
@@ -40,11 +39,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
 
     #region Event Methods
 
-    // Start is called before the first frame update
     void Start()
     {
         InitPlayerHealth();
     }
+    
 
     private void InitPlayerHealth(bool _revived = false)
     {
@@ -74,15 +73,56 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         }
     }
 
+
+    public bool canHeal = true;
+    public bool getHurt = false;
+    public float waitForHealing = 5f;
+    public float waitBetweenHeal = 0.6f;
+    public float internTimer;
+    public float internTimerLife;
+    bool oui = false;
+    
     // Update is called once per frame
     void Update()
     {
         switch (playerstate)
         {
             case PlayerState.ALIVE: break;
-            case PlayerState.KNOCKOUT: /*OnKnockOut();*/ break;
+            case PlayerState.KNOCKOUT: break;
             case PlayerState.REVIVE: OnRevive(); break;
-                /*default: throw new ArgumentOutOfRangeException();*/
+        }
+        
+        if (getHurt)
+        {
+            internTimer += Time.deltaTime;
+            if (internTimer > waitForHealing)
+            {
+                oui = true;
+            }
+
+            if (oui)
+            {
+                internTimer = 0f;
+                
+                if (canHeal)
+                {
+                    currentHealth += 1;
+                    playerHealthSlider.value = currentHealth;
+                    canHeal = false;
+                    internTimerLife = 0f;
+                }
+        
+                internTimerLife += Time.deltaTime;
+                if (internTimerLife > waitBetweenHeal)
+                {
+                    canHeal = true;
+                }
+            }
+        }
+        
+        if (currentHealth == maxHealth)
+        {
+            
         }
     }
 
@@ -97,6 +137,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         currentHealth -= _damage;
         playerHealthSlider.value = currentHealth;
         damageSfx.Play();
+        
+        getHurt = true;
+        canHeal = false;
+        oui = false;
+        
         
         if (currentHealth > 0) return;
         
