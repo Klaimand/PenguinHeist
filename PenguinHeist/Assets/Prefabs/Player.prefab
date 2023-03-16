@@ -1692,7 +1692,7 @@ MonoBehaviour:
   launchPoint: {fileID: 2112467730}
   minMaxLaunchForce: {x: 2.5, y: 4.5}
   minMaxLaunchTorque: {x: 30, y: 60}
-  BagSprite: {fileID: 0}
+  BagSprite: {fileID: 21300000, guid: 11696a31e5be1e04a8a9c920440d847d, type: 3}
   minLaunchTime: 0.2
   interractInput: 
   launchSfx: {fileID: 3647351007498855953}
@@ -4303,7 +4303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8007931169790796694, guid: 20e5893060ee5634990be6d9a5aae525, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8007931169790796694, guid: 20e5893060ee5634990be6d9a5aae525, type: 3}
       propertyPath: m_LocalPosition.x

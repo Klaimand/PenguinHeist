@@ -9,11 +9,11 @@ public class PlayerBag : MonoBehaviour
     [SerializeField] Transform launchPoint;
     [SerializeField] Vector2 minMaxLaunchForce = new Vector2(2.5f, 4.5f);
     [SerializeField] Vector2 minMaxLaunchTorque = new Vector2(30f, 60f);
-    public Sprite BagSprite;
     bool isCarrying = false;
     public bool IsCarrying => isCarrying;
 
     [SerializeField] float minLaunchTime = 0.2f;
+    [SerializeField] private GameObject bagUI;
 
 
     public string interractInput;
@@ -23,6 +23,8 @@ public class PlayerBag : MonoBehaviour
 
     private void Start()
     {
+        bagUI.SetActive(false);
+        
         var playerIndex = GetComponent<PlayerController2>().playerIndex;
         interractInput = playerIndex switch
         {
@@ -47,8 +49,11 @@ public class PlayerBag : MonoBehaviour
     {
         isCarrying = true;
         canLaunch = false;
+        
         StartCoroutine(WaitAndCanLaunch());
         LevelManager.instance.StopEnemyTakeBag(_moneyBag.transform);
+        
+        bagUI.SetActive(true);
     }
 
     void LaunchBag()
@@ -64,6 +69,8 @@ public class PlayerBag : MonoBehaviour
         rb.velocity = launchPoint.forward * Random.Range(minMaxLaunchForce.x, minMaxLaunchForce.y);
         rb.AddTorque(Random.onUnitSphere * Random.Range(minMaxLaunchTorque.x, minMaxLaunchTorque.y));
         LevelManager.instance.EnemyTakeBag(rb.transform);
+        
+        bagUI.SetActive(false);
     }
 
     IEnumerator WaitAndCanLaunch()
