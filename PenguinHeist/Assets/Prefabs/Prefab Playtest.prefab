@@ -1371,6 +1371,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6694337075626580391}
     m_Modifications:
+    - target: {fileID: 1561667144, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+      propertyPath: launchSfx
+      value: 
+      objectReference: {fileID: 7960937460160935832}
     - target: {fileID: 4986876294537289575, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1444,6 +1448,11 @@ MonoBehaviour:
 --- !u!4 &1861079059177708618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4986876294222007747, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
+  m_PrefabInstance: {fileID: 6694337076489343369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &7960937460160935832 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3647351007498855953, guid: c32af76965a29eb4fa586217100fdf18, type: 3}
   m_PrefabInstance: {fileID: 6694337076489343369}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6694337076536406896
