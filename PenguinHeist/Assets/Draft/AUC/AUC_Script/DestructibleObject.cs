@@ -39,6 +39,9 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     private float timePassedWithCanvas;
     private float objectSize;
 
+    public AudioSource touchedSfx;
+    public AudioSource breakSfx;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -64,6 +67,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     public void TakeDamage(int _damage)
     {
         ResetCanvas(true);
+        touchedSfx.Play();
         currentHealth -= _damage;
         lifeSlider.value = currentHealth;
         sliderImage.color = Color.Lerp(Color.red, Color.green, (float)currentHealth / maxHealth);
@@ -97,9 +101,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
 
     private void Destruct()
     {
-        //Debug.Log($"{gameObject.name} destroyed");
-        //gameObject.SetActive(false);
-        // TODO Add fx 
+        breakSfx.Play();
         onObjectDestroy.Invoke();
     }
 

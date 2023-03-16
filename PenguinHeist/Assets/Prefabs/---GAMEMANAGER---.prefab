@@ -79,7 +79,34 @@ MonoBehaviour:
   sounds:
   - name: Music
     clips:
-    - {fileID: 8300000, guid: 3fd009cd71bde0943bd79e7ecdef89b9, type: 3}
+    - {fileID: 8300000, guid: 7c203458c5be6e64f8a73b43ca2bc127, type: 3}
+    group: {fileID: 594852259744105077, guid: 4541141d493656040a302a856d3546dd, type: 2}
+    volume: 1
+    pitch: 0
+    canBeOverriden: 0
+    randomVolume: 0.5
+    randomPitch: 0
+  - name: Music_GameOver
+    clips:
+    - {fileID: 8300000, guid: 2d0441fc234d29049a8f11abaa1e0c18, type: 3}
+    group: {fileID: 594852259744105077, guid: 4541141d493656040a302a856d3546dd, type: 2}
+    volume: 1
+    pitch: 0
+    canBeOverriden: 0
+    randomVolume: 0.5
+    randomPitch: 0
+  - name: Music_Paused
+    clips:
+    - {fileID: 8300000, guid: b094d5bcea30d20448a0d100b73a1952, type: 3}
+    group: {fileID: 594852259744105077, guid: 4541141d493656040a302a856d3546dd, type: 2}
+    volume: 1
+    pitch: 0
+    canBeOverriden: 0
+    randomVolume: 0.5
+    randomPitch: 0
+  - name: Music_Victory
+    clips:
+    - {fileID: 8300000, guid: 3b09cfb6755d34c489013a84f81f85c4, type: 3}
     group: {fileID: 594852259744105077, guid: 4541141d493656040a302a856d3546dd, type: 2}
     volume: 1
     pitch: 0
