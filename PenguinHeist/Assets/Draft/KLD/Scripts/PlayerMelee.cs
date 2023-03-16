@@ -75,7 +75,7 @@ public class PlayerMelee : MonoBehaviour
 
     IEnumerator MakeDamage()
     {
-        yield return new WaitForSeconds(meleeAttackDuration - 0.1f);
+        yield return new WaitForSeconds(0.1f);
         Collider[] hitColliders = Physics.OverlapSphere(meleeContactPoint.position, meleeContactRadius, enemyMask);
         IDamageable damageable;
         foreach (var hitCollider in hitColliders)

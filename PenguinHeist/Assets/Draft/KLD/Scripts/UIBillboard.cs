@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class UIBillboard : MonoBehaviour
 {
-    Transform camTransform;
+    [SerializeField] Transform camTransform;
 
+    
+    
     private void Start()
     {
-        camTransform = Camera.main.transform;
+        if (camTransform == null) camTransform = Camera.main.transform;
+        //print(camTransform.gameObject.name);
     }
 
     void LateUpdate()

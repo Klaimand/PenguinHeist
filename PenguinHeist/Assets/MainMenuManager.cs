@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,10 +13,25 @@ public class MainMenuManager : MonoBehaviour
     public void PlayCO() => StartCoroutine(Play());
     public void ExitCO() => StartCoroutine(Exit());
 
+    private void Start()
+    {
+        if (GameManager.instance.AudioManager == null) return;
+        
+        GameManager.instance.AudioManager.StopAllLoopingSounds();
+        GameManager.instance.AudioManager.PlaySound("Music_Paused");
+    }
+
     private IEnumerator Play()
     {
         yield return new WaitWhile(() => playButtonAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
-        SceneManager.LoadScene(CustomScene);
+        
+        if (GameManager.instance.AudioManager != null)
+        {
+            GameManager.instance.AudioManager.StopAllLoopingSounds();
+            GameManager.instance.AudioManager.PlaySound("Music");
+        }
+        
+        SceneManager.LoadScene("CustomizationScene");
     }
 
     private IEnumerator Exit()

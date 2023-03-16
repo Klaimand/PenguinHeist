@@ -97,7 +97,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -487,14 +487,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5990566, g: 0.7716748, b: 1, a: 1}
+  m_Color: {r: 0.50496495, g: 0.9056604, b: 0.44001427, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -649,6 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6339176979958655356}
   - component: {fileID: 6339176979958655359}
+  - component: {fileID: 120946821864851976}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -665,7 +666,7 @@ RectTransform:
   m_GameObject: {fileID: 6339176979958655357}
   m_LocalRotation: {x: 0.22991805, y: -0.48070377, z: 0.15614998, w: 0.8316723}
   m_LocalPosition: {x: 0, y: 0, z: 0.41}
-  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
+  m_LocalScale: {x: 0.09346818, y: 0.09346818, z: 0.09346818}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6339176977991061439}
@@ -727,7 +728,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 52.4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -743,6 +744,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &120946821864851976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339176979958655357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2266365abf86b32439216d1cc9a80f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
 --- !u!1001 &2125444431106134613
 PrefabInstance:
   m_ObjectHideFlags: 0

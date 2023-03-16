@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class LevelManager : MonoBehaviour
 
     bool alarm = false;
 
+    [SerializeField] private PlayerHealth playerHealth1;
+    [SerializeField] private PlayerHealth playerHealth2;
+    
     private void Awake()
     {
         if (instance == null)
@@ -83,6 +87,31 @@ public class LevelManager : MonoBehaviour
     public void StartAlarm()
     {
         if (alarm) return;
+        alarm = true;
         WaveManager.instance.StartWaves();
+    }
+
+    public PlayerHealth GetHealthFromTransform(Transform _transform)
+    {
+        if (_transform == player1)
+        {
+            return playerHealth1;
+        }
+        else if (_transform == player2)
+        {
+            return playerHealth2;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public void CheckGameOver()
+    {
+        if (playerHealth1.IsNotAlive && playerHealth2.IsNotAlive)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }
