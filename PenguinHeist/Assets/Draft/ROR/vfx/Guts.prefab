@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3224830078911117233}
   - component: {fileID: 6878425192791020727}
   - component: {fileID: 6577407516399871891}
+  - component: {fileID: 8488255099178306473}
   m_Layer: 0
   m_Name: Bone003
   m_TagString: Untagged
@@ -144,6 +145,22 @@ CapsuleCollider:
   m_Height: 0.3
   m_Direction: 0
   m_Center: {x: -0.17, y: 0, z: 0}
+--- !u!114 &8488255099178306473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836747561741470572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5438b62e9f8448a48b1cd31d33ee9165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paintColor: {r: 1, g: 1, b: 1, a: 1}
+  radius: 0.3
+  strength: 1
+  hardness: 0.5
 --- !u!1 &2000565505828995612
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +173,7 @@ GameObject:
   - component: {fileID: 6944911560641596552}
   - component: {fileID: 4539713012488852500}
   - component: {fileID: 3288857667763453658}
+  - component: {fileID: 4575724269960289435}
   m_Layer: 0
   m_Name: Bone002
   m_TagString: Untagged
@@ -255,6 +273,22 @@ CapsuleCollider:
   m_Height: 0.3
   m_Direction: 0
   m_Center: {x: -0.16, y: 0, z: 0}
+--- !u!114 &4575724269960289435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000565505828995612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5438b62e9f8448a48b1cd31d33ee9165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paintColor: {r: 1, g: 1, b: 1, a: 1}
+  radius: 0.3
+  strength: 1
+  hardness: 0.5
 --- !u!1 &5952089760237119123
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5656305839956889019}
   - component: {fileID: 6528658438860126081}
+  - component: {fileID: 3744308741907170663}
   m_Layer: 0
   m_Name: Bone001
   m_TagString: Untagged
@@ -393,6 +428,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3744308741907170663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596761766079116504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5438b62e9f8448a48b1cd31d33ee9165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paintColor: {r: 1, g: 1, b: 1, a: 1}
+  radius: 0.3
+  strength: 1
+  hardness: 0.5
 --- !u!1 &8914490237505084726
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +456,7 @@ GameObject:
   - component: {fileID: 5775934101007719851}
   - component: {fileID: 5725322684181159430}
   - component: {fileID: 191929293036620662}
+  - component: {fileID: 230324674000632555}
   m_Layer: 0
   m_Name: Bone004
   m_TagString: Untagged
@@ -503,3 +555,19 @@ CharacterJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &230324674000632555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914490237505084726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5438b62e9f8448a48b1cd31d33ee9165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paintColor: {r: 1, g: 1, b: 1, a: 1}
+  radius: 0.3
+  strength: 1
+  hardness: 0.5
