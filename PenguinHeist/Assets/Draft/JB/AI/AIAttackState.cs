@@ -12,6 +12,8 @@ public class AIAttackState : AIState
 
     protected RaycastHit hit;
 
+    public AudioSource gunshotSfx;
+
     public override void MoveTo(NavMeshAgent agent, Vector3 destination)
     {
         agent.SetDestination(destination);
@@ -22,6 +24,11 @@ public class AIAttackState : AIState
         if (!Physics.Raycast(transform.position, stateManager.player.position - transform.position, out hit, Vector3.Distance(transform.position, stateManager.player.position), stateManager.obstacleMask))
         {
             transform.LookAt(stateManager.player);
+
+            //Vector3 lkvector = stateManager.player.position - transform.position;
+            //lkvector.y = 0f;
+
+            //Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lkvector), 0.1f);
             CheckAttack(stateManager.weaponData, stateManager.entity, 1);
         }
         else
@@ -55,6 +62,12 @@ public class AIAttackState : AIState
 
             dir = Quaternion.Euler(0f, rdmAngle, 0f) * dir;
 
+            if (weaponData.gunshotSFX != null)
+            {
+                gunshotSfx.clip = weaponData.gunshotSFX; 
+                gunshotSfx.Play();
+            }
+            
             Instantiate(weaponData.bulletPrefab, canon.position, Quaternion.LookRotation(dir));
 
             yield return new WaitForSeconds(weaponData.timeBetweenShots);
