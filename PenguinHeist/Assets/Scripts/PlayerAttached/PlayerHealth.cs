@@ -144,12 +144,28 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         getHurt = true;
         canHeal = false;
         oui = false;
-        
+
+        if (!isTakingDamage)
+        {
+            isTakingDamage = true;
+            StartCoroutine(TakeDamageCoroutine());
+        }
         
         if (currentHealth > 0) return;
         
         // No more hp
         PlayerKnockOut();
+    }
+
+    private bool isTakingDamage = false;
+    [SerializeField] private Renderer bodyRenderer;
+    
+    IEnumerator TakeDamageCoroutine()
+    {
+        bodyRenderer.material.SetInt("_TakeDamage",1);
+        yield return new WaitForSeconds(0.1f);
+        isTakingDamage = false;
+        bodyRenderer.material.SetInt("_TakeDamage",0);
     }
 
     private void PlayerKnockOut()

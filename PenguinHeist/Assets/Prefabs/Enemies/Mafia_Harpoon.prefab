@@ -343,6 +343,9 @@ MonoBehaviour:
   minMaxLaunchTorque: {x: 100, y: 200}
   health: 30
   col: {fileID: 8136460862940110381}
+  damageSfx: {fileID: 0}
+  deathSfx: {fileID: 0}
+  guts: {fileID: 8426477460114895790, guid: 66c1cb9c5104e2745bcb53d11d802fde, type: 3}
 --- !u!114 &8136460862940110376
 MonoBehaviour:
   m_ObjectHideFlags: 0

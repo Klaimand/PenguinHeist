@@ -26,6 +26,7 @@ public class PlayerInteraction : MonoBehaviour
     public AudioSource pickupSfx;
 
     [SerializeField] GameObject reviveCanvas;
+    [SerializeField] GameObject moneyPickupCanvas;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class PlayerInteraction : MonoBehaviour
     void Start()
     {
         reviveCanvas.SetActive(false);
+        moneyPickupCanvas.SetActive(false);
         var playerIndex = GetComponent<PlayerController2>().playerIndex;
         interractInput = playerIndex switch
         {
@@ -59,20 +61,29 @@ public class PlayerInteraction : MonoBehaviour
         isDetectingInteraction = true;
 
         bool isDetectingRevive = false;
+        bool isDetectingWeapon = false;
 
         for (int i = 0; i < cols.Length; i++)
         {
             IInteractible ii = cols[i].GetComponent<IInteractible>();
-
+            
             if (!playerHealth.IsNotAlive && ii.IsInteractable() && ii.GetInteractionType() == InteractionType.REVIVE)
             {
                 isDetectingRevive = true;
                 reviveCanvas.SetActive(true);
                 break;
             }
+            
+            if (!playerHealth.IsNotAlive && ii.IsInteractable() && ii.GetInteractionType() == InteractionType.MONEY_BAG)
+            {
+                isDetectingWeapon = true;
+                moneyPickupCanvas.SetActive(true);
+                break;
+            }
         }
 
         if (!isDetectingRevive) reviveCanvas.SetActive(false);
+        if (!isDetectingWeapon) moneyPickupCanvas.SetActive(false);
 
         if (!playerBag.IsCarrying && Input.GetButtonDown(interractInput))
         {

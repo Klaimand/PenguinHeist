@@ -60,7 +60,7 @@ public class AIEntity : MonoBehaviour, IDamageable
         }
         aiStateManager.aIStateType = AIStateType.Death;
         DropWeapon();
-
+        
         if (guts != null)
             Instantiate(guts, transform.position, Quaternion.identity);
     }

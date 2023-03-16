@@ -16,9 +16,9 @@ MonoBehaviour:
   bulletsPerMagazine: 60
   totalBulletsOnPickup: 200
   reloadTime: 3
-  fireRate: 0.2
+  fireRate: 0.4
   shotsPerClick: 3
-  timeBetweenShots: 0
+  timeBetweenShots: 0.05
   weaponPrefab: {fileID: 5731604685418708665, guid: 5cbc12528689bff4e9ae7833fe860c8d, type: 3}
   bulletPrefab: {fileID: 7369557161259263665, guid: efd294d8884c9294bb071532f20350e0, type: 3}
   muzzleFlash: {fileID: 8019037150738388345, guid: b3e7a05c6dfd2134cbfd174efbf58534, type: 3}

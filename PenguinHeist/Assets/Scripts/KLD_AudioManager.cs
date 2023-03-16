@@ -77,6 +77,8 @@ public class KLD_AudioManager : MonoBehaviour
 
     Sound[] soundsToAdd;
 
+    public string curMusic;
+    
     private void Start()
     {
 
@@ -86,6 +88,9 @@ public class KLD_AudioManager : MonoBehaviour
         }
 
         GetSound("Music").GetSource().loop = true;
+        GetSound("Music_GameOver").GetSource().loop = true;
+        GetSound("Music_Paused").GetSource().loop = true;
+        GetSound("Music_Victory").GetSource().loop = true;
         
         foreach (string sound in soundsToPlayOnStart)
         {
@@ -104,6 +109,7 @@ public class KLD_AudioManager : MonoBehaviour
     public void PlaySound(string _key)
     {
         soundsKey[_key].Play();
+        curMusic = _key;
     }
 
     public Sound GetSound(string _key)
@@ -178,11 +184,14 @@ public class KLD_AudioManager : MonoBehaviour
 
     public void StopAllLoopingSounds(float fadeTime = 1f)
     {
+        print("iscalled");
         for (int i = 0; i < sounds.Length; i++)
         {
             if (soundsKey[sounds[i].name].GetSource().loop && soundsKey[sounds[i].name].GetSource().isPlaying)
             {
-                FadeOutInst(soundsKey[sounds[i].name].GetSource(), fadeTime);
+                soundsKey[sounds[i].name].GetSource().Stop();
+                //FadeOutInst(soundsKey[sounds[i].name].GetSource(), fadeTime);
+                print("stopped " + sounds[i].name);
             }
         }
     }

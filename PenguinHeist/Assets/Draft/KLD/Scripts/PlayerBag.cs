@@ -15,6 +15,7 @@ public class PlayerBag : MonoBehaviour
     [SerializeField] float minLaunchTime = 0.2f;
     [SerializeField] private GameObject bagUI;
 
+    [SerializeField] private ParticleSystem system;
 
     public string interractInput;
 
@@ -54,6 +55,7 @@ public class PlayerBag : MonoBehaviour
         LevelManager.instance.StopEnemyTakeBag(_moneyBag.transform);
         
         bagUI.SetActive(true);
+        system.Play();
     }
 
     void LaunchBag()
@@ -71,6 +73,7 @@ public class PlayerBag : MonoBehaviour
         LevelManager.instance.EnemyTakeBag(rb.transform);
         
         bagUI.SetActive(false);
+        system.Stop();
     }
 
     IEnumerator WaitAndCanLaunch()
