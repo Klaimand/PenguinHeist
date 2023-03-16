@@ -9,7 +9,7 @@ public class PlayerBag : MonoBehaviour
     [SerializeField] Transform launchPoint;
     [SerializeField] Vector2 minMaxLaunchForce = new Vector2(2.5f, 4.5f);
     [SerializeField] Vector2 minMaxLaunchTorque = new Vector2(30f, 60f);
-
+    public Sprite BagSprite;
     bool isCarrying = false;
     public bool IsCarrying => isCarrying;
 
