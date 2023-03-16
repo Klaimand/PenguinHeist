@@ -20,6 +20,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     public bool inReanimation;
     public bool isInvincible;
 
+    public int regenValue;
+
     [Header("Canvas")]
     public GameObject knockOutCanvas;
     public GameObject lifeCanvas;
@@ -106,7 +108,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
                 
                 if (canHeal)
                 {
-                    currentHealth += 1;
+                    currentHealth += regenValue;
                     playerHealthSlider.value = currentHealth;
                     canHeal = false;
                     internTimerLife = 0f;
@@ -120,9 +122,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
             }
         }
         
-        if (currentHealth == maxHealth)
+        if (currentHealth >= maxHealth)
         {
-            
+            canHeal = false;
+            currentHealth = maxHealth;
         }
     }
 

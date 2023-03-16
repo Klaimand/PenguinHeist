@@ -24,13 +24,6 @@ public class MainMenuManager : MonoBehaviour
     private IEnumerator Play()
     {
         yield return new WaitWhile(() => playButtonAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
-        
-        if (GameManager.instance.AudioManager != null)
-        {
-            GameManager.instance.AudioManager.StopAllLoopingSounds();
-            GameManager.instance.AudioManager.PlaySound("Music");
-        }
-        
         SceneManager.LoadScene("CustomizationScene");
     }
 

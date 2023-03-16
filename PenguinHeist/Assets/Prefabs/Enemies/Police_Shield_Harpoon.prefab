@@ -229,8 +229,10 @@ MonoBehaviour:
   isHoldingShield: 1
   currentAttackCd: 0
   minMaxLaunchTorque: {x: 100, y: 200}
-  health: 120
+  health: 25
   col: {fileID: 31988398048102532}
+  damageSfx: {fileID: 0}
+  deathSfx: {fileID: 0}
 --- !u!114 &3128738877680601861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,6 +1403,10 @@ MonoBehaviour:
   aIEntity: {fileID: 7642523481399476325}
   aIAttackState: {fileID: 174546816769440816}
   gunParent: {fileID: 2499815432649057076}
+  aIMoveState: {fileID: 0}
+  onPlayerDetected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &8480829244850271898 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 2b60936211a74af4caed8d5045a82357, type: 3}
