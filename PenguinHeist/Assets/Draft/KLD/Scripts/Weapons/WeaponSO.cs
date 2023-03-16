@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "newWeapon", menuName = "ScriptableObjects/Weapon", order = 0)]
 public class WeaponSO : ScriptableObject
@@ -29,6 +28,8 @@ public class WeaponSO : ScriptableObject
     public int weaponIndex = 0;
 
     public AudioClip gunshotSFX;
+
+    public Sprite weaponImage;
 
     void OnValidate()
     {
