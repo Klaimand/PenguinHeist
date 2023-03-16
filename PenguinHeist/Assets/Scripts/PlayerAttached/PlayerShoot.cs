@@ -3,6 +3,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class PlayerShoot : MonoBehaviour
@@ -66,9 +67,9 @@ public class PlayerShoot : MonoBehaviour
     {
         if (testText == null) return;
 
-        testText.transform.DOScale(transform.localScale.x - 0.35f, 0.075f).SetEase(startShootTextEase).OnComplete(() =>
+        testText.transform.DOScale(transform.localScale.x - 0.35f, 0.075f).SetEase(Ease.InBack).OnComplete(() =>
         {
-            testText.transform.DOScale(baseSize, 0.75f).SetEase(EndShootTextEase);
+            testText.transform.DOScale(baseSize, 0.75f).SetEase(Ease.OutBounce);
         });
     }
 
@@ -230,7 +231,7 @@ public class PlayerShoot : MonoBehaviour
 
         if (curWeapon.gunshotSFX != null)
         {
-            gunshotSfx.clip = curWeapon.gunshotSFX; 
+            gunshotSfx.clip = curWeapon.gunshotSFX;
             gunshotSfx.Play();
         }
         
@@ -260,5 +261,22 @@ public class PlayerShoot : MonoBehaviour
     {
         timeSinceLastClick += Time.deltaTime;
         timeSinceLastBullet += Time.deltaTime;
+    }
+
+    private void OnEnable()
+    {
+        OnPlayerChangeWeapon += ChangeUIWeapon;
+    }
+
+    private void OnDisable()
+    {
+        OnPlayerChangeWeapon -= ChangeUIWeapon;
+    }
+
+
+    public Image weaponImage;
+    void ChangeUIWeapon()
+    {
+        weaponImage.sprite = curWeapon.weaponImage;
     }
 }

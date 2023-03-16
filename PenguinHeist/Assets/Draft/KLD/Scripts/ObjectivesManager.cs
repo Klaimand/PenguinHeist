@@ -20,10 +20,19 @@ public class ObjectivesManager : MonoBehaviour
 
     int bagsSecured = 0;
 
+    [SerializeField] GameObject secureMore;
+    [SerializeField] GameObject secureOrEscape;
 
+    [SerializeField] TMP_Text nbBagsText;
+
+    [SerializeField] GameObject exitTrig;
+    [SerializeField] GameObject whitePlane;
 
     void Start()
     {
+        secureMore.SetActive(true);
+        secureOrEscape.SetActive(false);
+
         objectives = FindObjectsOfType<Objective>().ToList();
 
         int nbToDestroy = Mathf.Max(0, objectives.Count - nbObjectives);
@@ -54,10 +63,20 @@ public class ObjectivesManager : MonoBehaviour
     {
         bagsSecured++;
         UpdateUI();
+
+        if (bagsSecured == minimumSecuredBags)
+        {
+            secureMore.SetActive(false);
+            secureOrEscape.SetActive(true);
+
+            exitTrig.SetActive(true);
+            whitePlane.SetActive(true);
+        }
     }
 
     void UpdateUI()
     {
+        nbBagsText.text = $"{bagsSecured}/{nbObjectives} money bags secured !";
         moneyBar.fillAmount = (float)bagsSecured / nbObjectives;
     }
 

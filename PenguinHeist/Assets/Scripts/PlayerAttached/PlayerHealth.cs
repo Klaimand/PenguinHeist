@@ -10,25 +10,21 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     public int maxHealth = 100;
     public int currentHealth = 0;
     public PlayerState playerstate;
-
     public float playerKnockOutTimer = 15f;
     private float _knockOutTimer = default;
-
     public float playerReviveTimer = 7.5f;
     private float _reviveTimer = default;
-
     public float invincibleDuration = 2f;
-
-    public TextMeshProUGUI playerHealthDebugText;
-    public TextMeshProUGUI playerStateDebugText;
+    public Slider playerHealthSlider;
 
 
     public bool inReanimation;
     public bool isInvincible;
 
-    [Header("Rescue Bar")]
+    [Header("Canvas")]
     public GameObject knockOutCanvas;
-    [SerializeField] private Slider lifeSlider;
+    public GameObject lifeCanvas;
+    [SerializeField] private Slider knockOutSlider;
     [SerializeField] private Image sliderImage;
 
     public bool IsNotAlive => playerstate != PlayerState.ALIVE;
@@ -53,24 +49,24 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     private void InitPlayerHealth(bool _revived = false)
     {
         // Health Init Values
+        lifeCanvas.SetActive(true);
         currentHealth = maxHealth;
-        playerHealthDebugText.text = currentHealth.ToString();
+        playerHealthSlider.maxValue = maxHealth;
+        playerHealthSlider.value = maxHealth;
+        playerHealthSlider.minValue = 0;
+        
         _knockOutTimer = playerKnockOutTimer;
         _reviveTimer = playerReviveTimer;
 
         playerstate = _revived ? PlayerState.GETTING_UP : PlayerState.ALIVE;
 
         // Res part
-        lifeSlider.maxValue = playerKnockOutTimer;
-        lifeSlider.value = playerKnockOutTimer;
+        knockOutSlider.maxValue = playerKnockOutTimer;
+        knockOutSlider.value = playerKnockOutTimer;
         knockOutCanvas.SetActive(false);
-
+        
         StartCoroutine(ReviveInvincibility(invincibleDuration));
-
-        // TODO - Enlever debug
-        playerStateDebugText.text = $"ALIVE";
-        playerStateDebugText.color = Color.green;
-
+        
         if (_revived)
         {
             reviveSfx.Play();
@@ -97,15 +93,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
 
     public void TakeDamage(int _damage)
     {
-        currentHealth -= _damage;
-        playerHealthDebugText.text = currentHealth.ToString();
+        if (isInvincible) return;
         
-        if (currentHealth > 0)
-        {
-            damageSfx.Play();
-            return;
-        }
-
+        currentHealth -= _damage;
+        playerHealthSlider.value = currentHealth;
+        damageSfx.Play();
+        
+        if (currentHealth > 0) return;
+        
         // No more hp
         PlayerKnockOut();
     }
@@ -116,12 +111,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         
         knockoutSfx.Play();
         playerstate = PlayerState.KNOCKOUT;
+        
+        lifeCanvas.SetActive(false);
         knockOutCanvas.SetActive(true);
-        //Debug.Log(knockOutCanvas);
-
-        // TODO - Enlever debug
-        playerStateDebugText.text = $"KNOCK-OUT";
-        playerStateDebugText.color = Color.yellow;
     }
 
     private void PlayerDeath()
@@ -129,13 +121,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         playerstate = PlayerState.DEAD;
         _knockOutTimer = playerKnockOutTimer;
         _reviveTimer = playerReviveTimer;
-        lifeSlider.maxValue = playerKnockOutTimer;
-        lifeSlider.value = playerKnockOutTimer;
+        knockOutSlider.maxValue = playerKnockOutTimer;
+        knockOutSlider.value = playerKnockOutTimer;
         knockOutCanvas.SetActive(false);
-
-        // TODO - Enlever debug
-        playerStateDebugText.text = $"DEAD";
-        playerStateDebugText.color = Color.black;
     }
 
     [ContextMenu("Revive Player")]
@@ -148,7 +136,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     {
         _knockOutTimer -= Time.deltaTime;
 
-        lifeSlider.value = _knockOutTimer;
+        knockOutSlider.value = _knockOutTimer;
         sliderImage.color = Color.Lerp(Color.red, Color.green, _knockOutTimer / playerKnockOutTimer);
 
         if (_knockOutTimer > 0) return;

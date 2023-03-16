@@ -49,7 +49,9 @@ MonoBehaviour:
   eventsManager: {fileID: 6161586542374645555}
   audioManager: {fileID: 5063552956661567108}
   playerPrefab: {fileID: 0}
-  playerList: []
+  playerList:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &6161586542374645555
 MonoBehaviour:
   m_ObjectHideFlags: 0
