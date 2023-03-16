@@ -45,15 +45,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
-        m_Texture: {fileID: 2800000, guid: f6ce41e8cb4a5ca43ac97b626e957af7, type: 3}
+        m_Texture: {fileID: 2800000, guid: ec3fe69abdfb7004e9513cd35efb97ba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MGO:
-        m_Texture: {fileID: 2800000, guid: 316ceb6fa049df04195f7da4512c3dc8, type: 3}
+        m_Texture: {fileID: 2800000, guid: f93a499a82f200546abce0f29dfd32c6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cfadbb8915378c645b0160548760e5b3, type: 3}
+        m_Texture: {fileID: 2800000, guid: bbe940b9ebd491f4693d6f6dfb615dec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 3dd526587c2224445b2a072257f0145f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0c74ec8f45ee4d24ead81526c2cdd7da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -100,7 +100,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissivePower: 1
+    - _EmissivePower: 2
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
