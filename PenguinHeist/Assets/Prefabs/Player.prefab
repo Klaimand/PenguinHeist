@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2266365abf86b32439216d1cc9a80f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
 --- !u!1 &1551661261
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3627110690962644297}
   - component: {fileID: 2570155413442145133}
+  - component: {fileID: 6310912414842286825}
   m_Layer: 5
   m_Name: KnockOut Slider
   m_TagString: Untagged
@@ -596,7 +598,7 @@ RectTransform:
   m_GameObject: {fileID: 1386815237353176821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.31, y: 0.16841422, z: 0.16841422}
+  m_LocalScale: {x: 0.1976591, y: 0.107382596, z: 0.107382596}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4747575529487405784}
@@ -660,6 +662,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6310912414842286825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386815237353176821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2266365abf86b32439216d1cc9a80f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
 --- !u!1 &3025808422491960951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,8 +1707,8 @@ MonoBehaviour:
   launchPoint: {fileID: 2112467730}
   minMaxLaunchForce: {x: 2.5, y: 4.5}
   minMaxLaunchTorque: {x: 30, y: 60}
-  BagSprite: {fileID: 21300000, guid: 11696a31e5be1e04a8a9c920440d847d, type: 3}
   minLaunchTime: 0.2
+  bagUI: {fileID: 0}
   interractInput: 
   launchSfx: {fileID: 3647351007498855953}
 --- !u!114 &1561667148
@@ -2627,6 +2642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1753032101188773937}
   - component: {fileID: 4792832210544289429}
+  - component: {fileID: 9016390424917159213}
   m_Layer: 5
   m_Name: Health Slider
   m_TagString: Untagged
@@ -2643,7 +2659,7 @@ RectTransform:
   m_GameObject: {fileID: 7767541120960154494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15000004, z: 0.15000004}
+  m_LocalScale: {x: 0.09564151, y: 0.09564152, z: 0.09564152}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2691450264517416881}
@@ -2707,6 +2723,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9016390424917159213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767541120960154494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2266365abf86b32439216d1cc9a80f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
 --- !u!1 &8006161868536731387
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,7 +2775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.366}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8326967676150389631
@@ -2817,11 +2846,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8006161868536731387}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2266365abf86b32439216d1cc9a80f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
 --- !u!1 &9016325302495851417
 GameObject:
   m_ObjectHideFlags: 0

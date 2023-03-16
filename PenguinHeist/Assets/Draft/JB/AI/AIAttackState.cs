@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -53,11 +54,11 @@ public class AIAttackState : AIState
         for (int i = 0; i < weaponData.shotsPerClick; i++)
         {
             entity.curMagazineBullets--;
-            Vector3 dir = transform.forward;
-            dir.y = 0f;
-
-            float rdmAngle = Random.Range(-weaponData.spread / 2f, weaponData.spread / 2f);
-
+            Vector3 dir = (entity.aiStateManager.player.position + Vector3.up*0.5f) - canon.position;
+            //  //dir.y = 0f;
+            //
+             float rdmAngle = Random.Range(-weaponData.spread / 2f, weaponData.spread / 2f);
+            //
             dir = Quaternion.Euler(0f, rdmAngle, 0f) * dir;
 
             if (weaponData.gunshotSFX != null)
@@ -78,6 +79,21 @@ public class AIAttackState : AIState
 
         if (entity.isReloading) return;
 
+        if (LevelManager.instance.GetHealthFromTransform(entity.aiStateManager.player) == null) return;
+
+        if (LevelManager.instance.GetHealthFromTransform(entity.aiStateManager.player).IsNotAlive)
+        {
+            if (entity.aiStateManager.player == LevelManager.instance.player1)
+            {
+                entity.aiStateManager.player = LevelManager.instance.player2;
+            }
+            else if (entity.aiStateManager.player == LevelManager.instance.player2)
+            {
+                entity.aiStateManager.player = LevelManager.instance.player1;
+            }
+            return;
+        }
+        
         if (entity.curMagazineBullets <= 0)
         {
             entity.isReloading = true;

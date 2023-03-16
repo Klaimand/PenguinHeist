@@ -15,7 +15,7 @@ public class MainMenuManager : MonoBehaviour
     private IEnumerator Play()
     {
         yield return new WaitWhile(() => playButtonAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
-        SceneManager.LoadScene(CustomScene);
+        SceneManager.LoadScene("CustomizationScene");
     }
 
     private IEnumerator Exit()

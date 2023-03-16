@@ -79,8 +79,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         switch (playerstate)
         {
             case PlayerState.ALIVE: break;
-            case PlayerState.KNOCKOUT: OnKnockOut(); break;
-            case PlayerState.DEAD: break;
+            case PlayerState.KNOCKOUT: /*OnKnockOut();*/ break;
             case PlayerState.REVIVE: OnRevive(); break;
                 /*default: throw new ArgumentOutOfRangeException();*/
         }
@@ -110,12 +109,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         
         knockoutSfx.Play();
         playerstate = PlayerState.KNOCKOUT;
-        
         lifeCanvas.SetActive(false);
         knockOutCanvas.SetActive(true);
+        
+        LevelManager.instance.CheckGameOver();
     }
 
-    private void PlayerDeath()
+    /*private void PlayerDeath()
     {
         playerstate = PlayerState.DEAD;
         _knockOutTimer = playerKnockOutTimer;
@@ -123,7 +123,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         knockOutSlider.maxValue = playerKnockOutTimer;
         knockOutSlider.value = playerKnockOutTimer;
         knockOutCanvas.SetActive(false);
-    }
+    }*/
 
     [ContextMenu("Revive Player")]
     private void RevivePlayer()
@@ -135,14 +135,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     private void OnKnockOut()
     {
         _knockOutTimer -= Time.deltaTime;
-
         knockOutSlider.value = _knockOutTimer;
         sliderImage.color = Color.Lerp(Color.red, Color.green, _knockOutTimer / playerKnockOutTimer);
-
         if (_knockOutTimer > 0) return;
 
         // No more time to Revive
-        PlayerDeath();
+        //PlayerDeath();
     }
 
     private void OnRevive()
@@ -221,7 +219,6 @@ public enum PlayerState
 {
     ALIVE,
     KNOCKOUT,
-    DEAD,
     REVIVE,
     GETTING_UP
 }

@@ -13,6 +13,8 @@ public class BagTrigger : MonoBehaviour
 
     [SerializeField] Animator bagPenguinAnimator;
 
+    [SerializeField] private GameObject moneyBagPenguin;
+    
     bool isPenguinOut = false;
 
     void Start()
@@ -39,6 +41,12 @@ public class BagTrigger : MonoBehaviour
         }
     }
 
+    IEnumerator WaitAndDisableBag(bool _b)
+    {
+        yield return new WaitForSeconds(0.5f);
+        moneyBagPenguin.SetActive(_b);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (isPenguinOut && other.CompareTag("MoneyBag"))
@@ -48,6 +56,8 @@ public class BagTrigger : MonoBehaviour
             LevelManager.instance.ObjectivesManager.SecureBag();
             isPenguinOut = false;
             bagPenguinAnimator.SetTrigger("takeBag");
+            moneyBagPenguin.SetActive(true);
+            StartCoroutine(WaitAndDisableBag(false));
         }
     }
 }

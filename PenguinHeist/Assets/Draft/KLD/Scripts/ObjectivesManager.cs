@@ -57,6 +57,7 @@ public class ObjectivesManager : MonoBehaviour
     public void CompleteObjective(Objective _objective)
     {
         objectives.Remove(_objective);
+        LevelManager.instance.StartAlarm();
     }
 
     public void SecureBag()
