@@ -29,6 +29,7 @@ public class PlayerMelee : MonoBehaviour
     [SerializeField] private int damage = 10;
 
     public AudioSource meleeSfx;
+    public AudioSource hitSfx;
 
     private void Start()
     {
@@ -82,6 +83,7 @@ public class PlayerMelee : MonoBehaviour
             damageable = hitCollider.GetComponent<IDamageable>();
             if (damageable != default)
             {
+                hitSfx.Play();
                 hitCollider.GetComponent<IDamageable>().TakeDamage(damage);
             }
         }

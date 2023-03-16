@@ -69,6 +69,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
         
         if (_revived)
         {
+            reviveSfx.Play();
             StartCoroutine(GetUp());
         }
     }
@@ -128,7 +129,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IInteractible
     [ContextMenu("Revive Player")]
     private void RevivePlayer()
     {
-        reviveSfx.Play();
         InitPlayerHealth(true);
     }
 

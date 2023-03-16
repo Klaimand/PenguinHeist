@@ -22,6 +22,9 @@ public class AIEntity : MonoBehaviour, IDamageable
 
     public Action OnHit;
 
+    public AudioSource damageSfx;
+    public AudioSource deathSfx;
+
     private void Start()
     {
         //isHoldingShield = true;
@@ -35,6 +38,8 @@ public class AIEntity : MonoBehaviour, IDamageable
 
         aiStateManager.agent.isStopped = true;
         col.enabled = false;
+        
+        if(deathSfx != null) deathSfx.Play();
 
         isDead = true;
         if (aiStateManager.aiType == AIType.Police)
@@ -72,7 +77,9 @@ public class AIEntity : MonoBehaviour, IDamageable
     {
         //Hit
         if (isDead) return;
-
+        
+        if(damageSfx != null) damageSfx.Play();
+        
         if (aiStateManager.currentState == aiStateManager.moveState)
         {
             aiStateManager.OnPlayerDetected?.Invoke();
