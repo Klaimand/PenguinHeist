@@ -121,7 +121,7 @@ public class Safe : MonoBehaviour
     IEnumerator OpenAndReward()
     {
         myAnimator.SetTrigger("openTrigger"); // Animation du coffre qui s'ouvre
-        yield return new WaitForSeconds(myAnimator.GetCurrentAnimatorStateInfo(0).length); // Attendre le temps de l'anim
+        yield return new WaitForSeconds(0.83f); // Attendre le temps de l'anim
         GivePlayerMoney();
     }
 
