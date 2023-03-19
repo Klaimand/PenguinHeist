@@ -389,8 +389,8 @@ GameObject:
   - component: {fileID: 2504148330069392563}
   - component: {fileID: 2504148330069392716}
   - component: {fileID: 2504148330069392717}
-  - component: {fileID: 2504148330069392718}
   - component: {fileID: 4963852108790917766}
+  - component: {fileID: 2504148330069392718}
   - component: {fileID: 7455723224636959832}
   - component: {fileID: 1021084024780660590}
   - component: {fileID: 514571475836371247}
@@ -531,7 +531,7 @@ MonoBehaviour:
   isHoldingShield: 0
   currentAttackCd: 0
   minMaxLaunchTorque: {x: 100, y: 200}
-  health: 80
+  health: 50
   col: {fileID: 2504148330069392565}
   damageSfx: {fileID: 1021084024780660590}
   deathSfx: {fileID: 514571475836371247}
@@ -652,6 +652,23 @@ MonoBehaviour:
   canon: {fileID: 2793676396796685702}
   gunshotSfx: {fileID: 7455723224636959832}
   omega: 0.5
+--- !u!114 &4963852108790917766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2504148330069392719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96724fa3ea19b744ab3995e5f984371e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 0}
+  previousState: {fileID: 0}
+  speed: 3
+  aIStateType: 2
+  bag: {fileID: 0}
 --- !u!195 &2504148330069392718
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -674,23 +691,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4963852108790917766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2504148330069392719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96724fa3ea19b744ab3995e5f984371e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextState: {fileID: 0}
-  previousState: {fileID: 0}
-  speed: 3
-  aIStateType: 2
-  bag: {fileID: 0}
 --- !u!82 &7455723224636959832
 AudioSource:
   m_ObjectHideFlags: 0
